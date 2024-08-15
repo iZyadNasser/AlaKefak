@@ -19,6 +19,7 @@
 
     <androidx.cardview.widget.CardView
         style="@style/style_card_view"
+        android:layout_margin="@dimen/margin_large"
         app:cardCornerRadius="@dimen/margin_large"
         app:cardElevation="@dimen/margin_large">
 
@@ -32,7 +33,7 @@
                 style="@style/TextViewAppearance"
                 android:layout_width="@dimen/margin_none"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:text="@string/sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +52,7 @@
                     android:id="@+id/userNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username" />
+                    android:hint="@string/username" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +69,7 @@
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email" />
+                    android:hint="@string/email" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +87,7 @@
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password" />
+                    android:hint="@string/password" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,14 +105,15 @@
                     android:id="@+id/passwordConfirmEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirm Password" />
+                    android:hint="@string/confirm_pas" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
                 android:id="@+id/registerbtn"
                 style="@style/style_button"
-                android:text="Sign up"
+                android:layout_margin="@dimen/margin_medium"
+                android:text="@string/create_account"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +125,7 @@
                 android:layout_width="@dimen/margin_none"
 
                 android:layout_height="wrap_content"
-                android:text="Already have an account?"
+                android:text="@string/account_confirm"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/registerbtn" />
 
@@ -135,7 +137,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/height_medium"
                 android:textStyle="italic|bold"
-                android:text="Sign in"
+                android:text="@string/sign_in"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/validationTextView"
                 app:layout_constraintTop_toBottomOf="@id/registerbtn" />
