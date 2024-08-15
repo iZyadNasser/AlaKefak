@@ -4,7 +4,7 @@
     <style name="style_button" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">#D94E28</item>
+        <item name="android:backgroundTint">@color/main_color</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
