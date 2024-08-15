@@ -13,14 +13,17 @@ class WelcomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentWelcomeBinding.inflate(layoutInflater)
 
-        binding.button.setOnClickListener {
-
-            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment())
-        }
+        setOnClickListeners()
 
         return binding.root
+    }
+
+    private fun setOnClickListeners() {
+        binding.button.setOnClickListener {
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment())
+        }
     }
 }
