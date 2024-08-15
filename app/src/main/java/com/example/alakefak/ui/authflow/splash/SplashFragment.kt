@@ -16,15 +16,19 @@ import com.example.alakefak.databinding.FragmentSplashBinding
 
 
 class SplashFragment : Fragment() {
-
+    private lateinit var binding: FragmentSplashBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentSplashBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_splash, container, false
-        )
+    ): View {
+        binding = FragmentSplashBinding.inflate(layoutInflater)
 
+        setNavigationWithAnimation()
+
+        return binding.root
+    }
+
+    private fun setNavigationWithAnimation() {
         val swipeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.swipe_out)
 
         swipeOut.setAnimationListener(object : Animation.AnimationListener {
@@ -48,7 +52,5 @@ class SplashFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             binding.yourImageViewId.startAnimation(swipeOut)
         }, 3000)
-
-        return binding.root
     }
 }

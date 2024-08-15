@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="style_button" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/main_color</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="style_email_text_field" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="style_password_text_field" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="style_image_view" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">400dp</item>
+    </style>
+
+    <style name="style_card_view" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">40dp</item>
+    </style>
+
+    <style name="style_text_view" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="EditTextAppearance" parent="@style/Theme.AppCompat.Light">
+
+        <item name="android:layout_marginHorizontal">@dimen/margin_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="counterEnabled">true</item>
+        <item name="helperText">*Required</item>
+        <item name="helperTextTextColor">@color/md_theme_error</item>
+    </style>
+
+    <style name="TextViewAppearance2" parent="@style/Theme.AppCompat.Light">
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:layout_marginStart">@dimen/height_medium</item>
+    </style>
+
+    <style name="TextViewAppearance" parent="TextViewAppearance2">
+        <item name="android:layout_marginStart">@dimen/margin_medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+</resources>
