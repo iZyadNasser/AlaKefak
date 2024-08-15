@@ -1,6 +1,8 @@
-package com.example.alakefak.ui
+package com.example.alakefak.ui.authflow.splash
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +34,9 @@ class SplashFragment : Fragment() {
             override fun onAnimationEnd(animation: Animation?) {
                 binding.yourImageViewId.visibility = View.GONE
 
-                findNavController().navigate(SplashFragmentDirections.actionWelcomeFragmentToRegisterFragment())
+                val action =
+                    SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
+                findNavController().navigate(action)
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
@@ -41,7 +45,9 @@ class SplashFragment : Fragment() {
 
         })
 
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.yourImageViewId.startAnimation(swipeOut)
+        }, 3000)
 
         return binding.root
     }
