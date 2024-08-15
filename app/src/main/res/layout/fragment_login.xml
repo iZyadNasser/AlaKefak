@@ -33,7 +33,7 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:text="@string/sign_in"
                 android:textAllCaps="true"
-                android:textSize="@dimen/lage_text"
+                android:textSize="@dimen/text_size_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
