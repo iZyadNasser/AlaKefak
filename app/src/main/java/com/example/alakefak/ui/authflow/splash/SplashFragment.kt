@@ -1,4 +1,4 @@
-package com.xapp.alakefak.ui
+package com.example.alakefak.ui.authflow.splash
 
 import android.os.Bundle
 import android.os.Handler
@@ -6,26 +6,21 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.alakefak.databinding.FragmentSplashBinding
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.alakefak.R
-import com.example.alakefak.databinding.FragmentSplashBinding
 
 
 class SplashFragment : Fragment() {
-
+    private lateinit var binding: FragmentSplashBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentSplashBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_splash, container, false
-        )
-
+        binding = FragmentSplashBinding.inflate(layoutInflater)
         val swipeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.swipe_out)
 
         swipeOut.setAnimationListener(object : Animation.AnimationListener {
@@ -36,7 +31,7 @@ class SplashFragment : Fragment() {
                 binding.yourImageViewId.visibility = View.GONE
 
                 val action =
-                    SplashFragmentDirections.actionSplashFragmentToWelcomeFragment("argumentValue")
+                    SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
                 findNavController().navigate(action)
             }
 
