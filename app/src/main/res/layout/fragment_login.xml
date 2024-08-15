@@ -17,6 +17,8 @@
         <ImageView
             android:id="@+id/imageLogo"
             style="@style/style_image_view"
+            android:layout_height="260dp"
+            android:contentDescription="@string/nulll"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
