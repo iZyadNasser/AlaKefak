@@ -30,7 +30,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.loginTextView.setOnClickListener {
+        binding.signInTextView.setOnClickListener {
             setNavigationWithAnimation()
         }
     }
