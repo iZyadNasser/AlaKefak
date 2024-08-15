@@ -18,9 +18,9 @@
 
     <androidx.cardview.widget.CardView
         style="@style/style_card_view"
-        android:layout_margin="@dimen/margin_medium"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp">
+        android:layout_margin="@dimen/margin_large"
+        app:cardCornerRadius="@dimen/margin_large"
+        app:cardElevation="@dimen/margin_large">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,18 +29,18 @@
             <TextView
                 android:id="@+id/signIn"
                 style="@style/style_text_view"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
                 android:text="@string/sign_in"
                 android:textAllCaps="true"
-                android:textSize="20dp"
+                android:textSize="@dimen/text_size_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textFieldEmail"
                 style="@style/style_email_text_field"
-                android:layout_margin="@dimen/margin"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/email"
                 app:counterEnabled="true"
                 app:counterMaxLength="40"
@@ -61,7 +61,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textFieldPassword"
                 style="@style/style_password_text_field"
-                android:layout_margin="@dimen/margin"
+                android:layout_margin="@dimen/margin_medium"
                 android:hint="@string/password"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
@@ -72,7 +72,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textFieldEmail"
                 app:startIconDrawable="@drawable/ic_password"
                 tools:ignore="MissingConstraints">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -82,7 +81,7 @@
             <Button
                 android:id="@+id/loginBtn"
                 style="@style/style_button"
-                android:layout_margin="@dimen/margin"
+                android:layout_margin="@dimen/margin_medium"
                 android:text="@string/sign_in"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
