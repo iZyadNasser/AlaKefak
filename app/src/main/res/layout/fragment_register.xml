@@ -114,33 +114,25 @@
                 style="@style/style_button"
                 android:layout_margin="@dimen/margin_medium"
                 android:text="@string/create_account"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passwordConfirmFieldText" />
 
-            <TextView
-                android:id="@+id/validationTextView"
-                style="@style/TextViewAppearance2"
-                android:layout_width="@dimen/margin_none"
 
+            <TextView
+                android:id="@+id/signInTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:text="@string/account_confirm"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/registerbtn" />
-
-            <TextView
-                android:id="@+id/loginTextView"
-                style="@style/TextViewAppearance2"
-                android:layout_width="@dimen/margin_none"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/height_medium"
-                android:textStyle="italic|bold"
-                android:text="@string/sign_in"
+                android:textAlignment="center"
+                android:textColor="@color/main_color"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/validationTextView"
-                app:layout_constraintTop_toBottomOf="@id/registerbtn" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerbtn" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
