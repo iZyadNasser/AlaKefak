@@ -22,9 +22,6 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/login_fragment" />
-        <action
             android:id="@+id/action_welcomeFragment_to_registerFragment"
             app:destination="@id/register_fragment" />
     </fragment>
@@ -37,5 +34,9 @@
         android:id="@+id/register_fragment"
         android:name="com.example.alakefak.ui.authflow.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+    </fragment>
 </navigation>
