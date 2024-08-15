@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?</string>
+    <string name="account_confirm">Already have an account?<b><i>  SIGN IN </i></b></string>
     <string name="create_account">Create Account</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
 </resources>

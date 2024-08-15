@@ -8,7 +8,7 @@
     <string name="password">كلمة المرور</string>
     <string name="username">اسم المستخدم</string>
     <string name="confirm_pas">تأكيد كلمة المرور</string>
-    <string name="account_confirm">هل لديك حساب بالفعل؟</string>
+    <string name="account_confirm"> <b><i>هل لديك حساب بالفعل؟ قم بالتسجيل </i></b></string>
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">إنشاء حساب جديد</string>
     <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
