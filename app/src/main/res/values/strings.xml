@@ -2,4 +2,9 @@
     <string name="app_name">Ala Kefak</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
+    <string name="welcome_to_alakefak">Welcome to AlaKefak!</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_to_ala_kefak">welcome to ala kefak!</string>
+
 </resources>
