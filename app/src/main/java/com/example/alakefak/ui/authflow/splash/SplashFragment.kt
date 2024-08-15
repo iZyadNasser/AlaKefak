@@ -14,7 +14,6 @@ import com.example.alakefak.databinding.FragmentSplashBinding
 
 
 class SplashFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,24 +24,26 @@ class SplashFragment : Fragment() {
 
         val swipeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.swipe_out)
 
+        binding.yourImageViewId.visibility = View.VISIBLE
+
         swipeOut.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
+
                 binding.yourImageViewId.visibility = View.GONE
 
                 findNavController().navigate(SplashFragmentDirections.actionWelcomeFragmentToRegisterFragment())
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
-
             }
-
         })
 
-
+        binding.yourImageViewId.startAnimation(swipeOut)
 
         return binding.root
     }
+
 }
