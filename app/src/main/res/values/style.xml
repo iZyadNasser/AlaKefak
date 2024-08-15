@@ -4,21 +4,23 @@
     <style name="style_button" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_margin">16dp</item>
         <item name="android:backgroundTint">#D94E28</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
     <style name="style_email_text_field" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_margin">16dp</item>
         <item name="android:inputType">textEmailAddress</item>
         <item name="android:hint">Email</item>
     </style>
+
     <style name="style_password_text_field" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_margin">16dp</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:hint">Password</item>
     </style>
@@ -28,10 +30,19 @@
         <item name="android:layout_height">400dp</item>
 
     </style>
+
     <style name="style_card_view" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="style_text_view" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#D94E28</item>
     </style>
 
 </resources>
