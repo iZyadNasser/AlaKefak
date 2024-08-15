@@ -18,31 +18,34 @@
 
     <androidx.cardview.widget.CardView
         style="@style/style_card_view"
+        android:layout_margin="@dimen/margin_medium"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                style="@style/style_text_view"
                 android:id="@+id/signIn"
-                android:text="sign in"
+                style="@style/style_text_view"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/sign_in"
                 android:textAllCaps="true"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
                 android:textSize="20dp"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textFieldEmail"
                 style="@style/style_email_text_field"
+                android:layout_margin="@dimen/margin"
+                android:hint="@string/email"
                 app:counterEnabled="true"
                 app:counterMaxLength="40"
                 app:endIconMode="clear_text"
-                app:helperText="*Required"
+                app:helperText="@string/required"
                 app:helperTextTextColor="@color/md_theme_error"
                 app:layout_constraintTop_toBottomOf="@+id/signIn"
                 app:startIconDrawable="@drawable/ic_email"
@@ -58,11 +61,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textFieldPassword"
                 style="@style/style_password_text_field"
+                android:layout_margin="@dimen/margin"
+                android:hint="@string/password"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
                 app:endIconMode="password_toggle"
                 app:errorEnabled="true"
-                app:helperText="*Required"
+                app:helperText="@string/required"
                 app:helperTextTextColor="@color/md_theme_error"
                 app:layout_constraintTop_toBottomOf="@+id/textFieldEmail"
                 app:startIconDrawable="@drawable/ic_password"
@@ -77,7 +82,8 @@
             <Button
                 android:id="@+id/loginBtn"
                 style="@style/style_button"
-                android:text="sign in"
+                android:layout_margin="@dimen/margin"
+                android:text="@string/sign_in"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
