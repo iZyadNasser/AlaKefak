@@ -2,16 +2,54 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.HomeFragment">
+        tools:context=".ui.HomeFragment"
+        android:background="@color/orange"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
+        <ImageView
             android:id="@+id/text_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:adjustViewBounds="true" />
 
-    </FrameLayout>
+
+        <TextView
+            android:id="@+id/text_view_welcome"
+            android:layout_width="wrap_content"
+            android:textStyle="bold|italic"
+            android:textAllCaps="true"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to_ala_kefak"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover_a_world_of_culinary_delights_with_our_easy_to_use_recipe_app_whether_you_re_a_seasoned_chef_or_just_starting_out_you_ll_find_a_variety_of_mouthwatering_recipes_step_by_step_instructions_and_handy_tips_to_make_every_meal_a_success_from_quick_weeknight_dinners_to_gourmet_feasts_we_ve_got_something_for_every_taste_and_occasion_let_s_turn_cooking_into_an_exciting_adventure_together"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="@string/get_started"
+            android:drawableEnd="@drawable/baseline_arrow_forward_24"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
 </layout>
