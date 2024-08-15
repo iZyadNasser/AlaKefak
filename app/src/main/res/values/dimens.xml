@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="_140dp">140dp</dimen>
-    <dimen name="_20dp">20dp</dimen>
-    <dimen name="_0dp">0dp</dimen>
-    <dimen name="_20sp">20sp</dimen>
-    <dimen name="_16dp">16dp</dimen>
-    <dimen name="_56dp">56dp</dimen>
-    <dimen name="_8dp">8dp</dimen>
+    <dimen name="height_large">140dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_none">0dp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="height_medium">56dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+
 </resources>

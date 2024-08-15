@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_140dp"
+        android:layout_height="@dimen/height_large"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +19,8 @@
 
     <androidx.cardview.widget.CardView
         style="@style/style_card_view"
-        app:cardCornerRadius="@dimen/_20dp"
-        app:cardElevation="@dimen/_20dp">
+        app:cardCornerRadius="@dimen/margin_large"
+        app:cardElevation="@dimen/margin_large">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             <TextView
                 android:id="@+id/signUpTextView"
                 style="@style/TextViewAppearance"
-                android:layout_width="@dimen/_0dp"
+                android:layout_width="@dimen/margin_none"
                 android:layout_height="wrap_content"
                 android:text="Sign up"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +120,7 @@
             <TextView
                 android:id="@+id/validationTextView"
                 style="@style/TextViewAppearance2"
-                android:layout_width="@dimen/_0dp"
+                android:layout_width="@dimen/margin_none"
 
                 android:layout_height="wrap_content"
                 android:text="Already have an account?"
@@ -130,10 +130,10 @@
             <TextView
                 android:id="@+id/loginTextView"
                 style="@style/TextViewAppearance2"
-                android:layout_width="@dimen/_0dp"
+                android:layout_width="@dimen/margin_none"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginEnd="@dimen/_56dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/height_medium"
                 android:textStyle="italic|bold"
                 android:text="Sign in"
                 app:layout_constraintEnd_toEndOf="parent"
