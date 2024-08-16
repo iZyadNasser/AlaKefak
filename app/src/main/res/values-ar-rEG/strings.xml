@@ -15,5 +15,6 @@
     <string name="home">الصفحة الرئيسية</string>
     <string name="favourites">المفضلة</string>
     <string name="about">حول التطبيق</string>
+    <string name="settings">الإعدادات</string>
 
 </resources>
