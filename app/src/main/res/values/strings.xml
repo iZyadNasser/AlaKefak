@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Ala Kefak</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">sign in</string>
     <string name="required">*Required</string>
     <string name="email">Email</string>
@@ -11,4 +9,10 @@
     <string name="confirm_pas">Confirm Password</string>
     <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
+    <string name="minNumberOfChars">*Minimum 8 Character Password</string>
+    <string name="minNumberOfUpperChars">*Must Contain 1 Upper-case Character</string>
+    <string name="minNumberOfLowerChars">*Must Contain 1 Lower-case Character</string>
+    <string name="minNumberOfDigits">*Must Contain 1 number</string>
+    <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
+    <string name="invalidEmailAddress">"*Invalid Email Address"</string>
 </resources>
