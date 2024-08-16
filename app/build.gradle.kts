@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt") version "2.0.0"
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
 }
@@ -37,7 +38,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         dataBinding = true
     }
 }
@@ -105,4 +105,6 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("androidx.activity:activity-ktx:1.9.1")
 
+    implementation(libs.androidx.room.paging)
+    implementation(kotlin("script-runtime"))
 }
