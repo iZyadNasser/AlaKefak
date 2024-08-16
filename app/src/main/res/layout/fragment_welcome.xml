@@ -55,6 +55,8 @@
             android:layout_marginTop="128dp"
             android:drawableEnd="@drawable/baseline_arrow_forward_24"
             android:text="@string/get_started"
+            android:textColor="@color/orange"
+            android:backgroundTint="#E3D2CD"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
