@@ -96,7 +96,7 @@ class LoginFragment : Fragment() {
             binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
         } else {
             disableSignIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.md_theme_error))
+            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
 
 
         }

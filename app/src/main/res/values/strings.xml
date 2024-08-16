@@ -5,9 +5,9 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
-    <string name="minNumberOfUpperChars">*Must Contain 1 Upper-case Character</string>
-    <string name="minNumberOfLowerChars">*Must Contain 1 Lower-case Character</string>
-    <string name="minNumberOfDigits">*Must Contain 1 number</string>
-    <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
+    <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
+    <string name="minNumberOfLowerChars">*Must Contain at least one Lower-case Character</string>
+    <string name="minNumberOfDigits">*Must Contain at least one number</string>
+    <string name="minNumberOfSymbols">*Must Contain at least one Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
 </resources>
