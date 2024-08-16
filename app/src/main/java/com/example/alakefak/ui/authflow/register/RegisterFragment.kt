@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentRegisterBinding
 import com.example.alakefak.ui.authflow.validConfirmPassword
@@ -77,6 +78,9 @@ class RegisterFragment : Fragment() {
     }
 
     private fun handleOnClicks() {
+        binding.signInTextView.setOnClickListener {
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
+        }
         binding.registerbtn.setOnClickListener { singInForm() }
     }
 
