@@ -1,4 +1,8 @@
 <resources>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_to_ala_kefak">welcome to ala kefak!</string>
+    <string name="app_name" translatable="false">Ala Kefak</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="app_name">Ala Kefak</string>
     <string name="sign_in">sign in</string>
     <string name="required">*Required</string>
@@ -16,4 +20,6 @@
     <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
+    <string name="nulll" translatable="false">null</string>
 </resources>

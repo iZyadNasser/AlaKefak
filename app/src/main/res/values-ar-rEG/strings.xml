@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="get_started">ابدأ</string>
+    <string name="welcome_to_ala_kefak">مرحبًا بك في تطبيق على كيفك!</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="required">*مطلوب</string>
     <string name="email">البريد الالكتروني</string>
@@ -17,4 +19,6 @@
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">إنشاء حساب جديد</string>
     <string name="passwords_do_not_match">كلمتا المرور غير متطابقتين</string>
+    <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
+
 </resources>
