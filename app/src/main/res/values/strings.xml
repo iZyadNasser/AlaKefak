@@ -3,7 +3,7 @@
     <string name="welcome_to_ala_kefak">welcome to ala kefak!</string>
     <string name="app_name" translatable="false">Ala Kefak</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="app_name">Ala Kefak</string>
+
     <string name="sign_in">sign in</string>
     <string name="required">*Required</string>
     <string name="email">Email</string>
@@ -14,12 +14,13 @@
     <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
-    <string name="minNumberOfUpperChars">*Must Contain 1 Upper-case Character</string>
-    <string name="minNumberOfLowerChars">*Must Contain 1 Lower-case Character</string>
+    <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
+    <string name="minNumberOfLowerChars">*Must Contain at least one Lower-case Character</string>
     <string name="minNumberOfDigits">*Must Contain 1 number</string>
     <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll" translatable="false">null</string>
+    <string name="minNumbersOfLetters"> Username Should Contain at least one letter  </string>
 </resources>

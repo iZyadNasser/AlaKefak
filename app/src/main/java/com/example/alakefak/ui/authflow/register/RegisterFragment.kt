@@ -24,12 +24,29 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        usernameFocusListener()
         emailFocusListener()
         passwordFocusListener()
         confirmPasswordFocusListener()
         setupTextWatchers()
         handleOnClicks()
         singInForm()
+    }
+
+    private fun usernameFocusListener() {
+        binding.userNameTextField?.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                binding.userNameTextField.helperText = validUsername()
+            }
+        }
+    }
+
+    private fun validUsername(): String? {
+        val usernameText = binding.userNameTextField.editText?.text.toString()
+        if (!usernameText.matches(".*[A-Z].*".toRegex()) && !usernameText.matches(".*[a-z].*".toRegex())) {
+            return (context?.getString(R.string.minNumbersOfLetters))
+        }
+        return null
     }
 
     private fun emailFocusListener() {
@@ -111,15 +128,14 @@ class RegisterFragment : Fragment() {
         val validEmail = binding.emailTextField.helperText == null
         val validPassword = binding.passwordTextField.helperText == null
         val validConfirmPassword = binding.passwordConfirmFieldText.helperText == null
+        val validUserName = binding.userNameTextField.helperText == null
 
-        if (validEmail && validPassword && validConfirmPassword) {
+        if (validEmail && validPassword && validConfirmPassword && validUserName) {
             signIn()
             binding.registerbtn.setBackgroundColor(resources.getColor(R.color.main_color))
         } else {
             disableSignIn()
-            binding.registerbtn.setBackgroundColor(resources.getColor(R.color.md_theme_error))
-
-
+            binding.registerbtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
         }
 
     }
@@ -130,6 +146,7 @@ class RegisterFragment : Fragment() {
                 binding.emailTextField.helperText = validEmail()
                 binding.passwordTextField.helperText = validPassword()
                 binding.passwordConfirmFieldText.helperText = validConfirmPassword()
+                binding.userNameTextField.helperText = validUsername()
                 singInForm()
             }
 
@@ -141,6 +158,7 @@ class RegisterFragment : Fragment() {
         binding.emailTextField.editText?.addTextChangedListener(textWatcher)
         binding.passwordTextField.editText?.addTextChangedListener(textWatcher)
         binding.passwordConfirmFieldText.editText?.addTextChangedListener(textWatcher)
+        binding.userNameTextField.editText?.addTextChangedListener(textWatcher)
     }
 
 
