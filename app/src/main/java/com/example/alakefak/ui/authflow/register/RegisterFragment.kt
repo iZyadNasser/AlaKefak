@@ -3,20 +3,21 @@ package com.example.alakefak.ui.authflow.register
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
+    val viewModel = RegisterFragmentViewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,89 +35,42 @@ class RegisterFragment : Fragment() {
     }
 
     private fun usernameFocusListener() {
-        binding.userNameTextField?.setOnFocusChangeListener { _, focused ->
+        binding.userNameTextField.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.userNameTextField.helperText = validUsername()
+                val usernameText = binding.userNameTextField.editText?.text.toString()
+                binding.userNameTextField.helperText = viewModel.validUsername(usernameText, context)
             }
         }
-    }
-
-    private fun validUsername(): String? {
-        val usernameText = binding.userNameTextField.editText?.text.toString()
-        if (!usernameText.matches(".*[A-Z].*".toRegex()) && !usernameText.matches(".*[a-z].*".toRegex())) {
-            return (context?.getString(R.string.minNumbersOfLetters))
-        }
-        return null
     }
 
     private fun emailFocusListener() {
         binding.emailTextField.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.emailTextField.helperText = validEmail()
+                val emailText = binding.emailTextField.editText?.text.toString()
+                binding.emailTextField.helperText = viewModel.validEmail(emailText, context)
             }
         }
-    }
-
-    private fun validEmail(): String? {
-        val emailText = binding.emailTextField.editText?.text.toString()
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            return context?.getString(R.string.invalidEmailAddress)
-        }
-        return null
     }
 
 
     private fun passwordFocusListener() {
         binding.passwordTextField.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.passwordTextField.helperText = validPassword()
+                val passwordText = binding.passwordTextField.editText?.text.toString()
+                binding.passwordTextField.helperText = viewModel.validPassword(passwordText, context)
             }
         }
-    }
-
-    private fun validPassword(): String? {
-        val passwordText = binding.passwordTextField.editText?.text.toString()
-
-        if (passwordText.length < 8) {
-            return context?.getString(R.string.minNumberOfChars)
-        }
-        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfUpperChars))
-
-        }
-        if (!passwordText.matches(".*[a-z].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfLowerChars))
-
-        }
-        if (!passwordText.matches(".*[0-9].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfDigits))
-
-        }
-        if (!passwordText.matches(".*[@#\$%^+=].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfSymbols))
-
-        }
-
-        return null
     }
 
 
     private fun confirmPasswordFocusListener() {
         binding.passwordConfirmFieldText.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword()
+                val passwordText = binding.passwordTextField.editText?.text.toString()
+                val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
+                binding.passwordConfirmFieldText.helperText = viewModel.validConfirmPassword(passwordText, confirmPasswordText, context)
             }
         }
-    }
-
-    private fun validConfirmPassword(): String? {
-        val passwordText = binding.passwordTextField.editText?.text.toString()
-        val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
-
-        if (passwordText != confirmPasswordText) {
-            return context?.getString(R.string.passwords_do_not_match)
-        }
-        return null
     }
 
     private fun handleOnClicks() {
@@ -143,10 +97,15 @@ class RegisterFragment : Fragment() {
     private fun setupTextWatchers() {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                binding.emailTextField.helperText = validEmail()
-                binding.passwordTextField.helperText = validPassword()
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword()
-                binding.userNameTextField.helperText = validUsername()
+                val emailText = binding.emailTextField.editText?.text.toString()
+                val usernameText = binding.userNameTextField.editText?.text.toString()
+                val passwordText = binding.passwordTextField.editText?.text.toString()
+                val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
+
+                binding.emailTextField.helperText = viewModel.validEmail(emailText, context)
+                binding.passwordTextField.helperText = viewModel.validPassword(passwordText, context)
+                binding.passwordConfirmFieldText.helperText = viewModel.validConfirmPassword(passwordText, confirmPasswordText, context)
+                binding.userNameTextField.helperText = viewModel.validUsername(usernameText, context)
                 singInForm()
             }
 
