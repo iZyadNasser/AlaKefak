@@ -15,4 +15,5 @@
     <string name="minNumberOfDigits">*Must Contain 1 number</string>
     <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
 </resources>

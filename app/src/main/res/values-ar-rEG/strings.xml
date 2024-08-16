@@ -16,4 +16,5 @@
     <string name="account_confirm"> <b><i>هل لديك حساب بالفعل؟ قم بالتسجيل </i></b></string>
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">إنشاء حساب جديد</string>
+    <string name="passwords_do_not_match">كلمتا المرور غير متطابقتين</string>
 </resources>
