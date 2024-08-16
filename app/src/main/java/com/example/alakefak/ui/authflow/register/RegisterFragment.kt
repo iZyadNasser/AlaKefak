@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentRegisterBinding
+import com.example.alakefak.ui.authflow.validConfirmPassword
+import com.example.alakefak.ui.authflow.validEmail
+import com.example.alakefak.ui.authflow.validPassword
+import com.example.alakefak.ui.authflow.validUsername
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
-    val viewModel = RegisterFragmentViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +41,7 @@ class RegisterFragment : Fragment() {
         binding.userNameTextField.setOnFocusChangeListener { _, focused ->
             if (!focused) {
                 val usernameText = binding.userNameTextField.editText?.text.toString()
-                binding.userNameTextField.helperText = viewModel.validUsername(usernameText, context)
+                binding.userNameTextField.helperText = validUsername(usernameText, context)
             }
         }
     }
@@ -47,7 +50,7 @@ class RegisterFragment : Fragment() {
         binding.emailTextField.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
                 val emailText = binding.emailTextField.editText?.text.toString()
-                binding.emailTextField.helperText = viewModel.validEmail(emailText, context)
+                binding.emailTextField.helperText = validEmail(emailText, context)
             }
         }
     }
@@ -57,7 +60,7 @@ class RegisterFragment : Fragment() {
         binding.passwordTextField.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
                 val passwordText = binding.passwordTextField.editText?.text.toString()
-                binding.passwordTextField.helperText = viewModel.validPassword(passwordText, context)
+                binding.passwordTextField.helperText = validPassword(passwordText, context)
             }
         }
     }
@@ -68,7 +71,7 @@ class RegisterFragment : Fragment() {
             if (!focused) {
                 val passwordText = binding.passwordTextField.editText?.text.toString()
                 val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
-                binding.passwordConfirmFieldText.helperText = viewModel.validConfirmPassword(passwordText, confirmPasswordText, context)
+                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
             }
         }
     }
@@ -102,10 +105,10 @@ class RegisterFragment : Fragment() {
                 val passwordText = binding.passwordTextField.editText?.text.toString()
                 val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
 
-                binding.emailTextField.helperText = viewModel.validEmail(emailText, context)
-                binding.passwordTextField.helperText = viewModel.validPassword(passwordText, context)
-                binding.passwordConfirmFieldText.helperText = viewModel.validConfirmPassword(passwordText, confirmPasswordText, context)
-                binding.userNameTextField.helperText = viewModel.validUsername(usernameText, context)
+                binding.emailTextField.helperText = validEmail(emailText, context)
+                binding.passwordTextField.helperText = validPassword(passwordText, context)
+                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
+                binding.userNameTextField.helperText = validUsername(usernameText, context)
                 singInForm()
             }
 

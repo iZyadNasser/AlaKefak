@@ -3,20 +3,21 @@ package com.example.alakefak.ui.authflow.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentLoginBinding
+import com.example.alakefak.ui.authflow.validEmail
+import com.example.alakefak.ui.authflow.validPassword
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,52 +35,19 @@ class LoginFragment : Fragment() {
     private fun emailFocusListener() {
         binding.textFieldEmail.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.textFieldEmail.helperText = validEmail()
+                val emailText = binding.textFieldEmail.editText?.text.toString()
+                binding.textFieldEmail.helperText = validEmail(emailText, context)
             }
         }
     }
-
-    private fun validEmail(): String? {
-        val emailText = binding.textFieldEmail.editText?.text.toString()
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            return context?.getString(R.string.invalidEmailAddress)
-        }
-        return null
-    }
-
 
     private fun passwordFocusListener() {
         binding.textFieldPassword.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.textFieldPassword.helperText = validPassword()
+                val passwordText = binding.textFieldPassword.editText?.text.toString()
+                binding.textFieldPassword.helperText = validPassword(passwordText, context)
             }
         }
-    }
-
-    private fun validPassword(): String? {
-        val passwordText = binding.textFieldPassword.editText?.text.toString()
-
-        if (passwordText.length < 8) {
-            return context?.getString(R.string.minNumberOfChars)
-        }
-        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfUpperChars))
-
-        }
-        if (!passwordText.matches(".*[a-z].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfLowerChars))
-
-        }
-        if (!passwordText.matches(".*[0-9].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfDigits))
-
-        }
-        if (!passwordText.matches(".*[@#\$%^+=].*".toRegex())) {
-            return (context?.getString(R.string.minNumberOfSymbols))
-
-        }
-
-        return null
     }
 
     private fun handleOnClicks() {
@@ -97,8 +65,6 @@ class LoginFragment : Fragment() {
         } else {
             disableSignIn()
             binding.loginBtn.setBackgroundColor(resources.getColor(R.color.md_theme_error))
-
-
         }
 
     }
@@ -106,8 +72,10 @@ class LoginFragment : Fragment() {
     private fun setupTextWatchers() {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                binding.textFieldEmail.helperText = validEmail()
-                binding.textFieldPassword.helperText = validPassword()
+                val passwordText = binding.textFieldPassword.editText?.text.toString()
+                val emailText = binding.textFieldEmail.editText?.text.toString()
+                binding.textFieldEmail.helperText = validEmail(emailText, context)
+                binding.textFieldPassword.helperText = validPassword(passwordText, context)
                 singInForm()
             }
 
