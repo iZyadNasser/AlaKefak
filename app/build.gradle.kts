@@ -44,6 +44,13 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.github.glide)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
+    implementation(libs.gson)
+    annotationProcessor(libs.glide.compiler)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
