@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
+import com.example.alakefak.data.source.local.model.FavoritesInfo
 
-class FavoritesAdapter(val items: List<*>) : RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
+class FavoritesAdapter(var items: List<FavoritesInfo>) : RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
@@ -30,15 +31,19 @@ class FavoritesAdapter(val items: List<*>) : RecyclerView.Adapter<FavoritesAdapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items.getOrNull(position)
         if (item != null) {
-            Log.e("Adapter", "nameTextView: ${item.name}")
-            holder.recipeName.text = item.name
-            holder.recipeCategory.text = item.category
+            holder.recipeName.text = item.recipeName
+            holder.recipeCategory.text = item.recipeCategory
             Glide.with(holder.itemView.context)
-                .load(item.image)
+                .load(item.recipeImg)
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
         }
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun setItems(newItems: List<FavoritesInfo>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 }
