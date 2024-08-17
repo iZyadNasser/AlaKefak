@@ -1,15 +1,24 @@
 package com.example.alakefak.ui.authflow.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.example.alakefak.R
+import com.example.alakefak.data.source.local.database.UserDatabase
+import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
+import com.example.alakefak.ui.appflow.RecipeActivity
+import com.example.alakefak.ui.authflow.ErrorStates
 import com.example.alakefak.ui.authflow.validConfirmPassword
 import com.example.alakefak.ui.authflow.validEmail
 import com.example.alakefak.ui.authflow.validPassword
@@ -17,18 +26,65 @@ import com.example.alakefak.ui.authflow.validUsername
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
+    private lateinit var viewModel: RegisterFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val database by lazy {
+            Room.databaseBuilder(
+                requireContext().applicationContext,
+                UserDatabase::class.java,
+                "users_database"
+            ).build()
+        }
+        val viewModelFactory = RegisterFragmentViewModelFactory(database)
+        viewModel = ViewModelProvider(this, viewModelFactory)[RegisterFragmentViewModel::class.java]
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.errorState.observe(viewLifecycleOwner, Observer {
+            when (viewModel.errorState.value) {
+                ErrorStates.EMAIL -> {
+                    Toast.makeText(
+                        this.context,
+                        getString(R.string.this_email_is_used_in_an_already_existing_account),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                ErrorStates.USERNAME -> {
+                    Toast.makeText(
+                        this.context,
+                        getString(R.string.this_username_is_already_taken),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                ErrorStates.BOTH -> {
+                    Toast.makeText(
+                        this.context,
+                        getString(R.string.this_account_already_exists_do_you_want_to_sign_in),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                ErrorStates.NONE -> {
+                    val intent = Intent(activity, RecipeActivity::class.java)
+                    intent.putExtra("user", viewModel.user)
+                    startActivity(intent)
+                    activity?.finish()
+                }
+
+                else -> {}
+            }
+        })
+
         usernameFocusListener()
         emailFocusListener()
         passwordFocusListener()
@@ -81,7 +137,21 @@ class RegisterFragment : Fragment() {
         binding.signInTextView.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
         }
-        binding.registerbtn.setOnClickListener { singInForm() }
+        binding.registerbtn.setOnClickListener {
+            handleUserData()
+            singInForm()
+        }
+    }
+
+    private fun handleUserData() {
+        val user = User(
+            id = 0L,
+            userName = binding.userNameTextField.editText?.text.toString(),
+            email = binding.emailTextField.editText?.text.toString(),
+            password = binding.passwordTextField.editText?.text.toString()
+        )
+
+        viewModel.handleUserData(user)
     }
 
 

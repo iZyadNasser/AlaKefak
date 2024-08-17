@@ -48,3 +48,11 @@ fun validConfirmPassword(passwordText: String, confirmPasswordText: String, cont
     }
     return null
 }
+
+enum class ErrorStates() {
+    UNDEFINED,
+    NONE,
+    EMAIL,
+    USERNAME,
+    BOTH
+}
