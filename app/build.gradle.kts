@@ -64,9 +64,9 @@ dependencies {
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
     //glide
-    implementation("com.github.bumptech.glide:glide:4.14.2")
-    implementation("androidx.activity:activity-ktx:1.9.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
-    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation(libs.glide)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.activity.ktx)
     implementation(kotlin("script-runtime"))
 }
