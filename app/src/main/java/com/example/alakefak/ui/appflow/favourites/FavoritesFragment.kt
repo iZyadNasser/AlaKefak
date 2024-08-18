@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.local.database.UserDatabase
-import com.example.alakefak.data.source.local.model.DataSource
 import com.example.alakefak.ui.authflow.login.LoginFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +22,6 @@ import kotlin.coroutines.coroutineContext
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
-    private var data: List<FavoritesInfo> = emptyList()
     private lateinit var adapter: FavoritesAdapter
     private lateinit var viewModel: FavoritesFragmentViewModel
     override fun onCreateView(
@@ -32,7 +30,7 @@ class FavoritesFragment : Fragment() {
     ): View {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
 
-        val database = FavoritesDatabase.getInstance(requireContext().applicationContext)
+        val database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = FavoritesFragmentViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[FavoritesFragmentViewModel::class.java]
         return binding.root
@@ -43,18 +41,9 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
 
-//        var i = 0
-//
-//        CoroutineScope(Dispatchers.IO).launch {
-//            delay(2000)
-//            viewModel.favorite.value?.add(DataSource.data[i])
-//            i++
-//        }
-
         viewModel.favorite.observe(viewLifecycleOwner, Observer { favoriteItems ->
             adapter.setItems(favoriteItems)
         })
-
         viewModel.getAllItems()
     }
 

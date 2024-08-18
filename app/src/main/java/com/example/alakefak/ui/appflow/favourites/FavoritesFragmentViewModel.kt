@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     private val repo = FavoriteRepository(dao)
-    private var _favorite = MutableLiveData<List<FavoritesInfo>>()
+    var _favorite = MutableLiveData<List<FavoritesInfo>>()
     val favorite: LiveData<List<FavoritesInfo>>
         get() = _favorite
 
