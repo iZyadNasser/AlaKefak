@@ -8,5 +8,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="text_size_medium">20sp</dimen>
     <dimen name="text_size_small">16sp</dimen>
+    <dimen name="image_size_medium">32dp</dimen>
+    <dimen name="image_size_large">80dp</dimen>
 
 </resources>
