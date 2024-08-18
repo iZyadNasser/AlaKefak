@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <!-- ViewModel or other data bindings can be added here -->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,36 +15,36 @@
             android:id="@+id/arrowBackImage"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/square_arrow_left"
-
-            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/md_theme_background_highContrast"
             android:layout_margin="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            android:src="@drawable/square_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/favTextView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:text="Favorites"
+            android:layout_marginEnd="20dp"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textSize="@dimen/text_size_large"
-
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/arrowBackImage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoritesRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_medium"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/favTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:listitem="@layout/my_fav_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

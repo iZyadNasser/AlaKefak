@@ -1,10 +1,13 @@
 package com.example.alakefak.ui.appflow
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -14,11 +17,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 
-class FavoritesAdapter(var items: List<FavoritesInfo>) : RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
+class FavoritesAdapter(var items: List<FavoritesInfo>) :
+    RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
+        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -37,6 +43,25 @@ class FavoritesAdapter(var items: List<FavoritesInfo>) : RecyclerView.Adapter<Fa
                 .load(item.recipeImg)
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
+
+            holder.heartBtn.setOnClickListener {
+                val isSelected = holder.heartBtn.tag == "selected"
+                if (isSelected) {
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                    holder.heartBtn.tag = "unselected"
+                } else {
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                    holder.heartBtn.tag = "selected"
+                }
+                val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
+                val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
+                AnimatorSet().apply {
+                    playTogether(scaleX, scaleY)
+                    duration = 300
+                    start()
+                }
+
+            }
         }
     }
 
