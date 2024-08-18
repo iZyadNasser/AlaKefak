@@ -21,5 +21,6 @@
     <string name="passwords_do_not_match">كلمتا المرور غير متطابقتين</string>
     <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
     <string name="minNumbersOfLetters"> يجب أن يحتوي اسم المستخدم على حرف واحد على الأقل  </string>
+    <string name="search_for_a_recipe">ابحث عن وصفة</string>
 
 </resources>

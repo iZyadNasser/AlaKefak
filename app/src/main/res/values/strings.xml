@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
+    <string name="account_confirm">Already have an account?<b><i><font color="#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
     <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
@@ -23,4 +23,5 @@
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll" translatable="false">null</string>
     <string name="minNumbersOfLetters"> Username Should Contain at least one letter  </string>
+    <string name="search_for_a_recipe">Search for a recipe</string>
 </resources>
