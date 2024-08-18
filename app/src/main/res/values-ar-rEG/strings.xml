@@ -19,5 +19,6 @@
     <string name="favourites">المفضلة</string>
     <string name="about">حول التطبيق</string>
     <string name="settings">الإعدادات</string>
+    <string name="favorites">Favorites</string>
 
 </resources>

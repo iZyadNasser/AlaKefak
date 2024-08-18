@@ -23,5 +23,6 @@
     <string name="hello">Hello</string>
     <string name="check_amazing_recipes">check amazing recipes</string>
     <string name="search_recipes">search recipes</string>
+    <string name="favorites">Favorites</string>
 
 </resources>
