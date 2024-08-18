@@ -9,7 +9,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alakefak.R
 
 class RecipesAdapter(val myList: ArrayList<RecipeResponse>) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
@@ -48,9 +47,7 @@ class RecipesAdapter(val myList: ArrayList<RecipeResponse>) :
                 duration = 300
                 start()
             }
-
         }
-
     }
 
     override fun getItemCount(): Int = myList.size
