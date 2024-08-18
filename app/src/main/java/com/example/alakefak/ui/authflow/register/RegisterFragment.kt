@@ -57,7 +57,7 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(
                         this.context,
                         getString(R.string.this_email_is_used_in_an_already_existing_account),
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
 
@@ -65,7 +65,7 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(
                         this.context,
                         getString(R.string.this_username_is_already_taken),
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
 
@@ -73,7 +73,7 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(
                         this.context,
                         getString(R.string.this_account_already_exists_do_you_want_to_sign_in),
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     ).show()
                 }
 

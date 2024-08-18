@@ -24,5 +24,6 @@
     <string name="this_email_is_used_in_an_already_existing_account">هذا البريد الإلكتروني مٌستخدمٌ بالفعل في حساب آخر!</string>
     <string name="this_username_is_already_taken">اسم المستخدم غير متاح!</string>
     <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
+    <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
 
 </resources>

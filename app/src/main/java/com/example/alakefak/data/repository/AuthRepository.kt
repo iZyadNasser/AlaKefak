@@ -16,10 +16,6 @@ class AuthRepository(private val userDatabaseDao: UserDatabaseDao) {
         return userDatabaseDao.getUserByEmailAndPassword(email, password)
     }
 
-    suspend fun doesUserExist(user: User): Boolean {
-        return userDatabaseDao.doesUserExist(user.id)
-    }
-
     suspend fun doesEmailExist(email: String): Boolean {
         return userDatabaseDao.doesEmailExist(email)
     }
