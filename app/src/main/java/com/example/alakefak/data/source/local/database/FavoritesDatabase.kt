@@ -14,18 +14,17 @@ abstract class FavoritesDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var instance: FavoritesDatabase? = null
+        private var INSTANCE: FavoritesDatabase? = null
 
-        fun getInstance(context: Context): FavoritesDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: Room.databaseBuilder(
+        fun getDatabase(context: Context): FavoritesDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     FavoritesDatabase::class.java,
-                    "favorites_db"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
-                    .also { instance = it }
+                    "favorites_database"
+                ).build()
+                INSTANCE = instance
+                instance
             }
         }
     }
