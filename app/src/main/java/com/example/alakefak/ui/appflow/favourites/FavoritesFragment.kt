@@ -9,7 +9,11 @@ import androidx.fragment.app.viewModels
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.alakefak.data.source.local.database.FavoritesDatabase
+import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.DataSource
+import com.example.alakefak.ui.authflow.login.LoginFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -21,12 +25,16 @@ class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
     private var data: List<FavoritesInfo> = emptyList()
     private lateinit var adapter: FavoritesAdapter
-    private val viewModel: FavoritesFragmentViewModel by viewModels()
+    private lateinit var viewModel: FavoritesFragmentViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
+
+        val database = FavoritesDatabase.getInstance(requireContext().applicationContext)
+        val viewModelFactory = FavoritesFragmentViewModelFactory(database.favoritesDatabaseDao())
+        viewModel = ViewModelProvider(this, viewModelFactory)[FavoritesFragmentViewModel::class.java]
         return binding.root
 
     }
