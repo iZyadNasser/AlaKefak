@@ -6,11 +6,24 @@
     <string name="required">*مطلوب</string>
     <string name="email">البريد الالكتروني</string>
     <string name="password">كلمة المرور</string>
+    <string name="app_name">Ala Kefak</string>
+    <string name="minNumberOfChars">كلمة المرور مكونة من 8 أحرف على الأقل</string>
+    <string name="minNumberOfUpperChars">*يجب أن تحتوي على حرف واحد كبير على الأقل</string>
+    <string name="minNumberOfLowerChars">*يجب أن تحتوي على حرف واحد صغير على الأقل</string>
+    <string name="minNumberOfDigits">يجب أن تحتوي على رقم واحد على الأقل</string>
+    <string name="minNumberOfSymbols">*يجب أن تحتوي على رمز واحد على الأقل (=+^%$#@)</string>
+    <string name="invalidEmailAddress">"*عنوان البريد الالكتروني غير صالح"</string>
     <string name="username">اسم المستخدم</string>
     <string name="confirm_pas">تأكيد كلمة المرور</string>
-    <string name="account_confirm"> <b><i>هل لديك حساب بالفعل؟ قم بالتسجيل </i></b></string>
+    <string name="account_confirm">هل لديك حساب بالفعل؟  <b><i><font color = "#FF0000"><u>قم بالتسجيل</u></font></i></b></string>
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">إنشاء حساب جديد</string>
+    <string name="passwords_do_not_match">كلمتا المرور غير متطابقتين</string>
     <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
+    <string name="minNumbersOfLetters"> يجب أن يحتوي اسم المستخدم على حرف واحد على الأقل  </string>
+    <string name="this_email_is_used_in_an_already_existing_account">هذا البريد الإلكتروني مٌستخدمٌ بالفعل في حساب آخر!</string>
+    <string name="this_username_is_already_taken">اسم المستخدم غير متاح!</string>
+    <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
+    <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
 
 </resources>
