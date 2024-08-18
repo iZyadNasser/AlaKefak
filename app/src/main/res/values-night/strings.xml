@@ -20,4 +20,5 @@
     <string name="this_username_is_already_taken">This username is not available!</string>
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists, Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
+    <string name="hello">Hello</string>
 </resources>
