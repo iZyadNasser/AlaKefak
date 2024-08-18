@@ -14,6 +14,7 @@
         <item name="android:inputType">textEmailAddress</item>
     </style>
 
+
     <style name="style_password_text_field" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -47,6 +48,9 @@
         <item name="helperText">*Required</item>
         <item name="helperTextTextColor">@color/md_theme_error</item>
     </style>
+
+
+
 
     <style name="TextViewAppearance2" parent="@style/Theme.AppCompat.Light">
         <item name="textAllCaps">true</item>
