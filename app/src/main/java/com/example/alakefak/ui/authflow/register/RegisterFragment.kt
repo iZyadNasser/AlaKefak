@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
@@ -33,13 +32,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        val database by lazy {
-            Room.databaseBuilder(
-                requireContext().applicationContext,
-                UserDatabase::class.java,
-                "users_database"
-            ).build()
-        }
+        val database = UserDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = RegisterFragmentViewModelFactory(database)
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterFragmentViewModel::class.java]
         return binding.root

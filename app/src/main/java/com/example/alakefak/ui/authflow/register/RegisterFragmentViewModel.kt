@@ -1,7 +1,5 @@
 package com.example.alakefak.ui.authflow.register
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,14 +26,14 @@ class RegisterFragmentViewModel(private val userDatabase: UserDatabase): ViewMod
 
     private fun checkDataExistence() {
         viewModelScope.launch {
-            if (!repository.doesEmailExist(user.email) && !repository.doesUserNameExist(user.userName)) {
-                _errorState.value = ErrorStates.NONE
+            if (repository.doesEmailExist(user.email) && repository.doesUserNameExist(user.userName)) {
+                _errorState.value = ErrorStates.BOTH
             } else if (repository.doesEmailExist(user.email)) {
                 _errorState.value = ErrorStates.EMAIL
             } else if (repository.doesUserNameExist(user.userName)) {
                 _errorState.value = ErrorStates.USERNAME
             } else {
-                _errorState.value = ErrorStates.BOTH
+                _errorState.value = ErrorStates.NONE
             }
         }
     }
