@@ -3,6 +3,7 @@ agp = "8.5.2"
 compilerVersion = "4.15.1"
 converterMoshi = "2.9.0"
 glide = "4.16.0"
+glideVersion = "4.15.1"
 gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -29,6 +30,7 @@ converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.r
 github-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide = { module = "com.github.bumptech.glide:glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compilerVersion" }
+glide-v4151 = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

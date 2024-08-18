@@ -1,7 +1,6 @@
-package com.example.alakefak.ui.appflow
+package com.example.alakefak.ui.appflow.favourites
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +13,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 
-class FavoritesAdapter(var items: List<FavoritesInfo>) : RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
-    class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
+class FavoritesAdapter(private var items: List<FavoritesInfo>) : RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
+    class MyViewHolder(private val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
