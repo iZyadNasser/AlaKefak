@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.alakefak.R
 
 class RecipesAdapter(val myList: ArrayList<RecipeResponse>) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
@@ -22,7 +23,7 @@ class RecipesAdapter(val myList: ArrayList<RecipeResponse>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
         return MyViewHolder(view, myLister)
     }
 
