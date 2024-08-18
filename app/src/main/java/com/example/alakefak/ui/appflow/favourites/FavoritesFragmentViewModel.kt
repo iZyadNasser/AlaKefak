@@ -1,5 +1,6 @@
-package com.example.alakefak.ui.appflow
+package com.example.alakefak.ui.appflow.favourites
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,11 +9,13 @@ import com.example.alakefak.data.source.local.model.FavoritesInfo
 import kotlinx.coroutines.launch
 
 class FavoritesFragmentViewModel(private val repo : FavoriteRepository):ViewModel() {
-    var favorite = MutableLiveData<List<FavoritesInfo>>()
+    private var _favorite = MutableLiveData<List<FavoritesInfo>>()
+    val favorite: LiveData<List<FavoritesInfo>>
+        get() = _favorite
 
     fun getAllItems(){
         viewModelScope.launch {
-            favorite.value = repo.getAllFavorites()
+            _favorite.value = repo.getAllFavorites()
         }
     }
     fun insertNewItem(favoriteItem: FavoritesInfo){
