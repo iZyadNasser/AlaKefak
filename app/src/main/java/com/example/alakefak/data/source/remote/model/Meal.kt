@@ -1,7 +1,8 @@
-package com.example.alakefak.data.source.local.model
+package com.example.alakefak.data.source.remote.model
+
 import com.google.gson.annotations.SerializedName
 
-data class ListMealsByFirstLetterResponse(
+data class Meal(
     @SerializedName("idMeal" )
     var idMeal : String? = null,
     @SerializedName("strMeal" )
@@ -107,4 +108,5 @@ data class ListMealsByFirstLetterResponse(
     @SerializedName("strCreativeCommonsConfirmed" )
     var strCreativeCommonsConfirmed : String? = null,
     @SerializedName("dateModified")
-    var dateModified   : String? = null)
+    var dateModified   : String? = null
+)
