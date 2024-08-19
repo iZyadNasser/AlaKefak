@@ -11,6 +11,6 @@ object APIModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val apiServise = retrofit.create(RecipeService::class.java)
+    val apiService: RecipeService = retrofit.create(RecipeService::class.java)
 
 }

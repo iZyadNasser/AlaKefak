@@ -1,6 +1,6 @@
 package com.example.alakefak.data.source.remote.network
 
-import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.data.source.remote.model.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -19,37 +19,37 @@ interface RecipeService {
     @GET(SEARCH_MEAL_BY_NAME_ENDPOINT)
     suspend fun searchMealByName(
         @Query("s") name: String
-    ): ArrayList<Meal>
+    ): ApiResponse
 
     @GET(LIST_MEALS_BY_FIRST_LETTER_ENDPOINT)
     suspend fun listMealsByFirstLetter(
         @Query("f") letter: Char
-    ): ArrayList<Meal>
+    ): ApiResponse
 
     @GET(LIST_CATEGORIES_ENDPOINT)
-    suspend fun listCategories(): ArrayList<Meal>
+    suspend fun listCategories(): ApiResponse
 
 
     @GET(LIST_AREA_ENDPOINT)
-    suspend fun listArea(): ArrayList<Meal>
+    suspend fun listArea(): ApiResponse
 
 
     @GET(LIST_INGREDIENTS_ENDPOINT)
-    suspend fun listIngredients(): ArrayList<Meal>
+    suspend fun listIngredients(): ApiResponse
 
 
     @GET(FILTER_BY_MAIN_INGREDIENT)
     suspend fun filterByMAinIngredient(
         @Query("i") mainIng: String
-    ): ArrayList<Meal>
+    ): ApiResponse
 
     @GET(FILTER_BY_CATEGORY)
     suspend fun filterByCategory(
         @Query("c") category: String
-    ): ArrayList<Meal>
+    ): ApiResponse
 
     @GET(FILTER_BY_AREA)
     suspend fun filterByArea(
         @Query("a") area: String
-    ): ArrayList<Meal>
+    ): ApiResponse
 }

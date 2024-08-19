@@ -1,11 +1,8 @@
 package com.example.alakefak.data.repository
 
-import com.example.alakefak.data.source.remote.network.APIModule
-import com.example.alakefak.data.source.remote.network.RecipeService
+import com.example.alakefak.data.source.remote.network.APIModule.apiService
 
 class RecipeRepository {
-    private val apiService: RecipeService = APIModule.apiServise
-
 
     suspend fun searchMealByName(name: String)=apiService.searchMealByName(name)
 
