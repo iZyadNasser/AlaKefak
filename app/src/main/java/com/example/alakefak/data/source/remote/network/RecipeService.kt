@@ -14,8 +14,6 @@ const val FILTER_BY_CATEGORY = "filter.php"
 const val FILTER_BY_AREA = "filter.php"
 
 interface RecipeService {
-
-
     @GET(SEARCH_MEAL_BY_NAME_ENDPOINT)
     suspend fun searchMealByName(
         @Query("s") name: String
