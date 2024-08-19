@@ -8,23 +8,22 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 
-@Database(entities = [FavoritesInfo::class], version = 1)
+@Database(entities = [FavoritesInfo::class], version = 2)
 abstract class FavoritesDatabase : RoomDatabase() {
     abstract fun favoritesDatabaseDao(): FavoritesDatabaseDao
 
     companion object {
         @Volatile
         private var INSTANCE: FavoritesDatabase? = null
-
         fun getDatabase(context: Context): FavoritesDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+                INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     FavoritesDatabase::class.java,
                     "favorites_database"
-                ).build()
-                INSTANCE = instance
-                instance
+                )
+                    .fallbackToDestructiveMigration()
+                    .build().also { INSTANCE = it }
             }
         }
     }
