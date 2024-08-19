@@ -40,24 +40,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
-            <ImageButton
-                android:id="@+id/btnHeart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_heart_filled"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="@dimen/margin_none"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="4dp"
-                android:text="@string/spicy_arrabiata_penne"
+                android:text="Spicy Arrabiata Stuff"
                 android:textSize="@dimen/text_size_medium"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
@@ -70,7 +59,7 @@
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
-                android:text="@string/vegetarian"
+                android:text="vegetarian"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
