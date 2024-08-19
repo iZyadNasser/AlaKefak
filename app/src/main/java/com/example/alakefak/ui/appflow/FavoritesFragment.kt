@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.alakefak.R
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
+import com.example.alakefak.ui.appflow.favourites.FavoritesAdapter
 
 
 class FavoritesFragment : Fragment() {
