@@ -12,8 +12,5 @@
     <string name="create_account">إنشاء حساب</string>
     <string name="sign_up">إنشاء حساب جديد</string>
     <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
-    <string name="hello">أهلا</string>
-    <string name="check_amazing_recipes">تحقق من الوصفات المدهشة\n</string>
-    <string name="search_recipes">ابحث عن الوصفات</string>
 
 </resources>
