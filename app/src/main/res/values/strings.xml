@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?<b><i><font color="#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
+    <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
     <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
@@ -32,4 +32,9 @@
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
     <string name="search_for_a_recipe">Search for a recipe</string>
     <string name="search_recipe_by_name_category_or_area">Search recipe by name, category or area...</string>
+    <string name="hello">Hello</string>
+    <string name="your_statistics">Your Statistics</string>
+    <string name="number_of_favourite_meals">Number of favourite meals</string>
+    <string name="your_favourite_category">Your favourite category</string>
+    <string name="your_favourite_cuisine">Your favourite cuisine</string>
 </resources>
