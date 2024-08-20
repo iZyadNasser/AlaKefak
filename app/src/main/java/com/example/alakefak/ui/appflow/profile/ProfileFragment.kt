@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
         }
 
         viewModel.allFavorites.observe(viewLifecycleOwner) {
-            viewModel.calculateFavorites()
+           // viewModel.calculateFavorites()
         }
     }
 }
