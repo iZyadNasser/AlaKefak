@@ -28,6 +28,9 @@ class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) :
     val allFavorites: LiveData<List<FavoritesInfo>>
         get() = _allFavorites
 
+    private val categories = mutableMapOf<String, Long>()
+    private val areas = mutableMapOf<String, Long>()
+
     init {
         viewModelScope.launch {
             _numOfFavorites.value = repository.getNumOfFavorites()
@@ -47,10 +50,17 @@ class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) :
     }
 
     private fun calculateFavoriteCategory() {
+        viewModelScope.launch {
+            categories.clear()
+            for (meal in categories) {
 
+            }
+        }
     }
 
     private fun calculateFavoriteArea() {
+        viewModelScope.launch {
 
+        }
     }
 }
