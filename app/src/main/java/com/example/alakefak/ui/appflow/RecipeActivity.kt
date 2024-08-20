@@ -7,6 +7,7 @@ import com.example.alakefak.databinding.ActivityRecipeBinding
 import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
 import com.example.alakefak.ui.appflow.profile.ProfileFragment
+import com.example.alakefak.ui.appflow.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RecipeActivity : AppCompatActivity() {
@@ -36,6 +37,12 @@ class RecipeActivity : AppCompatActivity() {
                 R.id.profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, ProfileFragment())
+                        .commit()
+                    true
+                }
+                R.id.search -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, SearchFragment())
                         .commit()
                     true
                 }

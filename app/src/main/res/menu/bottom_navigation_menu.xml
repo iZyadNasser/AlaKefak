@@ -5,6 +5,11 @@
         android:icon="@drawable/home_icon"
         android:title="@string/home"/>
     <item
+        android:id="@+id/search"
+        android:enabled="true"
+        android:icon="@drawable/search_icon"
+        android:title="@string/search" />
+    <item
         android:id="@+id/fav"
         android:enabled="true"
         android:icon="@drawable/favourites_icon"
@@ -14,4 +19,5 @@
         android:enabled="true"
         android:icon="@drawable/account_icon"
         android:title="@string/profile" />
+
 </menu>

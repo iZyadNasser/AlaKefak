@@ -42,4 +42,7 @@
     <string name="number_of_favourite_meals">Number of favourite meals</string>
     <string name="your_favourite_category">Your favourite category</string>
     <string name="your_favourite_cuisine">Your favourite cuisine</string>
+    <string name="search">Search</string>
+    <string name="hello_user">Hello</string>
+    <string name="check_amazing_recipes">Check Amazing Recipes</string>
 </resources>
