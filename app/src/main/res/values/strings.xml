@@ -10,8 +10,15 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?<b><i>  SIGN IN </i></b></string>
+    <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
+    <string name="minNumberOfChars">*Minimum 8 Character Password</string>
+    <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
+    <string name="minNumberOfLowerChars">*Must Contain at least one Lower-case Character</string>
+    <string name="minNumberOfDigits">*Must Contain 1 number</string>
+    <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
+    <string name="invalidEmailAddress">"*Invalid Email Address"</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll" translatable="false">null</string>
     <string name="spicy_arrabiata_penne">Spicy Arrabiata Penne</string>
@@ -25,4 +32,9 @@
     <string name="search_recipes">search recipes</string>
     <string name="italian">Italian</string>
     <string name="favorites">Favorites</string>
+    <string name="minNumbersOfLetters"> Username Should Contain at least one letter  </string>
+    <string name="this_email_is_used_in_an_already_existing_account">This email is used in an already existing account!</string>
+    <string name="this_username_is_already_taken">This username is already taken!</string>
+    <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists! Do you want to sign in?</string>
+    <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
 </resources>

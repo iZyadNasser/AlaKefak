@@ -14,15 +14,16 @@ abstract class UserDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: UserDatabase? = null
 
-        fun getInstance(context: Context): UserDatabase {
-            return INSTANCE ?: Room.databaseBuilder(
-                context.applicationContext,
-                UserDatabase::class.java,
-                "users_database"
-            )
-                .fallbackToDestructiveMigration()
-                .build()
-                .also { INSTANCE = it }
+        fun getDatabase(context: Context): UserDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    UserDatabase::class.java,
+                    "users_database"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
         }
     }
 }
