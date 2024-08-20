@@ -11,11 +11,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
+import com.example.alakefak.data.repository.FavoriteRepository
+import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
+import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class RecipesAdapter(val myList: ArrayList<Meal>) :
+class RecipesAdapter(val myList: List<FavoritesInfo>, private val favoritesDao: FavoritesDatabaseDao) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     private lateinit var myLister: Communicator
+    private val repo = FavoriteRepository(favoritesDao)
     interface Communicator {
         fun onItemClicked(position: Int)
     }
@@ -30,28 +38,52 @@ class RecipesAdapter(val myList: ArrayList<Meal>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val RecipeResponse = myList[position]
-        Glide.with(holder.recipeImageView.context).load(RecipeResponse.strImageSource).into(holder.imageView)
-        holder.recipeTextView.text = RecipeResponse.strMeal
+        val meal= myList[position]
+        Glide.with(holder.recipeImageView.context).load(meal.recipeImg).into(holder.recipeImageView)
+        holder.recipeTextView.text =meal.recipeName
 
-        holder.heartBtn.setOnClickListener {
-            val isSelected = holder.heartBtn.tag == "selected"
-            if (isSelected) {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                holder.heartBtn.tag = "unselected"
-            } else {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                holder.heartBtn.tag = "selected"
-            }
-            val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
-            val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
-            AnimatorSet().apply {
-                playTogether(scaleX, scaleY)
-                duration = 300
-                start()
-            }
+       CoroutineScope(Dispatchers.IO).launch {
+
+           if(repo.findItem(meal.id)!= null){
+               holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+           }else{
+               holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+           }
+       }
+        CoroutineScope(Dispatchers.IO).launch {
+                if (repo.findItem(meal.id) != null) {
+                    holder.heartBtn.setOnClickListener {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                        animFav(holder)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            repo.deleteFavorite(meal)
+                        }
+                    }
+                } else {
+                    holder.heartBtn.setOnClickListener {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                        animFav(holder)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            repo.insertFavorite(meal)
+                        }
+                    }
+                }
+
         }
+
     }
+
+
+
+private fun animFav(holder: MyViewHolder) {
+    val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
+    val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
+    AnimatorSet().apply {
+        playTogether(scaleX, scaleY)
+        duration = 300
+        start()
+    }
+}
 
     override fun getItemCount(): Int = myList.size
 
@@ -60,6 +92,7 @@ class RecipesAdapter(val myList: ArrayList<Meal>) :
         val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImage)
         val recipeTextView: TextView = itemView.findViewById(R.id.recipeTx)
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
+
 
         init {
             itemView.setOnClickListener {

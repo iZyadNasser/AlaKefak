@@ -16,13 +16,13 @@
         app:cardElevation="4dp">
 
         <ImageView
-            android:id="@+id/img"
+            android:id="@+id/recipeImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/txOne"
+            android:id="@+id/recipeTx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"

@@ -5,20 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
-import com.example.alakefak.data.source.local.database.UserDatabase
-import com.example.alakefak.ui.appflow.favourites.FavoritesFragmentViewModelFactory
-import com.example.alakefak.ui.authflow.login.LoginFragmentViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
 
 
 class FavoritesFragment : Fragment() {
