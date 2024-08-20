@@ -20,4 +20,7 @@ interface FavoritesDatabaseDao {
 
     @Delete
     suspend fun deleteFavorite(favoritesInfo: FavoritesInfo)
+
+    @Query("SELECT COUNT(*) FROM favoritesInfo")
+    suspend fun getNumOfFavorites(): Long
 }

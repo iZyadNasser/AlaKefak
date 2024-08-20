@@ -30,4 +30,9 @@
     <string name="about">About</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
+    <string name="hello">Hello</string>
+    <string name="your_statistics">Your Statistics</string>
+    <string name="number_of_favourite_meals">Number of favourite meals</string>
+    <string name="your_favourite_category">Your favourite category</string>
+    <string name="your_favourite_cuisine">Your favourite cuisine</string>
 </resources>
