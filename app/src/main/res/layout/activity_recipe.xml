@@ -16,7 +16,7 @@
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-               android:name="com.example.alakefak.ui.appflow.home.HomeFragment"
+            android:name="com.example.alakefak.ui.appflow.home.HomeFragment"
             android:id="@+id/lanch"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
