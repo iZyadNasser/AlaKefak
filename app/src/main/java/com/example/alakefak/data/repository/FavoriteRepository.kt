@@ -13,4 +13,7 @@ class FavoriteRepository (private val dao : FavoritesDatabaseDao){
     suspend fun getAllFavorites() : List<FavoritesInfo>{
         return dao.getAllFavorites()
     }
+    suspend fun findItem(id : String): FavoritesInfo?{
+        return dao.findItem(id)
+    }
 }

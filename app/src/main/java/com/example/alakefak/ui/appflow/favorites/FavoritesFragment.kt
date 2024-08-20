@@ -25,13 +25,13 @@ class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var adapter: FavoritesAdapter
     private lateinit var viewModel: FavoritesFragmentViewModel
+    private lateinit var database: FavoritesDatabase
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
-
-        val database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
+        database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = FavoritesFragmentViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[FavoritesFragmentViewModel::class.java]
         return binding.root
@@ -49,7 +49,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(){
-        adapter = FavoritesAdapter(emptyList())
+        adapter = FavoritesAdapter(emptyList(),database.favoritesDatabaseDao())
         binding.favoritesRecyclerView.adapter = adapter
     }
 }

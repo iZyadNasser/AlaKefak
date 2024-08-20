@@ -14,10 +14,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
+import com.example.alakefak.data.repository.FavoriteRepository
+import com.example.alakefak.data.source.local.database.FavoritesDatabase
+import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
-class FavoritesAdapter(var items: List<FavoritesInfo>) :
+class FavoritesAdapter(
+    var items: List<FavoritesInfo>,
+    private val favoritesDao: FavoritesDatabaseDao
+) :
     RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
+    private val repo = FavoriteRepository(favoritesDao)
+
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
@@ -43,30 +55,30 @@ class FavoritesAdapter(var items: List<FavoritesInfo>) :
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
-//            holder.heartBtn.setOnClickListener {
-//                val isSelected = holder.heartBtn.tag == "selected"
-//                if (isSelected) {
-//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-//                    holder.heartBtn.tag = "unselected"
-//                } else {
-//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-//                    holder.heartBtn.tag = "selected"
-//                }
-//                val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
-//                val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
-//                AnimatorSet().apply {
-//                    playTogether(scaleX, scaleY)
-//                    duration = 300
-//                    start()
-//                }
-
+            holder.heartBtn.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                    repo.deleteFavorite(item)
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                    animateFavorites(holder)
+                }
+            }
         }
     }
 
 
     override fun getItemCount(): Int = items.size
 
-     fun setupItems(newItems: List<FavoritesInfo>) {
+    private fun animateFavorites(holder: MyViewHolder) {
+        val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
+        val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
+        AnimatorSet().apply {
+            playTogether(scaleX, scaleY)
+            duration = 300
+            start()
+        }
+    }
+
+    fun setupItems(newItems: List<FavoritesInfo>) {
         items = newItems
         notifyDataSetChanged()
     }

@@ -12,6 +12,9 @@ interface FavoritesDatabaseDao {
     @Query("SELECT * FROM favoritesInfo ")
     suspend fun getAllFavorites(): List<FavoritesInfo>
 
+    @Query("SELECT * FROM favoritesInfo WHERE id = :id")
+    suspend fun findItem(id : String): FavoritesInfo?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favoritesInfo: FavoritesInfo)
 
