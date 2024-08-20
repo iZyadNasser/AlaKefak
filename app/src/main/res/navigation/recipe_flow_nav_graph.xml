@@ -12,15 +12,13 @@
         tools:layout="@layout/fragment_home" >
     </fragment>
     <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="com.example.alakefak.ui.appflow.favourites.FavouritesFragment"
-        android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" >
-    </fragment>
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.alakefak.ui.appflow.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
     </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.alakefak.ui.appflow.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
 </navigation>
