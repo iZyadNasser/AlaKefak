@@ -26,5 +26,6 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
     <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
     <string name="hello">Hello</string>
+    <string name="app_description">- Ala Kefak is a recipes application that provides users with a variety of recipes, along with their ingredients and instructions.</string>
 
 </resources>

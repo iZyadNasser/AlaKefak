@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="title_style" parent="@style/Theme.AppCompat.Light">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="drawableStartCompat">@drawable/baseline_circle_24</item>
+    </style>
+</resources>

@@ -21,4 +21,14 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists, Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
     <string name="hello">Hello</string>
+    <string name="about_us">About Us</string>
+    <string name="app_description">- Ala Kefak is a recipes application that provides users with a variety of recipes, along with their ingredients and instructions.</string>
+    <string name="vision">" Vision"</string>
+    <string name="mission">" Mission"</string>
+    <string name="core_values">" Core Values"</string>
+    <string name="mission_desc">- Our mission is to make cooking at home easier and more enjoyable by providing users with a wide range of delicious recipes to choose from.</string>
+    <string name="vision_desc">- Our vision is to become the go-to source for home cooks looking for inspiration and guidance in the kitchen.</string>
+    <string name="values_desc">- Creativity: We are constantly innovating and creating new recipes to keep our users excited about cooking.\n\n- Quality: We strive to provide high-quality recipes that are both delicious and nutritious.\n\n- Accessibility: We believe that everyone should have access to easy-to-follow recipes, regardless of their cooking skills.</string>
+    <string name="team_desc">- Our team is made up of passionate foodies, tech enthusiasts, and creative minds who are dedicated to helping users create amazing meals at home.</string>
+    <string name="team">" Team "</string>
 </resources>
