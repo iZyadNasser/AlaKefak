@@ -13,11 +13,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.appflow.RecipeActivity">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/favoritesFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.example.alakefak.ui.appflow.favorites.FavoritesFragment"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

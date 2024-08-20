@@ -22,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FavoritesAdapter(
     var items: List<FavoritesInfo>,
@@ -50,33 +51,24 @@ class FavoritesAdapter(
         if (item != null) {
             holder.recipeName.text = item.recipeName
             holder.recipeCategory.text = item.recipeCategory
+            holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
             Glide.with(holder.itemView.context)
                 .load(item.recipeImg)
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
             holder.heartBtn.setOnClickListener {
+                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
                 CoroutineScope(Dispatchers.IO).launch {
                     repo.deleteFavorite(item)
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    animateFavorites(holder)
+                    withContext(Dispatchers.Main) {
+                        setupItems(repo.getAllFavorites())
+                    }
                 }
             }
         }
     }
-
-
     override fun getItemCount(): Int = items.size
-
-    private fun animateFavorites(holder: MyViewHolder) {
-        val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
-        val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
-        AnimatorSet().apply {
-            playTogether(scaleX, scaleY)
-            duration = 300
-            start()
-        }
-    }
 
     fun setupItems(newItems: List<FavoritesInfo>) {
         items = newItems

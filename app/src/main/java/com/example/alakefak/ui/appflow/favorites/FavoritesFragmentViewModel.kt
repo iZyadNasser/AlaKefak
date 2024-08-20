@@ -1,5 +1,6 @@
 package com.example.alakefak.ui.appflow.favorites
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     private val repo = FavoriteRepository(dao)

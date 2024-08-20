@@ -45,6 +45,7 @@ class FavoritesFragment : Fragment() {
         viewModel.favorite.observe(viewLifecycleOwner, Observer { favoriteItems ->
             adapter.setupItems(favoriteItems)
         })
+
         viewModel.getAllItems()
     }
 
