@@ -10,6 +10,7 @@ import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
 import com.example.alakefak.ui.appflow.favourites.FavoritesAdapter
+import com.example.alakefak.ui.appflow.favourites.FavoritesFragmentViewModel
 
 
 class FavoritesFragment : Fragment() {

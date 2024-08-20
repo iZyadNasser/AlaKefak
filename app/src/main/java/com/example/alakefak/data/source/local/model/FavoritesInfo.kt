@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "favoritesInfo")
 data class FavoritesInfo(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey var id: String,
     @ColumnInfo(name = "strMeal") val recipeName: String,
     @ColumnInfo(name = "strCategory") val recipeCategory: String,
     @ColumnInfo(name = "strMealThumb") val recipeImg: String,

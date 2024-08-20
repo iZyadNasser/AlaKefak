@@ -72,8 +72,8 @@ class RecipesAdapter(val myList: ArrayList<Meal>) :
 
     class MyViewHolder(ItemView: View, listner: Communicator) : RecyclerView.ViewHolder(ItemView) {
 
-        val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImage)
-        val recipeTextView: TextView = itemView.findViewById(R.id.recipeTx)
+        val recipeImageView: ImageView = itemView.findViewById(R.id.img)
+        val recipeTextView: TextView = itemView.findViewById(R.id.txOne)
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
 
         fun bind(meal: Meal) {
