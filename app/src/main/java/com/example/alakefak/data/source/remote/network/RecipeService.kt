@@ -12,6 +12,7 @@ const val LIST_INGREDIENTS_ENDPOINT = "list.php?i=list"
 const val FILTER_BY_MAIN_INGREDIENT = "filter.php"
 const val FILTER_BY_CATEGORY = "filter.php"
 const val FILTER_BY_AREA = "filter.php"
+const val LOOKUP_BY_ID = "lookup.php"
 
 interface RecipeService {
     @GET(SEARCH_MEAL_BY_NAME_ENDPOINT)
@@ -49,5 +50,10 @@ interface RecipeService {
     @GET(FILTER_BY_AREA)
     suspend fun filterByArea(
         @Query("a") area: String
+    ): ApiResponse
+
+    @GET(LOOKUP_BY_ID)
+    suspend fun lookupById(
+        @Query("i") id: String
     ): ApiResponse
 }

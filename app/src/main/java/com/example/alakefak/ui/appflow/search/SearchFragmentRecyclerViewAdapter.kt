@@ -1,12 +1,11 @@
 package com.example.alakefak.ui.appflow.search
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -16,7 +15,10 @@ import com.example.alakefak.data.source.local.model.SearchResult
 class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
     RecyclerView.Adapter<SearchFragmentRecyclerViewAdapter.SearchFragmentRecyclerViewViewHolder>() {
     class SearchFragmentRecyclerViewViewHolder(private val row: View) : RecyclerView.ViewHolder(row) {
-        val recipeName = row.findViewById(R.id.)
+        val recipeName = row.findViewById<TextView>(R.id.searchRsultName)
+        val recipeCategory = row.findViewById<TextView>(R.id.searchResultCategory)
+        val recipeImageView = row.findViewById<ImageView>(R.id.searchResultImageView)
+        val recipeArea = row.findViewById<TextView>(R.id.searchResultArea)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchFragmentRecyclerViewViewHolder {
@@ -29,31 +31,13 @@ class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
     override fun onBindViewHolder(holder: SearchFragmentRecyclerViewViewHolder, position: Int) {
         val item = items.getOrNull(position)
         if (item != null) {
-            holder.recipeName.text = item.recipeName
-            holder.recipeCategory.text = item.recipeCategory
+            holder.recipeName.text = item.name
+            holder.recipeCategory.text = item.category
+            holder.recipeArea.text = item.area
             Glide.with(holder.itemView.context)
-                .load(item.recipeImg)
+                .load(item.imageUrl)
                 .transform(RoundedCorners(30))
-                .into(holder.recipeImg)
-
-            holder.heartBtn.setOnClickListener {
-                val isSelected = holder.heartBtn.tag == "selected"
-                if (isSelected) {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    holder.heartBtn.tag = "unselected"
-                } else {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                    holder.heartBtn.tag = "selected"
-                }
-                val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
-                val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
-                AnimatorSet().apply {
-                    playTogether(scaleX, scaleY)
-                    duration = 300
-                    start()
-                }
-
-            }
+                .into(holder.recipeImageView)
         }
     }
 

@@ -18,6 +18,7 @@ class RecipeRepository {
 
     suspend fun filterByCategory(category: String)=apiService.filterByCategory(category)
 
-    suspend fun filterByArea(area: String)= apiService.filterByArea(area)
+    suspend fun filterByArea(area: String)=apiService.filterByArea(area)
 
+    suspend fun lookupById(id: String)= apiService.lookupById(id)
 }
