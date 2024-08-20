@@ -1,4 +1,4 @@
-package com.example.alakefak.ui.authflow.home
+package com.example.alakefak.ui.appflow.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

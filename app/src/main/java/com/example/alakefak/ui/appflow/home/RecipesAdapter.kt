@@ -1,4 +1,4 @@
-package com.example.alakefak.ui.appflow
+package com.example.alakefak.ui.appflow.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
