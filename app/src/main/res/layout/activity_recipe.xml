@@ -13,15 +13,5 @@
         android:layout_height="match_parent"
         tools:context=".ui.appflow.RecipeActivity">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/search"
-            android:name="com.example.alakefak.ui.appflow.search.SearchFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
