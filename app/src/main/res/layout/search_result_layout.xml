@@ -28,6 +28,7 @@
             android:text="Spicy Arrabiata Stuff"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/searchResultImageView"
             app:layout_constraintTop_toTopOf="parent" />
 

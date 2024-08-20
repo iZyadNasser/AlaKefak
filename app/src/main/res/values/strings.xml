@@ -28,4 +28,5 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists! Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
     <string name="search_for_a_recipe">Search for a recipe</string>
+    <string name="search_recipe_by_name_category_or_area">Search recipe by name, category or area...</string>
 </resources>

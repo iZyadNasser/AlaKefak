@@ -7,37 +7,6 @@
 
     </data>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-
-
-<!--        <com.google.android.material.appbar.AppBarLayout-->
-<!--            android:id="@+id/appBarLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <com.google.android.material.search.SearchBar-->
-<!--                android:id="@+id/search_bar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="@string/search_for_a_recipe" />-->
-<!--        </com.google.android.material.appbar.AppBarLayout>-->
-
-<!--        <com.google.android.material.search.SearchView-->
-<!--            android:id="@+id/searchView"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:hint="@string/search_for_a_recipe" />-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            tools:itemCount="16"-->
-<!--            tools:listitem="@layout/search_result_layout" />-->
-<!--    </LinearLayout>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,15 +17,18 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="Search..."/>
+            android:queryHint="@string/search_recipe_by_name_category_or_area"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:background="@drawable/custom_search_background"
+            app:submitBackground="@drawable/custom_search_background"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/search_result_layout"
             tools:itemCount="16"
+            android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
 </layout>
