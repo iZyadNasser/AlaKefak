@@ -22,15 +22,5 @@ class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewMod
             _favorite.value = repo.getAllFavorites()
         }
     }
-    fun insertNewItem(favoriteItem: FavoritesInfo){
-        viewModelScope.launch {
-            repo.insertFavorite(favoriteItem)
-        }
-    }
-    fun deleteItem(deletedItem : FavoritesInfo){
-        viewModelScope.launch {
-            repo.deleteFavorite(deletedItem)
-        }
-    }
 
 }

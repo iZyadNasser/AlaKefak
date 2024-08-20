@@ -57,17 +57,25 @@ class FavoritesAdapter(
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
-            holder.heartBtn.setOnClickListener {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                CoroutineScope(Dispatchers.IO).launch {
-                    repo.deleteFavorite(item)
-                    withContext(Dispatchers.Main) {
-                        setupItems(repo.getAllFavorites())
-                    }
+            handleFavoriteBtn(holder, item)
+        }
+    }
+
+    private fun handleFavoriteBtn(
+        holder: MyViewHolder,
+        item: FavoritesInfo
+    ) {
+        holder.heartBtn.setOnClickListener {
+            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+            CoroutineScope(Dispatchers.IO).launch {
+                repo.deleteFavorite(item)
+                withContext(Dispatchers.Main) {
+                    setupItems(repo.getAllFavorites())
                 }
             }
         }
     }
+
     override fun getItemCount(): Int = items.size
 
     fun setupItems(newItems: List<FavoritesInfo>) {
