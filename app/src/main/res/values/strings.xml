@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
+    <string name="account_confirm">Already have an account?<b><i><font color="#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
     <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
@@ -45,4 +45,14 @@
     <string name="search">Search</string>
     <string name="hello_user">Hello</string>
     <string name="check_amazing_recipes">Check Amazing Recipes</string>
+    <string name="about_us">About Us</string>
+    <string name="app_description"><b>Ala Kefak</b> is a recipes application that provides users with a variety of recipes, along with their ingredients and instructions.</string>
+    <string name="mission_desc">- Our mission is to make cooking at home easier and more enjoyable by providing users with a wide range of delicious recipes to choose from.</string>
+    <string name="vision_desc">- Our vision is to become the go-to source for home cooks looking for inspiration and guidance in the kitchen.</string>
+    <string name="values_desc">- Creativity: We are constantly innovating and creating new recipes to keep our users excited about cooking.\n\n- Quality: We strive to provide high-quality recipes that are both delicious and nutritious.\n\n- Accessibility: We believe that everyone should have access to easy-to-follow recipes, regardless of their cooking skills.</string>
+    <string name="team_desc">- Our team is made up of passionate foodies, tech enthusiasts, and creative minds who are dedicated to helping users create amazing meals at home.</string>
+    <string name="core_values">" Core Values"</string>
+    <string name="vision">" Vision"</string>
+    <string name="mission">" Mission"</string>
+    <string name="team">" Team "</string>
 </resources>
