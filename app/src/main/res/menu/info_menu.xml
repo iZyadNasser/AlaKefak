@@ -6,8 +6,8 @@
         android:title="Sign Out"
         />
     <item
-        android:id="@+id/aboutCreators"
-        android:title="About Creators"
+        android:id="@+id/aboutUs"
+        android:title="About Us"
         />
 
 </menu>

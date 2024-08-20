@@ -14,6 +14,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
+import com.example.alakefak.ui.appflow.search.SearchFragment
 
 
 class HomeFragment : Fragment() {
@@ -55,8 +56,10 @@ class HomeFragment : Fragment() {
                     // code
                     true
                 }
-                R.id.aboutCreators -> {
-                    //code
+                R.id.aboutUs -> {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, SearchFragment())
+                        .commit()
                     true
                 }
                 else -> false
