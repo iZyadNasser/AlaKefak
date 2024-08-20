@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.appflow.home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/searchbar" />
+    <data>
 
-    <include layout="@layout/categories_recyclerview" />
+    </data>
 
-    <include layout="@layout/recipes_recyclerview"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.appflow.home.HomeFragment">
+
+        <include layout="@layout/searchbar" />
+
+        <include layout="@layout/categories_recyclerview" />
+
+        <include layout="@layout/recipes_recyclerview" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alakefak.R
 import com.example.alakefak.databinding.ActivityRecipeBinding
-import com.example.alakefak.ui.appflow.favourites.FavouritesFragment
+import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
 import com.example.alakefak.ui.appflow.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,13 +29,13 @@ class RecipeActivity : AppCompatActivity() {
                 }
                 R.id.fav -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment, FavouritesFragment())
+                        .replace(R.id.nav_host_fragment, FavoritesFragment())
                         .commit()
                     true
                 }
-                R.id.settings -> {
+                R.id.profile -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment, SettingsFragment())
+                        .replace(R.id.nav_host_fragment, ProfileFragment())
                         .commit()
                     true
                 }

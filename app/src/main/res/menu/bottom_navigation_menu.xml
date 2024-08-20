@@ -10,8 +10,8 @@
         android:icon="@drawable/favourites_icon"
         android:title="@string/favourites"/>
     <item
-        android:id="@+id/settings"
+        android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/about_icon"
-        android:title="@string/settings" />
+        android:icon="@drawable/account_icon"
+        android:title="@string/profile" />
 </menu>
