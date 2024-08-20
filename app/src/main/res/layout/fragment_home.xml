@@ -14,7 +14,4 @@
     <include layout="@layout/recipes_recyclerview"/>
 
 
-
-
-
 </LinearLayout>
