@@ -20,6 +20,9 @@
     <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="spicy_arrabiata_penne">Spicy Arrabiata Penne</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="italian">Italian</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll" translatable="false">null</string>
     <string name="minNumbersOfLetters"> Username Should Contain at least one letter  </string>

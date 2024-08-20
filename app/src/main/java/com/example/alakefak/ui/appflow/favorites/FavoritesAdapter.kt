@@ -43,30 +43,30 @@ class FavoritesAdapter(var items: List<FavoritesInfo>) :
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
-            holder.heartBtn.setOnClickListener {
-                val isSelected = holder.heartBtn.tag == "selected"
-                if (isSelected) {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    holder.heartBtn.tag = "unselected"
-                } else {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                    holder.heartBtn.tag = "selected"
-                }
-                val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
-                val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
-                AnimatorSet().apply {
-                    playTogether(scaleX, scaleY)
-                    duration = 300
-                    start()
-                }
+//            holder.heartBtn.setOnClickListener {
+//                val isSelected = holder.heartBtn.tag == "selected"
+//                if (isSelected) {
+//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+//                    holder.heartBtn.tag = "unselected"
+//                } else {
+//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+//                    holder.heartBtn.tag = "selected"
+//                }
+//                val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
+//                val scaleY = ObjectAnimator.ofFloat(holder.heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
+//                AnimatorSet().apply {
+//                    playTogether(scaleX, scaleY)
+//                    duration = 300
+//                    start()
+//                }
 
-            }
         }
     }
 
+
     override fun getItemCount(): Int = items.size
 
-    fun setItems(newItems: List<FavoritesInfo>) {
+     fun setupItems(newItems: List<FavoritesInfo>) {
         items = newItems
         notifyDataSetChanged()
     }

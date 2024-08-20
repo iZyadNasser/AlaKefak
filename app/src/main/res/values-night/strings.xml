@@ -14,6 +14,9 @@
     <string name="confirm_pas">Confirm Password</string>
     <string name="account_confirm">Already have an account?</string>
     <string name="create_account">Create Account</string>
+    <string name="spicy_arrabiata_penne">Spicy Arrabiata Penne</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="italian">Italian</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll">null</string>
     <string name="search_for_a_recipe">Search for a recipe</string>

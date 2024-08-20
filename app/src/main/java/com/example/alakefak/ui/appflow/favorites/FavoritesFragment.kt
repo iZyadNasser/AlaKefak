@@ -43,7 +43,7 @@ class FavoritesFragment : Fragment() {
         setUpRecyclerView()
 
         viewModel.favorite.observe(viewLifecycleOwner, Observer { favoriteItems ->
-            adapter.setItems(favoriteItems)
+            adapter.setupItems(favoriteItems)
         })
         viewModel.getAllItems()
     }
