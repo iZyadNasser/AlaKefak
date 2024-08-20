@@ -22,7 +22,7 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.button.setOnClickListener {
+        binding.buttonGetStarted.setOnClickListener {
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment())
         }
     }

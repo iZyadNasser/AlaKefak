@@ -49,13 +49,13 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonGetStarted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="128dp"
             android:drawableEnd="@drawable/baseline_arrow_forwardd_24"
             android:text="@string/get_started"
-            android:textColor="@color/orange"
+            android:textColor="@color/main_color"
             android:backgroundTint="#E3D2CD"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
