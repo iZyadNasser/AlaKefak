@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,8 +39,30 @@ class HomeFragment : Fragment() {
         val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao())
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
+        val infoMenu: ImageView = view.findViewById(R.id.infoMenu)
+        infoMenu.setOnClickListener { view ->
+            showPopup(view)
+        }
 
+    }
 
+    private fun showPopup(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        popup.inflate(R.menu.info_menu)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.signOut -> {
+                    // code
+                    true
+                }
+                R.id.aboutCreators -> {
+                    //code
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
     }
 
 }
