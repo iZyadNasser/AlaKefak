@@ -27,5 +27,9 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
     <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
     <string name="search_recipe_by_name_category_or_area">ابحث عن وصفة بالاسم أو النوع أو البلد...</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="favourites">المفضلة</string>
+    <string name="about">حول التطبيق</string>
+    <string name="settings">الإعدادات</string>
 
 </resources>
