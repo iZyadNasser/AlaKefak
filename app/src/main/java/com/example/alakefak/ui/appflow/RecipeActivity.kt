@@ -6,7 +6,6 @@ import com.example.alakefak.R
 import com.example.alakefak.databinding.ActivityRecipeBinding
 import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
-import com.example.alakefak.ui.appflow.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RecipeActivity : AppCompatActivity() {
