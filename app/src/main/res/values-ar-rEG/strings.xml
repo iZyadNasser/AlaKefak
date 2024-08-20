@@ -26,5 +26,9 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
     <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
     <string name="hello">Hello</string>
+    <string name="your_statistics">إحصائياتك</string>
+    <string name="number_of_favourite_meals">عدد الوجبات المفضلة</string>
+    <string name="your_favourite_category">نوعك المفضل</string>
+    <string name="your_favourite_cuisine">مطعمك المفضل</string>
 
 </resources>

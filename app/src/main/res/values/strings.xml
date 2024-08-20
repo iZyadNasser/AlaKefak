@@ -28,4 +28,8 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists! Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
     <string name="hello">Hello</string>
+    <string name="your_statistics">Your Statistics</string>
+    <string name="number_of_favourite_meals">Number of favourite meals</string>
+    <string name="your_favourite_category">Your favourite category</string>
+    <string name="your_favourite_cuisine">Your favourite cuisine</string>
 </resources>
