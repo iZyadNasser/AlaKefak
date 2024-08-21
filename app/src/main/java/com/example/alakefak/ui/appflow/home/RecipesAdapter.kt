@@ -59,26 +59,29 @@ class RecipesAdapter(
                 } else {
                     holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
                 }
+            }
+        }
 
-                holder.heartBtn.setOnClickListener {
-                    if (favoritesInfo != null) {
+        holder.heartBtn.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                val favoritesInfo = repo.findItem(item.idMeal ?: "")
+                if (favoritesInfo != null) {
+                    withContext(Dispatchers.Main) {
                         holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                        CoroutineScope(Dispatchers.Main).launch {
-                            repo.deleteFavorite(favoritesInfo)
-                        }
-                    } else {
-                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                        val newFav = FavoritesInfo(
-                            id = item.idMeal ?: "",
-                            recipeName = item.strMeal ?: "",
-                            recipeCategory = item.strCategory ?: "",
-                            recipeImg = item.strMealThumb ?: "",
-                            area = item.strArea ?: ""
-                        )
-                        CoroutineScope(Dispatchers.Main).launch {
-                            repo.insertFavorite(newFav)
-                        }
                     }
+                    repo.deleteFavorite(favoritesInfo)
+                } else {
+                    withContext(Dispatchers.Main) {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                    }
+                    val newFav = FavoritesInfo(
+                        id = item.idMeal ?: "",
+                        recipeName = item.strMeal ?: "",
+                        recipeCategory = item.strCategory ?: "",
+                        recipeImg = item.strMealThumb ?: "",
+                        area = item.strArea ?: ""
+                    )
+                    repo.insertFavorite(newFav)
                 }
             }
         }
