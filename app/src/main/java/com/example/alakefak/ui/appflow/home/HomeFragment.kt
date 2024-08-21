@@ -35,9 +35,6 @@ class HomeFragment : Fragment() {
         val viewModelFactory = HomeViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
 
-        val searchBarLayout = inflater.inflate(R.layout.searchbar, container)
-        searchBarLayout.findViewById<TextView>(R.id.user).text = requireActivity().intent.getParcelableExtra(FormUtils.INTENT_KEY)
-
         return binding.root
     }
 
@@ -73,5 +70,4 @@ class HomeFragment : Fragment() {
         }
         popup.show()
     }
-
 }
