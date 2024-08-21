@@ -1,5 +1,7 @@
 package com.example.alakefak.ui.appflow.home
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
@@ -17,6 +21,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
 import com.example.alakefak.ui.appflow.about.AboutFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
+import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.FormUtils
 
 
@@ -79,7 +84,7 @@ class HomeFragment : Fragment() {
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.signOut -> {
-//                    showSignOutDialogue()
+                    showSignOutDialogue()
                     true
                 }
                 R.id.aboutUs -> {
@@ -94,26 +99,27 @@ class HomeFragment : Fragment() {
         popup.show()
     }
 
-//    private fun showSignOutDialogue() {
-//        val builder = context?.let { AlertDialog.Builder(it) }
-//        builder?.apply {
-//            setMessage("Are you sure you want to sign out?")
-//            setPositiveButton("Sign out") { dialog, _ ->
-//                Toast.makeText(context, "Signed out successfully", Toast.LENGTH_SHORT).show()
-//                dialog.dismiss()
-//                navigateToRegisterFragment()
-//            }
-//            setNegativeButton("Cancel") { dialog, _ ->
-//                dialog.dismiss()
-//            }
-//            show()
-//        }
-//
-//    }
-//    private fun navigateToRegisterFragment() {
-//        val action = HomeFragmentDirections.actionHomeFragmentToRegisterFragment()
-//        findNavController().navigate(action)
-//    }
+    private fun showSignOutDialogue() {
+        val builder = context?.let { AlertDialog.Builder(it) }
+        builder?.apply {
+            setMessage("Are you sure you want to sign out?")
+            setPositiveButton("Sign out") { dialog, _ ->
+                Toast.makeText(context, "Signed out successfully", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                navigateToRegisterFragment()
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            show()
+        }
+
+    }
+    private fun navigateToRegisterFragment() {
+        val intent = Intent(requireActivity(), AuthActivity::class.java)
+        intent.putExtra("key", true)
+        startActivity(intent)
+    }
 
 
 }

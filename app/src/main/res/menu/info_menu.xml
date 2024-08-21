@@ -8,8 +8,8 @@
 
         />
     <item
-        android:id="@+id/aboutCreators"
-        android:title="About Creators"
+        android:id="@+id/aboutUs"
+        android:title="About Us"
         android:icon="@drawable/information_outline"
         />
 
