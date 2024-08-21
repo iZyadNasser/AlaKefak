@@ -9,16 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModel
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModelFactory
-import com.example.alakefak.ui.authflow.validEmail
-import com.example.alakefak.ui.authflow.validPassword
+import com.example.alakefak.ui.authflow.FormUtils
+import com.example.alakefak.ui.authflow.FormUtils.validEmail
+import com.example.alakefak.ui.authflow.FormUtils.validPassword
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -47,7 +45,7 @@ class LoginFragment : Fragment() {
                 ).show()
             } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE){
                 val intent = Intent(activity, RecipeActivity::class.java)
-                intent.putExtra("user", viewModel.user.value)
+                intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
                 startActivity(intent)
                 activity?.finish()
             }
@@ -95,7 +93,7 @@ class LoginFragment : Fragment() {
             binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
         } else {
             disableSignIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.md_theme_error))
+            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
         }
 
     }

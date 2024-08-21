@@ -21,9 +21,23 @@
     <string name="passwords_do_not_match">كلمتا المرور غير متطابقتين</string>
     <string name="discover_a_world">استكشف عالمًا من متع الطهي مع تطبيق الوصفات سهل الاستخدام الخاص بنا!</string>
     <string name="minNumbersOfLetters"> يجب أن يحتوي اسم المستخدم على حرف واحد على الأقل  </string>
+    <string name="search_for_a_recipe">ابحث عن وصفة</string>
     <string name="this_email_is_used_in_an_already_existing_account">هذا البريد الإلكتروني مٌستخدمٌ بالفعل في حساب آخر!</string>
     <string name="this_username_is_already_taken">اسم المستخدم غير متاح!</string>
     <string name="this_account_already_exists_do_you_want_to_sign_in">هذا الحساب موجود بالفعل، هل تود تسجيل الدخول؟</string>
     <string name="incorrect_email_password_please_try_again">كلمة السر أو البريد الإلكتروني خطأ، حاول مجددًا</string>
+    <string name="search_recipe_by_name_category_or_area">ابحث عن وصفة بالاسم أو النوع أو البلد...</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="favourites">المفضلة</string>
+    <string name="about">حول التطبيق</string>
+    <string name="settings">الإعدادات</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="hello">مرحبًا</string>
+    <string name="your_statistics">إحصائياتك</string>
+    <string name="number_of_favourite_meals">عدد الوجبات المفضلة</string>
+    <string name="your_favourite_category">نوعك المفضل</string>
+    <string name="your_favourite_cuisine">مطعمك المفضل</string>
+    <string name="search">بحث</string>
+    <string name="hello_user">مرحبًا</string>
 
 </resources>

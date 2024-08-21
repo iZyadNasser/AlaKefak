@@ -14,10 +14,27 @@
     <string name="confirm_pas">Confirm Password</string>
     <string name="account_confirm">Already have an account?</string>
     <string name="create_account">Create Account</string>
+    <string name="spicy_arrabiata_penne">Spicy Arrabiata Penne</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="italian">Italian</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll">null</string>
+    <string name="search_for_a_recipe">Search for a recipe</string>
     <string name="this_email_is_used_in_an_already_existing_account">This email is used in an already existing account!</string>
     <string name="this_username_is_already_taken">This username is not available!</string>
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists, Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
+    <string name="search_recipe_by_name_category_or_area">Search recipe by name, category or area...</string>
+    <string name="home">Home</string>
+    <string name="favourites">Favourites</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="hello">Hello</string>
+    <string name="your_statistics">Your Statistics</string>
+    <string name="number_of_favourite_meals">Number of favourite meals</string>
+    <string name="your_favourite_category">Your favourite category</string>
+    <string name="your_favourite_cuisine">Your favourite cuisine</string>
+    <string name="search">Search</string>
+    <string name="hello_user">Hello</string>
 </resources>

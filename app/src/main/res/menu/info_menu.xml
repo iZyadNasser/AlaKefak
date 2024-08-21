@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/signOut"
+        android:title="Sign Out"
+        android:icon="@drawable/logout"
+
+        />
+    <item
+        android:id="@+id/aboutUs"
+        android:title="About Us"
+        android:icon="@drawable/information_outline"
+        />
+
+</menu>

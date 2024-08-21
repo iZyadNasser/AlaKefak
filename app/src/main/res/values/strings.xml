@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up</string>
     <string name="username">Username</string>
     <string name="confirm_pas">Confirm Password</string>
-    <string name="account_confirm">Already have an account?<b><i><font color = "#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
+    <string name="account_confirm">Already have an account?<b><i><font color="#FF0000">  <u>SIGN IN</u> </font>  </i></b> </string>
     <string name="create_account">Create Account</string>
     <string name="minNumberOfChars">*Minimum 8 Character Password</string>
     <string name="minNumberOfUpperChars">*Must Contain at least one Upper-case Character</string>
@@ -20,6 +20,9 @@
     <string name="minNumberOfSymbols">*Must Contain 1 Special Character(@#$%^+=)</string>
     <string name="invalidEmailAddress">"*Invalid Email Address"</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="spicy_arrabiata_penne" translatable="false">Spicy Arrabiata Penne</string>
+    <string name="vegetarian" translatable="false">Vegetarian</string>
+    <string name="italian" translatable="false">Italian</string>
     <string name="discover_a_world">Discover a world of culinary delights with our easy-to-use recipe app!</string>
     <string name="nulll" translatable="false">null</string>
     <string name="minNumbersOfLetters"> Username Should Contain at least one letter  </string>
@@ -27,4 +30,29 @@
     <string name="this_username_is_already_taken">This username is already taken!</string>
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists! Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
+    <string name="search_for_a_recipe">Search for a recipe</string>
+    <string name="search_recipe_by_name_category_or_area">Search recipe by name, category or area...</string>
+    <string name="home">Home</string>
+    <string name="favourites">Favourites</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="hello">Hello</string>
+    <string name="your_statistics">Your Statistics</string>
+    <string name="number_of_favourite_meals">Number of favourite meals</string>
+    <string name="your_favourite_category">Your favourite category</string>
+    <string name="your_favourite_cuisine">Your favourite cuisine</string>
+    <string name="search">Search</string>
+    <string name="hello_user">Hello</string>
+    <string name="check_amazing_recipes">Check Amazing Recipes</string>
+    <string name="about_us">About Us</string>
+    <string name="app_description"><b>Ala Kefak</b> is a recipes application that provides users with a variety of recipes, along with their ingredients and instructions.</string>
+    <string name="mission_desc">- Our mission is to make cooking at home easier and more enjoyable by providing users with a wide range of delicious recipes to choose from.</string>
+    <string name="vision_desc">- Our vision is to become the go-to source for home cooks looking for inspiration and guidance in the kitchen.</string>
+    <string name="values_desc">- Creativity: We are constantly innovating and creating new recipes to keep our users excited about cooking.\n\n- Quality: We strive to provide high-quality recipes that are both delicious and nutritious.\n\n- Accessibility: We believe that everyone should have access to easy-to-follow recipes, regardless of their cooking skills.</string>
+    <string name="team_desc">- Our team is made up of passionate foodies, tech enthusiasts, and creative minds who are dedicated to helping users create amazing meals at home.</string>
+    <string name="core_values">" Core Values"</string>
+    <string name="vision">" Vision"</string>
+    <string name="mission">" Mission"</string>
+    <string name="team">" Team "</string>
 </resources>

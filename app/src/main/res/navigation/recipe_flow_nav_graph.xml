@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipe_flow_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.alakefak.ui.appflow.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.alakefak.ui.appflow.profile.ProfileFragment"
+        android:label="fragment_profile" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.alakefak.ui.appflow.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.alakefak.ui.appflow.search.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>
