@@ -9,8 +9,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
 
-class CategoriesAdapter(val items: List<String>) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
-    class MyViewHolder(val col: View) : RecyclerView.ViewHolder(col) {
+class CategoriesAdapter(private val items: List<String>) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
+    class MyViewHolder(private val col: View) : RecyclerView.ViewHolder(col) {
         var categoryBtn = col.findViewById<Button>(R.id.categoryBtn)
     }
 
