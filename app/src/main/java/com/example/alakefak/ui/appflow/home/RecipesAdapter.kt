@@ -18,90 +18,96 @@ import com.example.alakefak.data.source.remote.model.Meal
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class RecipesAdapter(
-    val myList: List<FavoritesInfo>,
+    private var myList: List<Meal>,
     private val favoritesDao: FavoritesDatabaseDao
 ) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
-    private lateinit var myLister: Communicator
+//    private lateinit var myLister: Communicator
     private val repo = FavoriteRepository(favoritesDao)
 
-    interface Communicator {
-        fun onItemClicked(position: Int)
-    }
-
-    fun setCommunicator(listner: Communicator) {
-        myLister = listner
-    }
+//    interface Communicator {
+//        fun onItemClicked(position: Int)
+//    }
+//
+//    fun setCommunicator(listner: Communicator) {
+//        myLister = listner
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
-        return MyViewHolder(view, myLister)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val meal = bindRecipeInfo(position, holder)
+        val item = myList[position]
+        Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
+            .into(holder.recipeImageView)
 
-        checkFavExistence(meal, holder)
+        holder.recipeNameTextView.text = item.strMeal
+        holder.recipeAreaTextView.text = item.strArea
 
-        changeHeartState(meal, holder)
-    }
-
-
-    private fun bindRecipeInfo(
-        position: Int,
-        holder: MyViewHolder
-    ): FavoritesInfo {
-        val meal = myList[position]
-        Glide.with(holder.recipeImageView.context).load(meal.recipeImg).into(holder.recipeImageView)
-        holder.recipeNameTextView.text = meal.recipeName
-        holder.recipeAreaTextView.text = meal.area
-
-        return meal
-    }
-
-
-    private fun checkFavExistence(
-        meal: FavoritesInfo,
-        holder: MyViewHolder
-    ) {
         CoroutineScope(Dispatchers.IO).launch {
-            if (repo.findItem(meal.id) != null) {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-            } else {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-            }
-        }
-    }
+            val favoritesInfo = repo.findItem(item.idMeal ?: "")
 
-
-    private fun changeHeartState(
-        meal: FavoritesInfo,
-        holder: MyViewHolder
-    ) {
-        CoroutineScope(Dispatchers.IO).launch {
-            if (repo.findItem(meal.id) != null) {
-                holder.heartBtn.setOnClickListener {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    animateHeart(holder)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        repo.deleteFavorite(meal)
-                    }
-                }
-            } else {
-                holder.heartBtn.setOnClickListener {
+            withContext(Dispatchers.Main) {
+                if (favoritesInfo != null) {
                     holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                    animateHeart(holder)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        repo.insertFavorite(meal)
+                } else {
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                }
+
+                holder.heartBtn.setOnClickListener {
+                    if (favoritesInfo != null) {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            repo.deleteFavorite(favoritesInfo)
+                        }
+                    } else {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                        val newFav = FavoritesInfo(
+                            id = item.idMeal ?: "",
+                            recipeName = item.strMeal ?: "",
+                            recipeCategory = item.strCategory ?: "",
+                            recipeImg = item.strMealThumb ?: "",
+                            area = item.strArea ?: ""
+                        )
+                        CoroutineScope(Dispatchers.Main).launch {
+                            repo.insertFavorite(newFav)
+                        }
                     }
                 }
             }
         }
     }
+
+//    private fun changeHeartState(
+//        meal: FavoritesInfo,
+//        holder: MyViewHolder
+//    ) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            if (repo.findItem(meal.id) != null) {
+//                holder.heartBtn.setOnClickListener {
+//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+//                    animateHeart(holder)
+//                    CoroutineScope(Dispatchers.IO).launch {
+//                        repo.deleteFavorite(meal)
+//                    }
+//                }
+//            } else {
+//                holder.heartBtn.setOnClickListener {
+//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+//                    animateHeart(holder)
+//                    CoroutineScope(Dispatchers.IO).launch {
+//                        repo.insertFavorite(meal)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
     private fun animateHeart(holder: MyViewHolder) {
@@ -114,18 +120,23 @@ class RecipesAdapter(
         }
     }
 
-    override fun getItemCount(): Int = myList.size
-    class MyViewHolder(ItemView: View, listner: Communicator) : RecyclerView.ViewHolder(ItemView) {
-        val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImage)
-        val recipeNameTextView: TextView = itemView.findViewById(R.id.recipeName)
-        val recipeAreaTextView: TextView = itemView.findViewById(R.id.recipeArea)
-        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
+    fun updateItems(newItems: List<Meal>) {
+        myList = newItems
+        notifyDataSetChanged()
+    }
 
-        init {
-            itemView.setOnClickListener {
-                listner.onItemClicked(adapterPosition)
-            }
-        }
+    override fun getItemCount(): Int = myList.size
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
+        val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
+        val recipeAreaTextView: TextView = this.itemView.findViewById(R.id.recipeArea)
+        val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
+
+//        init {
+//            this.itemView.setOnClickListener {
+//                listener.onItemClicked(adapterPosition)
+//            }
+//        }
 
     }
 
