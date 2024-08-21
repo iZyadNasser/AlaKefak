@@ -48,7 +48,7 @@ class RecipesAdapter(
             .into(holder.recipeImageView)
 
         holder.recipeNameTextView.text = item.strMeal
-        holder.recipeAreaTextView.text = item.strArea
+//        holder.recipeAreaTextView.text = item.strArea
 
         CoroutineScope(Dispatchers.IO).launch {
             val favoritesInfo = repo.findItem(item.idMeal ?: "")
@@ -132,7 +132,7 @@ class RecipesAdapter(
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
         val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
-        val recipeAreaTextView: TextView = this.itemView.findViewById(R.id.recipeArea)
+//        val recipeAreaTextView: TextView = this.itemView.findViewById(R.id.recipeArea)
         val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
 
 //        init {
