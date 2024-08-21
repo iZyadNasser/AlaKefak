@@ -54,6 +54,24 @@ class HomeFragment : Fragment() {
     private fun showPopup(view: View) {
         val popup = PopupMenu(requireContext(), view)
         popup.inflate(R.menu.info_menu)
+
+        // Force icons to show
+        try {
+            val fields = popup.javaClass.declaredFields
+            for (field in fields) {
+                if ("mPopup" == field.name) {
+                    field.isAccessible = true
+                    val menuPopupHelper = field.get(popup)
+                    val classPopupHelper = Class.forName(menuPopupHelper.javaClass.name)
+                    val setForceIcons = classPopupHelper.getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                    setForceIcons.invoke(menuPopupHelper, true)
+                    break
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.signOut -> {
@@ -61,13 +79,15 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.aboutCreators -> {
-                    //code
+                    // code
                     true
                 }
                 else -> false
             }
         }
+
         popup.show()
     }
+
 
 }
