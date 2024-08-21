@@ -5,7 +5,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundTint">@color/button_disabled_color</item>
+        <item name="android:backgroundTint">@color/main_color</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:background">@drawable/rounded_button_only_background</item>
     </style>
