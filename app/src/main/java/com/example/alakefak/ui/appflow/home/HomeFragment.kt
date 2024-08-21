@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = HomeViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
-
         return binding.root
     }
 
@@ -59,10 +58,28 @@ class HomeFragment : Fragment() {
     private fun showPopup(view: View) {
         val popup = PopupMenu(requireContext(), view)
         popup.inflate(R.menu.info_menu)
+
+        // Force icons to show
+        try {
+            val fields = popup.javaClass.declaredFields
+            for (field in fields) {
+                if ("mPopup" == field.name) {
+                    field.isAccessible = true
+                    val menuPopupHelper = field.get(popup)
+                    val classPopupHelper = Class.forName(menuPopupHelper.javaClass.name)
+                    val setForceIcons = classPopupHelper.getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                    setForceIcons.invoke(menuPopupHelper, true)
+                    break
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.signOut -> {
-                    // code
+//                    showSignOutDialogue()
                     true
                 }
                 R.id.aboutUs -> {
@@ -76,4 +93,27 @@ class HomeFragment : Fragment() {
         }
         popup.show()
     }
+
+//    private fun showSignOutDialogue() {
+//        val builder = context?.let { AlertDialog.Builder(it) }
+//        builder?.apply {
+//            setMessage("Are you sure you want to sign out?")
+//            setPositiveButton("Sign out") { dialog, _ ->
+//                Toast.makeText(context, "Signed out successfully", Toast.LENGTH_SHORT).show()
+//                dialog.dismiss()
+//                navigateToRegisterFragment()
+//            }
+//            setNegativeButton("Cancel") { dialog, _ ->
+//                dialog.dismiss()
+//            }
+//            show()
+//        }
+//
+//    }
+//    private fun navigateToRegisterFragment() {
+//        val action = HomeFragmentDirections.actionHomeFragmentToRegisterFragment()
+//        findNavController().navigate(action)
+//    }
+
+
 }
