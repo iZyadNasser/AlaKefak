@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 
         val categoriesRecyclerView = binding.categoriesRecyclerView
         viewModel.categories.observe(viewLifecycleOwner) {
-            val categoriesRecyclerViewAdapter = CategoriesAdapter(it)
+            val categoriesRecyclerViewAdapter = CategoriesAdapter(it, viewModel)
             categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
         }
 

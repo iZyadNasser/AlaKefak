@@ -12,11 +12,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
-
-//    private val repo = FavoriteRepository(dao)
-//    private var _favorite = MutableLiveData<MutableList<FavoritesInfo>>()
-//    val favorite: LiveData<MutableList<FavoritesInfo>>
-//        get() = _favorite
+    var selectedFilter = NO_FILTER
 
     private var _categories = MutableLiveData<List<String>>()
     val categories: LiveData<List<String>>
@@ -73,6 +69,21 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 _recipes.value = newRecipes.toList()
             }
         }
+    }
+
+    fun getFilteredItems() {
+        if (selectedFilter == NO_FILTER) {
+            _recipes.value = listOf()
+            getAllRecipesFromAPI()
+        } else {
+            viewModelScope.launch {
+                _recipes.value = repository.filterByCategory(selectedFilter).meals as List<Meal>?
+            }
+        }
+    }
+
+    companion object {
+        const val NO_FILTER = "all"
     }
 
 }
