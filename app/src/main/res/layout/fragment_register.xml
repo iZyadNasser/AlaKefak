@@ -122,7 +122,6 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/registerbtn"
                     style="@style/style_button"
-                    android:layout_margin="@dimen/margin_medium"
                     android:text="@string/create_account"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
