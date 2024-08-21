@@ -16,17 +16,4 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     val favorite: LiveData<List<FavoritesInfo>>
         get() = _favorite
 
-    fun insertFavorite(){
-        viewModelScope.launch {
-
-        }
-    }
-
-    fun deleteFavorite(){
-        viewModelScope.launch {
-
-        }
-    }
-
-
 }

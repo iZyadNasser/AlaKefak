@@ -43,7 +43,6 @@ class HomeFragment : Fragment() {
         infoMenu.setOnClickListener { view ->
             showPopup(view)
         }
-
     }
 
     private fun showPopup(view: View) {
