@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -75,7 +77,7 @@ class HomeFragment : Fragment() {
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.signOut -> {
-                    // code
+                    showSignOutDialogue()
                     true
                 }
                 R.id.aboutCreators -> {
@@ -87,6 +89,22 @@ class HomeFragment : Fragment() {
         }
 
         popup.show()
+    }
+
+    private fun showSignOutDialogue() {
+        val builder = context?.let { AlertDialog.Builder(it) }
+        builder?.apply {
+            setMessage("Are you sure you want to sign out?")
+            setPositiveButton("Sign out") { dialog, _ ->
+                Toast.makeText(context, "Signed out successfully", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                activity?.finish()
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            show()
+        }
     }
 
 
