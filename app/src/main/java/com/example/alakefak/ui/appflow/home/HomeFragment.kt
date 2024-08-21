@@ -119,6 +119,7 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireActivity(), AuthActivity::class.java)
         intent.putExtra("key", true)
         startActivity(intent)
+        requireActivity().finish()
     }
 
 
