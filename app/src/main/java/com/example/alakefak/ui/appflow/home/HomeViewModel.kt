@@ -12,11 +12,11 @@ import com.example.alakefak.data.source.remote.model.Meal
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
+    var selectedFilter = NO_FILTER
 
-//    private val repo = FavoriteRepository(dao)
-//    private var _favorite = MutableLiveData<MutableList<FavoritesInfo>>()
-//    val favorite: LiveData<MutableList<FavoritesInfo>>
-//        get() = _favorite
+    private var _categories = MutableLiveData<List<String>>()
+    val categories: LiveData<List<String>>
+        get() = _categories
 
 
     private val repository = RecipeRepository()
@@ -26,7 +26,25 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         get() = _recipes
 
     init {
+        getCategories()
         getAllRecipesFromAPI()
+    }
+
+    private fun getCategories() {
+        viewModelScope.launch {
+            val meals = repository.listCategories().meals
+            val listOfCategories = mutableListOf<String>()
+
+            if (meals != null) {
+                for (meal in meals) {
+                    if (meal != null) {
+                        listOfCategories.add(meal.strCategory!!)
+                    }
+                }
+            }
+
+            _categories.value = listOfCategories
+        }
     }
 
     private fun getAllRecipesFromAPI() {
@@ -51,6 +69,21 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 _recipes.value = newRecipes.toList()
             }
         }
+    }
+
+    fun getFilteredItems() {
+        if (selectedFilter == NO_FILTER) {
+            _recipes.value = listOf()
+            getAllRecipesFromAPI()
+        } else {
+            viewModelScope.launch {
+                _recipes.value = repository.filterByCategory(selectedFilter).meals as List<Meal>?
+            }
+        }
+    }
+
+    companion object {
+        const val NO_FILTER = "all"
     }
 
 }

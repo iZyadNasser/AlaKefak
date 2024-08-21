@@ -50,6 +50,12 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
 
+        val categoriesRecyclerView = binding.categoriesRecyclerView
+        viewModel.categories.observe(viewLifecycleOwner) {
+            val categoriesRecyclerViewAdapter = CategoriesAdapter(it, viewModel)
+            categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
+        }
+
         viewModel.recipes.observe(viewLifecycleOwner) {
             adapter.updateItems(it)
         }
