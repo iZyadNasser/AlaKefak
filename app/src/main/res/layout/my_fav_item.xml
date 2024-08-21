@@ -52,6 +52,7 @@
             android:text="@string/spicy_arrabiata_penne"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/circleCard"
             app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
