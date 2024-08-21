@@ -87,8 +87,9 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginBtn"
+                android:background="@drawable/rounded_button_only_background"
                 style="@style/style_button"
                 android:layout_margin="@dimen/margin_medium"
                 android:text="@string/sign_in"

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
 import com.example.alakefak.ui.appflow.about.AboutFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
+import com.example.alakefak.ui.authflow.FormUtils
 
 
 class HomeFragment : Fragment() {
@@ -32,6 +34,10 @@ class HomeFragment : Fragment() {
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = HomeViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
+
+        val searchBarLayout = inflater.inflate(R.layout.searchbar, container)
+        searchBarLayout.findViewById<TextView>(R.id.user).text = requireActivity().intent.getParcelableExtra(FormUtils.INTENT_KEY)
+
         return binding.root
     }
 
@@ -45,7 +51,6 @@ class HomeFragment : Fragment() {
         infoMenu.setOnClickListener { view ->
             showPopup(view)
         }
-
     }
 
     private fun showPopup(view: View) {

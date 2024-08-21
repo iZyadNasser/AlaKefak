@@ -17,10 +17,11 @@ import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.authflow.ErrorStates
-import com.example.alakefak.ui.authflow.validConfirmPassword
-import com.example.alakefak.ui.authflow.validEmail
-import com.example.alakefak.ui.authflow.validPassword
-import com.example.alakefak.ui.authflow.validUsername
+import com.example.alakefak.ui.authflow.FormUtils
+import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
+import com.example.alakefak.ui.authflow.FormUtils.validEmail
+import com.example.alakefak.ui.authflow.FormUtils.validPassword
+import com.example.alakefak.ui.authflow.FormUtils.validUsername
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
@@ -79,7 +80,7 @@ class RegisterFragment : Fragment() {
 
                 ErrorStates.NONE -> {
                     val intent = Intent(activity, RecipeActivity::class.java)
-                    intent.putExtra("user", viewModel.user)
+                    intent.putExtra(FormUtils.INTENT_KEY, viewModel.user)
                     startActivity(intent)
                     activity?.finish()
                 }

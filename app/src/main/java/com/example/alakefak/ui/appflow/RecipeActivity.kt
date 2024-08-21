@@ -3,11 +3,13 @@ package com.example.alakefak.ui.appflow
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alakefak.R
+import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.ActivityRecipeBinding
 import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
 import com.example.alakefak.ui.appflow.profile.ProfileFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
+import com.example.alakefak.ui.authflow.FormUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RecipeActivity : AppCompatActivity() {
