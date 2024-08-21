@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/recyclerview_item"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         android:paddingEnd="4dp"
         />
 

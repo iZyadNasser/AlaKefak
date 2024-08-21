@@ -40,10 +40,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao())
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
+
+        viewModel.recipes.observe(viewLifecycleOwner) {
+            adapter.updateItems(it)
+        }
+
         val infoMenu: ImageView = view.findViewById(R.id.infoMenu)
         infoMenu.setOnClickListener { view ->
             showPopup(view)
