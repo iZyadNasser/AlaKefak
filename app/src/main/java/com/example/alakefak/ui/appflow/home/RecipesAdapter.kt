@@ -57,7 +57,9 @@ class RecipesAdapter(
     ): FavoritesInfo {
         val meal = myList[position]
         Glide.with(holder.recipeImageView.context).load(meal.recipeImg).into(holder.recipeImageView)
-        holder.recipeTextView.text = meal.recipeName
+        holder.recipeNameTextView.text = meal.recipeName
+        holder.recipeAreaTextView.text = meal.area
+
         return meal
     }
 
@@ -115,7 +117,8 @@ class RecipesAdapter(
     override fun getItemCount(): Int = myList.size
     class MyViewHolder(ItemView: View, listner: Communicator) : RecyclerView.ViewHolder(ItemView) {
         val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImage)
-        val recipeTextView: TextView = itemView.findViewById(R.id.recipeTx)
+        val recipeNameTextView: TextView = itemView.findViewById(R.id.recipeName)
+        val recipeAreaTextView: TextView = itemView.findViewById(R.id.recipeArea)
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
 
         init {
