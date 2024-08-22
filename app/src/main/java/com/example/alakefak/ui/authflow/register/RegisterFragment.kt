@@ -141,7 +141,7 @@ class RegisterFragment : Fragment() {
 
     private fun handleUserData() {
         val user = User(
-            id = 0L,
+            id = 0,
             userName = binding.userNameTextField.editText?.text.toString(),
             email = binding.emailTextField.editText?.text.toString(),
             password = binding.passwordTextField.editText?.text.toString()

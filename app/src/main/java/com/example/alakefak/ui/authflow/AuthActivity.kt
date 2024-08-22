@@ -17,11 +17,10 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val signOutCheck = intent.getBooleanExtra("key",false)
+        signedOut = signOutCheck
+    }
 
-        if(signOutCheck){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, RegisterFragment())
-                .commit()
-        }
+    companion object {
+        var signedOut = false
     }
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) : ViewModel() {
@@ -33,7 +34,7 @@ class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) :
 
     init {
         viewModelScope.launch {
-            _numOfFavorites.value = repository.getNumOfFavorites()
+            _numOfFavorites.value = repository.getNumOfFavorites(RecipeActivity.curUser?.id!!)
         }
         viewModelScope.launch {
             getAllFavorites()
@@ -41,7 +42,7 @@ class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) :
     }
 
     private suspend fun getAllFavorites() {
-        _allFavorites.value = repository.getAllFavorites()
+        _allFavorites.value = repository.getAllFavorites(RecipeActivity.curUser?.id!!)
     }
 
     fun calculateFavorites() {

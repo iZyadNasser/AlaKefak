@@ -10,14 +10,14 @@ class FavoriteRepository (private val dao : FavoritesDatabaseDao){
     suspend fun deleteFavorite(favoritesInfo: FavoritesInfo){
         dao.deleteFavorite(favoritesInfo)
     }
-    suspend fun getAllFavorites() : List<FavoritesInfo>{
-        return dao.getAllFavorites()
+    suspend fun getAllFavorites(userId: Long) : List<FavoritesInfo>{
+        return dao.getAllFavorites(userId)
     }
-    suspend fun findItem(id : String): FavoritesInfo?{
-        return dao.findItem(id)
+    suspend fun findItem(id : String, userId: Long): FavoritesInfo?{
+        return dao.findItem(id, userId)
     }
 
-    suspend fun getNumOfFavorites(): Long {
-        return dao.getNumOfFavorites()
+    suspend fun getNumOfFavorites(userId: Long): Long {
+        return dao.getNumOfFavorites(userId)
     }
 }

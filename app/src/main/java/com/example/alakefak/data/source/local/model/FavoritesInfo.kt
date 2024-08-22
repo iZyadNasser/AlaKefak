@@ -9,6 +9,7 @@ data class FavoritesInfo(
     @PrimaryKey var id: String,
     @ColumnInfo(name = "strMeal") val recipeName: String = "",
     @ColumnInfo(name = "strCategory") val recipeCategory: String = "",
-    @ColumnInfo(name = "strMealThumb") val recipeImg: String ="",
-    @ColumnInfo(name = "strArea") val recipeArea : String = ""
+    @ColumnInfo(name = "strMealThumb") val recipeImg: String = "",
+    @ColumnInfo(name = "strArea") val recipeArea : String = "",
+    @ColumnInfo(name = "idUser") val userId: Long
 )
