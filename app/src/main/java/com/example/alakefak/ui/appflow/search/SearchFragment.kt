@@ -43,6 +43,7 @@ class SearchFragment : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
                 viewModel.search(query ?: "")
                 return false
             }
