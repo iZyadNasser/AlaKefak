@@ -20,6 +20,10 @@ class RecipeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
 
+        val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
+
+        curUser = user
+
         val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         navView.setOnItemSelectedListener {
@@ -51,6 +55,10 @@ class RecipeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    companion object {
+        var curUser: User? = null
     }
 
 }

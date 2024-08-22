@@ -9,11 +9,11 @@ import com.example.alakefak.data.source.local.model.FavoritesInfo
 
 @Dao
 interface FavoritesDatabaseDao {
-    @Query("SELECT * FROM favoritesInfo ")
-    suspend fun getAllFavorites(): List<FavoritesInfo>
+    @Query("SELECT * FROM favoritesInfo WHERE idUser = :userId")
+    suspend fun getAllFavorites(userId: Long): List<FavoritesInfo>
 
-    @Query("SELECT * FROM favoritesInfo WHERE id = :id")
-    suspend fun findItem(id : String): FavoritesInfo?
+    @Query("SELECT * FROM favoritesInfo WHERE id = :id AND idUser = :userId")
+    suspend fun findItem(id : String, userId: Long): FavoritesInfo?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favoritesInfo: FavoritesInfo)
@@ -21,6 +21,6 @@ interface FavoritesDatabaseDao {
     @Delete
     suspend fun deleteFavorite(favoritesInfo: FavoritesInfo)
 
-    @Query("SELECT COUNT(*) FROM favoritesInfo")
-    suspend fun getNumOfFavorites(): Long
+    @Query("SELECT COUNT(*) FROM favoritesInfo WHERE idUser = :userId")
+    suspend fun getNumOfFavorites(userId: Long): Long
 }

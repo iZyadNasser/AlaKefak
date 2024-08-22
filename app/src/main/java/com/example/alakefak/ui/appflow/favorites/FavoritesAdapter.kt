@@ -16,6 +16,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,7 +92,7 @@ class FavoritesAdapter(
         CoroutineScope(Dispatchers.IO).launch {
             repo.deleteFavorite(item)
             withContext(Dispatchers.Main) {
-                setupItems(repo.getAllFavorites())
+                setupItems(repo.getAllFavorites(RecipeActivity.curUser?.id!!))
             }
         }
     }

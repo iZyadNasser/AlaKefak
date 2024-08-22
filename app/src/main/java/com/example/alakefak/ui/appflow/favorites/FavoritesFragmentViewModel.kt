@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.launch
 
 class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
@@ -17,7 +18,7 @@ class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewMod
 
     fun getAllItems(){
         viewModelScope.launch {
-            _favorite.value = repo.getAllFavorites()
+            _favorite.value = repo.getAllFavorites(RecipeActivity.curUser?.id!!)
         }
     }
 

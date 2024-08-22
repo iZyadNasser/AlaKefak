@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.alakefak.databinding.FragmentSplashBinding
+import com.example.alakefak.ui.authflow.AuthActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -20,6 +21,10 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSplashBinding.inflate(layoutInflater)
+
+        if (AuthActivity.signedOut) {
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToRegisterFragment())
+        }
 
         return binding.root
     }
