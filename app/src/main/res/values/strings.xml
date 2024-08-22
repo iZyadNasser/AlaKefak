@@ -55,4 +55,10 @@
     <string name="vision">" Vision"</string>
     <string name="mission">" Mission"</string>
     <string name="team">" Team "</string>
+    <string name="zyad_nasser">- Zyad Nasser</string>
+    <string name="malak_raef">- Malak Raef</string>
+    <string name="mariam_farouk">- Mariam Farouk</string>
+    <string name="renad_alalfy">- Renad Alalfy</string>
+    <string name="team_members">" Team Members"</string>
+
 </resources>

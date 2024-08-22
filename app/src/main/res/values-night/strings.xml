@@ -37,4 +37,9 @@
     <string name="your_favourite_cuisine">Your favourite cuisine</string>
     <string name="search">Search</string>
     <string name="hello_user">Hello</string>
+    <string name="zyad_nasser">- Zyad Nasser</string>
+    <string name="malak_raef">- Malak Raef</string>
+    <string name="mariam_farouk">- Mariam Farouk</string>
+    <string name="renad_alalfy">- Renad Alalfy</string>
+    <string name="team_members">" Team Members"</string>
 </resources>
