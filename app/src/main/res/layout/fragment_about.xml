@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="About Us"
+                android:text="@string/about_us"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold|italic"
