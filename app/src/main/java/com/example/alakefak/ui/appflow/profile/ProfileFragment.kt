@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.databinding.FragmentProfileBinding
+import com.example.alakefak.ui.appflow.RecipeActivity
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -22,6 +23,8 @@ class ProfileFragment : Fragment() {
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = ProfileViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[ProfileViewModel::class.java]
+        binding.userName.text = RecipeActivity.curUser?.userName
+        binding.email.text = RecipeActivity.curUser?.email
         return binding.root
     }
 
