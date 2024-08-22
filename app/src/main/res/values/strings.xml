@@ -1,9 +1,8 @@
 <resources>
-    <string name="get_started">Get Started</string>
+    <string name="get_started">"Get Started "</string>
     <string name="welcome_to_ala_kefak">welcome to ala kefak!</string>
     <string name="app_name" translatable="false">Ala Kefak</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-
     <string name="sign_in">sign in</string>
     <string name="required">*Required</string>
     <string name="email">Email</string>
@@ -55,4 +54,10 @@
     <string name="vision">" Vision"</string>
     <string name="mission">" Mission"</string>
     <string name="team">" Team "</string>
+    <string name="zyad_nasser">- Zyad Nasser</string>
+    <string name="malak_raef">- Malak Raef</string>
+    <string name="mariam_farouk">- Mariam Farouk</string>
+    <string name="renad_alalfy">- Renad Alalfy</string>
+    <string name="team_members">" Team Members"</string>
+
 </resources>

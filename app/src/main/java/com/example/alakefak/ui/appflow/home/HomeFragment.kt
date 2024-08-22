@@ -19,6 +19,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
+import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.appflow.about.AboutFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
 import com.example.alakefak.ui.authflow.AuthActivity
@@ -51,14 +52,19 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
 
         val categoriesRecyclerView = binding.categoriesRecyclerView
+        val categoriesRecyclerViewAdapter = CategoriesAdapter(emptyList(), viewModel)
+        categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
+
         viewModel.categories.observe(viewLifecycleOwner) {
-            val categoriesRecyclerViewAdapter = CategoriesAdapter(it, viewModel)
-            categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
+            categoriesRecyclerViewAdapter.updateItems(it)
         }
 
         viewModel.recipes.observe(viewLifecycleOwner) {
+            categoriesRecyclerViewAdapter.updateItems(viewModel.categories.value!!)
             adapter.updateItems(it)
         }
+
+        binding.user.text = RecipeActivity.curUser?.userName
 
         val infoMenu: ImageView = view.findViewById(R.id.infoMenu)
         infoMenu.setOnClickListener { view ->

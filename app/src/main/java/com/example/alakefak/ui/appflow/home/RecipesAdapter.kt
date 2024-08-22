@@ -15,6 +15,7 @@ import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,7 +52,7 @@ class RecipesAdapter(
 //        holder.recipeAreaTextView.text = item.strArea
 
         CoroutineScope(Dispatchers.IO).launch {
-            val favoritesInfo = repo.findItem(item.idMeal ?: "")
+            val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
 
             withContext(Dispatchers.Main) {
                 if (favoritesInfo != null) {
@@ -64,7 +65,7 @@ class RecipesAdapter(
 
         holder.heartBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
-                val favoritesInfo = repo.findItem(item.idMeal ?: "")
+                val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
                 if (favoritesInfo != null) {
                     withContext(Dispatchers.Main) {
                         holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
@@ -79,38 +80,14 @@ class RecipesAdapter(
                         recipeName = item.strMeal ?: "",
                         recipeCategory = item.strCategory ?: "",
                         recipeImg = item.strMealThumb ?: "",
-                        area = item.strArea ?: ""
+                        recipeArea = item.strArea ?: "",
+                        userId = RecipeActivity.curUser?.id!!
                     )
                     repo.insertFavorite(newFav)
                 }
             }
         }
     }
-
-//    private fun changeHeartState(
-//        meal: FavoritesInfo,
-//        holder: MyViewHolder
-//    ) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            if (repo.findItem(meal.id) != null) {
-//                holder.heartBtn.setOnClickListener {
-//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-//                    animateHeart(holder)
-//                    CoroutineScope(Dispatchers.IO).launch {
-//                        repo.deleteFavorite(meal)
-//                    }
-//                }
-//            } else {
-//                holder.heartBtn.setOnClickListener {
-//                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-//                    animateHeart(holder)
-//                    CoroutineScope(Dispatchers.IO).launch {
-//                        repo.insertFavorite(meal)
-//                    }
-//                }
-//            }
-//        }
-//    }
 
 
     private fun animateHeart(holder: MyViewHolder) {

@@ -1,7 +1,6 @@
 package com.example.alakefak.ui.appflow.favorites
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +8,17 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
-import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -34,8 +32,9 @@ class FavoritesAdapter(
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
+        val recipeArea : TextView = row.findViewById(R.id.areaTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
-        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
+        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeartFav)
 
     }
 
@@ -51,13 +50,37 @@ class FavoritesAdapter(
         if (item != null) {
             holder.recipeName.text = item.recipeName
             holder.recipeCategory.text = item.recipeCategory
+            holder.recipeArea.text = item.recipeArea
             holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
             Glide.with(holder.itemView.context)
                 .load(item.recipeImg)
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
-            handleFavoriteBtn(holder, item)
+            holder.heartBtn.setOnClickListener {
+                showFavoriteConfirmationDialogue(holder, item, holder.itemView.context)
+            }
+
+        }
+    }
+
+    private fun showFavoriteConfirmationDialogue(
+        holder: MyViewHolder,
+        item: FavoritesInfo,
+        context: Context
+    ) {
+        val builder = AlertDialog.Builder(context)
+        builder.apply {
+            setMessage("Are you sure you want to remove this item from favorites?")
+            setPositiveButton("Remove") { dialog, _ ->
+                Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                handleFavoriteBtn(holder, item)
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            show()
         }
     }
 
@@ -65,13 +88,11 @@ class FavoritesAdapter(
         holder: MyViewHolder,
         item: FavoritesInfo
     ) {
-        holder.heartBtn.setOnClickListener {
-            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-            CoroutineScope(Dispatchers.IO).launch {
-                repo.deleteFavorite(item)
-                withContext(Dispatchers.Main) {
-                    setupItems(repo.getAllFavorites())
-                }
+        holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+        CoroutineScope(Dispatchers.IO).launch {
+            repo.deleteFavorite(item)
+            withContext(Dispatchers.Main) {
+                setupItems(repo.getAllFavorites(RecipeActivity.curUser?.id!!))
             }
         }
     }

@@ -22,7 +22,7 @@
 
 
         <ImageButton
-            android:id="@+id/circleCard"
+            android:id="@+id/circleCardFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -33,10 +33,11 @@
             />
 
         <ImageButton
-            android:id="@+id/btnHeart"
+            android:id="@+id/btnHeartFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
             android:layout_marginTop="@dimen/margin_small"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_heart_filled"
@@ -50,8 +51,9 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="4dp"
             android:text="@string/spicy_arrabiata_penne"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_small"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnHeartFav"
             app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
             app:layout_constraintTop_toTopOf="parent" />
 

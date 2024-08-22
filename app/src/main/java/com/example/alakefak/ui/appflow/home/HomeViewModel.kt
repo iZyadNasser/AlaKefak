@@ -9,6 +9,8 @@ import com.example.alakefak.data.repository.RecipeRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
@@ -24,6 +26,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     private var _recipes = MutableLiveData<List<Meal>>()
     val recipes: LiveData<List<Meal>>
         get() = _recipes
+
+    var clickState = false
 
     init {
         getCategories()
@@ -48,16 +52,15 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     }
 
     private fun getAllRecipesFromAPI() {
+        val newRecipes = mutableListOf<Meal>()
+        if (_recipes.value != null) {
+            for (item in _recipes.value!!) {
+                newRecipes.add(item)
+            }
+        }
         viewModelScope.launch {
             for (c in 'a'..'z') {
-                val newRecipes = mutableListOf<Meal>()
                 val response = repository.listMealsByFirstLetter(c).meals
-                if (_recipes.value != null) {
-                    for (item in _recipes.value!!) {
-                        newRecipes.add(item)
-                    }
-                }
-
                 if (response != null) {
                     for (item in response) {
                         if (item != null) {
@@ -77,7 +80,19 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             getAllRecipesFromAPI()
         } else {
             viewModelScope.launch {
-                _recipes.value = repository.filterByCategory(selectedFilter).meals as List<Meal>?
+                clickState = true
+                val reducedMeals = viewModelScope.async {
+                    repository.filterByCategory(selectedFilter).meals as List<Meal>?
+                }
+
+                val deferredMeals = reducedMeals.await()?.map { meal ->
+                    viewModelScope.async {
+                        repository.lookupById(meal.idMeal!!)
+                    }
+                }
+
+                _recipes.value = deferredMeals?.awaitAll()?.filterNotNull()?.map { it.meals?.get(0)!! } ?: emptyList()
+                clickState = false
             }
         }
     }

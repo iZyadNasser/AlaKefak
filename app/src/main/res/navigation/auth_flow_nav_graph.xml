@@ -17,6 +17,9 @@
             app:exitAnim="@anim/exit_anim_long"
             app:popUpTo="@id/splash_fragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splash_fragment_to_register_fragment"
+            app:destination="@id/register_fragment" />
     </fragment>
     <fragment
         android:id="@+id/welcome_fragment"
@@ -35,7 +38,14 @@
         android:id="@+id/login_fragment"
         android:name="com.example.alakefak.ui.authflow.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/register_fragment"
         android:name="com.example.alakefak.ui.authflow.register.RegisterFragment"

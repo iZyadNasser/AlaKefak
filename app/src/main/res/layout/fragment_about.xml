@@ -153,6 +153,57 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/teamLabel" />
+
+
+
+                    <TextView
+                        android:id="@+id/teamMembersLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/team_members"
+                        style="@style/title_style"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/teamDescription" />
+
+                    <TextView
+                        android:id="@+id/teamMemberOne"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zyad_nasser"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/teamMemberTwo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/teamMembersLabel" />
+
+                    <TextView
+                        android:id="@+id/teamMemberTwo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/malak_raef"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/teamMemberOne"
+                        app:layout_constraintTop_toBottomOf="@id/teamMembersLabel" />
+
+                    <TextView
+                        android:id="@+id/teamMemberThree"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/renad_alalfy"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/teamMemberFour"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/teamMemberOne" />
+
+                    <TextView
+                        android:id="@+id/teamMemberFour"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mariam_farouk"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/teamMemberThree"
+                        app:layout_constraintTop_toBottomOf="@id/teamMemberTwo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
 
