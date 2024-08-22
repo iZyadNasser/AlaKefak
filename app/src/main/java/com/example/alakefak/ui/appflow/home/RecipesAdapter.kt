@@ -79,7 +79,7 @@ class RecipesAdapter(
                         recipeName = item.strMeal ?: "",
                         recipeCategory = item.strCategory ?: "",
                         recipeImg = item.strMealThumb ?: "",
-                        area = item.strArea ?: ""
+                        recipeArea = item.strArea ?: ""
                     )
                     repo.insertFavorite(newFav)
                 }

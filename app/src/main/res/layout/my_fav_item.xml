@@ -22,7 +22,7 @@
 
 
         <ImageButton
-            android:id="@+id/circleCard"
+            android:id="@+id/circleCardFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -33,7 +33,7 @@
             />
 
         <ImageButton
-            android:id="@+id/btnHeart"
+            android:id="@+id/btnHeartFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

@@ -31,8 +31,9 @@ class FavoritesAdapter(
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
+        val recipeArea : TextView = row.findViewById(R.id.areaTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
-        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeart)
+        val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeartFav)
 
     }
 
@@ -48,6 +49,7 @@ class FavoritesAdapter(
         if (item != null) {
             holder.recipeName.text = item.recipeName
             holder.recipeCategory.text = item.recipeCategory
+            holder.recipeArea.text = item.recipeArea
             holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
             Glide.with(holder.itemView.context)
                 .load(item.recipeImg)

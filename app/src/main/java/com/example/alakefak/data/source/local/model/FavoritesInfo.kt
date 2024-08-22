@@ -10,5 +10,5 @@ data class FavoritesInfo(
     @ColumnInfo(name = "strMeal") val recipeName: String = "",
     @ColumnInfo(name = "strCategory") val recipeCategory: String = "",
     @ColumnInfo(name = "strMealThumb") val recipeImg: String ="",
-    @ColumnInfo(name = "strArea") val area : String = ""
+    @ColumnInfo(name = "strArea") val recipeArea : String = ""
 )
