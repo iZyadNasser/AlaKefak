@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -50,9 +51,9 @@ class SearchFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
-                    binding.resultsTextView.text = ""
+                    binding.resultsTextView.text = getString(R.string.empty_text)
                 } else {
-                    binding.resultsTextView.text = "Results"
+                    binding.resultsTextView.text = getString(R.string.results)
                 }
                 viewModel.search(newText ?: "")
                 return false

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Popular Recipes"
+        android:text="@string/popular_recipes"
         android:layout_marginBottom="16dp"
         android:textSize="20sp"
         android:textStyle="bold" />

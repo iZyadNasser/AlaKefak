@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="Favorites"
+            android:text="@string/favorites"
             android:textAlignment="center"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold"

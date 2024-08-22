@@ -59,5 +59,18 @@
     <string name="mariam_farouk">- Mariam Farouk</string>
     <string name="renad_alalfy">- Renad Alalfy</string>
     <string name="team_members">" Team Members"</string>
+    <string name="find_your_recipe">Find your recipe</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="popular_recipes">Popular Recipes</string>
+    <string name="results">Results</string>
+    <string name="empty_text" />
+    <string name="favorites">Favorites</string>
+    <string name="sign_out_confirmation">Are you sure you want to sign out?</string>
+    <string name="signed_out_successfully">Signed out successfully</string>
+    <string name="cancel">Cancel</string>
+    <string name="remove_favorites_confirmation">Are you sure you want to remove this item from favorites?</string>
+    <string name="remove">Remove</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="categories">Categories</string>
 
 </resources>

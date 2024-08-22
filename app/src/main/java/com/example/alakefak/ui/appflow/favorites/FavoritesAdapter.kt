@@ -71,13 +71,14 @@ class FavoritesAdapter(
     ) {
         val builder = AlertDialog.Builder(context)
         builder.apply {
-            setMessage("Are you sure you want to remove this item from favorites?")
-            setPositiveButton("Remove") { dialog, _ ->
-                Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+            setMessage(context.getString(R.string.remove_favorites_confirmation))
+            setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
+                Toast.makeText(context,
+                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
                 handleFavoriteBtn(holder, item)
             }
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
             show()
