@@ -9,11 +9,11 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
 
-class CategoriesAdapter(private val items: List<String>, private val viewModel: HomeViewModel) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
+class CategoriesAdapter(private var items: List<String>, private val viewModel: HomeViewModel) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
     private var prevBtn: Button? = null
 
     class MyViewHolder(private val col: View) : RecyclerView.ViewHolder(col) {
-        var categoryBtn = col.findViewById<Button>(R.id.categoryBtn)
+        var categoryBtn = col.findViewById<Button>(R.id.categoryBtn)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -27,7 +27,11 @@ class CategoriesAdapter(private val items: List<String>, private val viewModel: 
         val item = items.getOrNull(position)
         if (item != null) {
             holder.categoryBtn.text = item
-            prevBtn = holder.categoryBtn
+            if (item != viewModel.selectedFilter) {
+                holder.categoryBtn.alpha = 0.7F
+            } else {
+                holder.categoryBtn.alpha = 1F
+            }
 
             holder.categoryBtn.setOnClickListener {
                 if (viewModel.selectedFilter != item) {
@@ -44,5 +48,10 @@ class CategoriesAdapter(private val items: List<String>, private val viewModel: 
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun updateItems(newItems: List<String>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 
 }

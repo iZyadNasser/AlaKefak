@@ -51,12 +51,15 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
 
         val categoriesRecyclerView = binding.categoriesRecyclerView
+        val categoriesRecyclerViewAdapter = CategoriesAdapter(emptyList(), viewModel)
+        categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
+
         viewModel.categories.observe(viewLifecycleOwner) {
-            val categoriesRecyclerViewAdapter = CategoriesAdapter(it, viewModel)
-            categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
+            categoriesRecyclerViewAdapter.updateItems(it)
         }
 
         viewModel.recipes.observe(viewLifecycleOwner) {
+            categoriesRecyclerViewAdapter.updateItems(viewModel.categories.value!!)
             adapter.updateItems(it)
         }
 

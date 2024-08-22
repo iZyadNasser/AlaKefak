@@ -25,6 +25,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     val recipes: LiveData<List<Meal>>
         get() = _recipes
 
+    var resetCategories = MutableLiveData(false)
+
     init {
         getCategories()
         getAllRecipesFromAPI()
