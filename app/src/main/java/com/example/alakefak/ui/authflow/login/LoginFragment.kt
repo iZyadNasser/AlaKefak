@@ -1,5 +1,6 @@
 package com.example.alakefak.ui.authflow.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -9,20 +10,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModel
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModelFactory
 import com.example.alakefak.ui.authflow.validEmail
 import com.example.alakefak.ui.authflow.validPassword
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginFragmentViewModel
+
+    companion object {
+        private const val PREFS_NAME = "user_prefs"
+        private const val KEY_IS_LOGGED_IN = "is_logged_in"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
+
+        if (isLoggedIn) {
+
+            val intent = Intent(activity, RecipeActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +63,7 @@ class LoginFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE){
+                signIn()
                 val intent = Intent(activity, RecipeActivity::class.java)
                 intent.putExtra("user", viewModel.user.value)
                 startActivity(intent)
@@ -85,7 +103,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-
     private fun singInForm() {
         val validEmail = binding.textFieldEmail.helperText == null
         val validPassword = binding.textFieldPassword.helperText == null
@@ -97,7 +114,6 @@ class LoginFragment : Fragment() {
             disableSignIn()
             binding.loginBtn.setBackgroundColor(resources.getColor(R.color.md_theme_error))
         }
-
     }
 
     private fun setupTextWatchers() {
@@ -119,14 +135,17 @@ class LoginFragment : Fragment() {
         binding.textFieldPassword.editText?.addTextChangedListener(textWatcher)
     }
 
-
     private fun signIn() {
+        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPrefs.edit()
+        editor.putBoolean(KEY_IS_LOGGED_IN, true)
+        editor.apply()
+
         binding.loginBtn.isEnabled = true
     }
 
     private fun disableSignIn() {
         binding.loginBtn.isEnabled = false
     }
-
 
 }
