@@ -20,6 +20,7 @@
             android:queryHint="@string/search_recipe_by_name_category_or_area"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:background="@drawable/custom_search_background"
+            app:iconifiedByDefault="false"
             app:submitBackground="@drawable/custom_search_background"/>
 
         <androidx.recyclerview.widget.RecyclerView
