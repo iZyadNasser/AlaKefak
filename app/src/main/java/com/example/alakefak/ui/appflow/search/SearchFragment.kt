@@ -49,6 +49,11 @@ class SearchFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    binding.resultsTextView.text = ""
+                } else {
+                    binding.resultsTextView.text = "Results"
+                }
                 viewModel.search(newText ?: "")
                 return false
             }

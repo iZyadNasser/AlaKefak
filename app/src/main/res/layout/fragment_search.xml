@@ -17,11 +17,21 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="@string/search_recipe_by_name_category_or_area"
+            app:defaultQueryHint="Find your recipe"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:background="@drawable/custom_search_background"
             app:iconifiedByDefault="false"
             app:submitBackground="@drawable/custom_search_background"/>
+
+        <TextView
+            android:id="@+id/resultsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+          />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
