@@ -77,9 +77,23 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             getAllRecipesFromAPI()
         } else {
             viewModelScope.launch {
-                _recipes.value = repository.filterByCategory(selectedFilter).meals as List<Meal>?
+                val reducedMeals = repository.filterByCategory(selectedFilter).meals as List<Meal>?
+                _recipes.value = getAllMealsFromReducedFrom(reducedMeals)
             }
         }
+    }
+
+    private suspend fun getAllMealsFromReducedFrom(reducedMeals: List<Meal>?): List<Meal> {
+        val newList = mutableListOf<Meal>()
+
+        if (reducedMeals != null) {
+            for (meal in reducedMeals) {
+                val completeMeal = repository.lookupById(meal.idMeal!!).meals?.get(0)
+                newList.add(completeMeal!!)
+            }
+        }
+
+        return newList.toList()
     }
 
     companion object {
