@@ -59,16 +59,6 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             }
         }
         viewModelScope.launch {
-            for (c in '0'..'9') {
-                val response = repository.listMealsByFirstLetter(c).meals
-                if (response != null) {
-                    for (item in response) {
-                        if (item != null) {
-                            newRecipes.add(item)
-                        }
-                    }
-                }
-            }
             for (c in 'a'..'z') {
                 val response = repository.listMealsByFirstLetter(c).meals
                 if (response != null) {
