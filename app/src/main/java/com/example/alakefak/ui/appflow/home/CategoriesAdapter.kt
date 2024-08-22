@@ -34,15 +34,16 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
             }
 
             holder.categoryBtn.setOnClickListener {
-                if (viewModel.selectedFilter != item) {
-                    viewModel.selectedFilter = item
-                    holder.categoryBtn.alpha = 1F
-                    prevBtn?.alpha = 0.7F
-                } else {
-                    viewModel.selectedFilter = HomeViewModel.NO_FILTER
-                    holder.categoryBtn.alpha = 0.7F
+                if (!viewModel.clickState) {
+                    if (viewModel.selectedFilter != item) {
+                        viewModel.selectedFilter = item
+                        holder.categoryBtn.alpha = 1F
+                    } else {
+                        viewModel.selectedFilter = HomeViewModel.NO_FILTER
+                        holder.categoryBtn.alpha = 0.7F
+                    }
+                    viewModel.getFilteredItems()
                 }
-                viewModel.getFilteredItems()
             }
         }
     }
