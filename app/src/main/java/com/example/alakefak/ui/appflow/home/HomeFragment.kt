@@ -59,9 +59,8 @@ class HomeFragment : Fragment() {
             categoriesRecyclerViewAdapter.updateItems(it)
         }
 
-        viewModel.recipes.observe(viewLifecycleOwner) {
-            categoriesRecyclerViewAdapter.updateItems(viewModel.categories.value!!)
-            adapter.updateItems(it)
+        viewModel.notifyDataChange.observe(viewLifecycleOwner) {
+            adapter.updateItems(viewModel.recipes)
         }
 
         binding.user.text = RecipeActivity.curUser?.userName
