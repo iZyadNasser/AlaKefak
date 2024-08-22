@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="get_started">ابدأ</string>
+    <string name="get_started">"ابدأ  "</string>
     <string name="welcome_to_ala_kefak">مرحبًا بك في تطبيق على كيفك!</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="required">*مطلوب</string>
@@ -44,4 +44,5 @@
     <string name="mariam_farouk">- Mariam Farouk</string>
     <string name="renad_alalfy">- Renad Alalfy</string>
     <string name="team_members">" Team Members"</string>
+
 </resources>

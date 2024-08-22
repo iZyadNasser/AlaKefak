@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="get_started">Get Started</string>
+    <string name="get_started">"Get Started "</string>
     <string name="welcome_to_ala_kefak">welcome to ala kefak!</string>
     <string name="app_name">Ala Kefak</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -42,4 +42,5 @@
     <string name="mariam_farouk">- Mariam Farouk</string>
     <string name="renad_alalfy">- Renad Alalfy</string>
     <string name="team_members">" Team Members"</string>
+
 </resources>
