@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
+
         <TextView
             android:id="@+id/recipeName"
             android:layout_width="0dp"
