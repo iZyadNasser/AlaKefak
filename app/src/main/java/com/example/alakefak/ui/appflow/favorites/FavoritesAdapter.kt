@@ -1,7 +1,6 @@
 package com.example.alakefak.ui.appflow.favorites
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +8,16 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
-import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -57,7 +54,30 @@ class FavoritesAdapter(
                 .transform(RoundedCorners(30))
                 .into(holder.recipeImg)
 
-            handleFavoriteBtn(holder, item)
+            holder.heartBtn.setOnClickListener {
+                showFavoriteConfirmationDialogue(holder, item, holder.itemView.context)
+            }
+
+        }
+    }
+
+    private fun showFavoriteConfirmationDialogue(
+        holder: MyViewHolder,
+        item: FavoritesInfo,
+        context: Context
+    ) {
+        val builder = AlertDialog.Builder(context)
+        builder.apply {
+            setMessage("Are you sure you want to remove this item from favorites?")
+            setPositiveButton("Yes") { dialog, _ ->
+                Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                handleFavoriteBtn(holder, item)
+            }
+            setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            show()
         }
     }
 
@@ -65,13 +85,11 @@ class FavoritesAdapter(
         holder: MyViewHolder,
         item: FavoritesInfo
     ) {
-        holder.heartBtn.setOnClickListener {
-            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-            CoroutineScope(Dispatchers.IO).launch {
-                repo.deleteFavorite(item)
-                withContext(Dispatchers.Main) {
-                    setupItems(repo.getAllFavorites())
-                }
+        holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+        CoroutineScope(Dispatchers.IO).launch {
+            repo.deleteFavorite(item)
+            withContext(Dispatchers.Main) {
+                setupItems(repo.getAllFavorites())
             }
         }
     }
