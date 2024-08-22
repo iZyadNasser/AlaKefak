@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
@@ -21,6 +22,7 @@ import com.example.alakefak.ui.authflow.FormUtils.validPassword
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginFragmentViewModel
+    private val args: LoginFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +58,8 @@ class LoginFragment : Fragment() {
         setupTextWatchers()
         handleOnClicks()
         singInForm()
+        binding.textFieldEmail.editText?.setText(args.email)
+        binding.textFieldPassword.editText?.setText(args.password)
     }
 
     private fun emailFocusListener() {

@@ -79,10 +79,12 @@ class RegisterFragment : Fragment() {
                 }
 
                 ErrorStates.NONE -> {
-                    val intent = Intent(activity, RecipeActivity::class.java)
-                    intent.putExtra(FormUtils.INTENT_KEY, viewModel.user)
-                    startActivity(intent)
-                    activity?.finish()
+//                    val intent = Intent(activity, RecipeActivity::class.java)
+//                    intent.putExtra(FormUtils.INTENT_KEY, viewModel.user)
+//                    startActivity(intent)
+//                    activity?.finish()
+
+                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(binding.emailTextField.editText?.text.toString(), binding.passwordTextField.editText?.text.toString()))
                 }
 
                 else -> {}
@@ -131,7 +133,7 @@ class RegisterFragment : Fragment() {
 
     private fun handleOnClicks() {
         binding.signInTextView.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment("", ""))
         }
         binding.registerbtn.setOnClickListener {
             handleUserData()

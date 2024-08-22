@@ -38,7 +38,14 @@
         android:id="@+id/login_fragment"
         android:name="com.example.alakefak.ui.authflow.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/register_fragment"
         android:name="com.example.alakefak.ui.authflow.register.RegisterFragment"
