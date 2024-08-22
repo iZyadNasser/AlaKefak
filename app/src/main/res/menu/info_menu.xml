@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/signOut"
-        android:title="Sign Out"
+        android:title="@string/sign_out"
         android:icon="@drawable/logout"
 
         />
     <item
         android:id="@+id/aboutUs"
-        android:title="About Us"
+        android:title="@string/about_us"
         android:icon="@drawable/information_outline"
         />
 
