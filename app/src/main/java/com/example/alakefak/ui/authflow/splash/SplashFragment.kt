@@ -38,7 +38,7 @@ class SplashFragment : Fragment() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(2500)
             navigateBasedOnLoginStatus()
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+            //findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
         }
 
     }
@@ -49,6 +49,7 @@ class SplashFragment : Fragment() {
 
         if (isLoggedIn) {
             val intent = Intent(requireContext(), RecipeActivity::class.java)
+            intent.putExtra("source", "splash")
             startActivity(intent)
         } else {
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())

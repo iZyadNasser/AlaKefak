@@ -20,9 +20,12 @@ class RecipeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
 
-        val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
+        val src = intent.getStringExtra("source")
 
-        curUser = user
+        if (src == "login") {
+            val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
+            curUser = user
+        }
 
         val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 

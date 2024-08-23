@@ -68,6 +68,7 @@ class LoginFragment : Fragment() {
             } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE){
 //                signIn()
                 val intent = Intent(activity, RecipeActivity::class.java)
+                intent.putExtra("source", "login")
                 intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
                 startActivity(intent)
                 activity?.finish()
