@@ -59,9 +59,8 @@ class HomeFragment : Fragment() {
             categoriesRecyclerViewAdapter.updateItems(it)
         }
 
-        viewModel.recipes.observe(viewLifecycleOwner) {
-            categoriesRecyclerViewAdapter.updateItems(viewModel.categories.value!!)
-            adapter.updateItems(it)
+        viewModel.notifyDataChange.observe(viewLifecycleOwner) {
+            adapter.updateItems(viewModel.recipes)
         }
 
         binding.user.text = RecipeActivity.curUser?.userName
@@ -114,13 +113,14 @@ class HomeFragment : Fragment() {
     private fun showSignOutDialogue() {
         val builder = context?.let { AlertDialog.Builder(it) }
         builder?.apply {
-            setMessage("Are you sure you want to sign out?")
-            setPositiveButton("Sign out") { dialog, _ ->
-                Toast.makeText(context, "Signed out successfully", Toast.LENGTH_SHORT).show()
+            setMessage(getString(R.string.sign_out_confirmation))
+            setPositiveButton(R.string.sign_out) { dialog, _ ->
+                Toast.makeText(context,
+                    getString(R.string.signed_out_successfully), Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
                 navigateToRegisterFragment()
             }
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             show()

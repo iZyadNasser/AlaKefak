@@ -53,15 +53,30 @@ class ProfileViewModel(private val favoritesDatabaseDao: FavoritesDatabaseDao) :
     private fun calculateFavoriteCategory() {
         viewModelScope.launch {
             categories.clear()
-            for (meal in categories) {
-
+            for (fav in _allFavorites.value?:ArrayList()) {
+                if (categories.containsKey(fav.recipeCategory) && categories[fav.recipeCategory] != null) {
+                    categories[fav.recipeCategory] = categories[fav.recipeCategory]!! + 1L
+                } else {
+                    categories[fav.recipeCategory] = 1L
+                }
             }
+
+            _favoriteCategory.value = categories.maxByOrNull { it.value }?.key
         }
     }
 
     private fun calculateFavoriteArea() {
         viewModelScope.launch {
+            areas.clear()
+            for (fav in _allFavorites.value?:ArrayList()) {
+                if (areas.containsKey(fav.recipeArea) && areas[fav.recipeArea] != null) {
+                    areas[fav.recipeArea] = areas[fav.recipeArea]!! + 1L
+                } else {
+                    areas[fav.recipeArea] = 1L
+                }
+            }
 
+            _favoriteArea.value = areas.maxByOrNull { it.value }?.key
         }
     }
 }

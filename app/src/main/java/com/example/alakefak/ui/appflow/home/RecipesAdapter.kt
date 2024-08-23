@@ -26,16 +26,9 @@ class RecipesAdapter(
     private val favoritesDao: FavoritesDatabaseDao
 ) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
-//    private lateinit var myLister: Communicator
+
     private val repo = FavoriteRepository(favoritesDao)
 
-//    interface Communicator {
-//        fun onItemClicked(position: Int)
-//    }
-//
-//    fun setCommunicator(listner: Communicator) {
-//        myLister = listner
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view =
@@ -49,7 +42,6 @@ class RecipesAdapter(
             .into(holder.recipeImageView)
 
         holder.recipeNameTextView.text = item.strMeal
-//        holder.recipeAreaTextView.text = item.strArea
 
         CoroutineScope(Dispatchers.IO).launch {
             val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
@@ -109,14 +101,7 @@ class RecipesAdapter(
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
         val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
-//        val recipeAreaTextView: TextView = this.itemView.findViewById(R.id.recipeArea)
         val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
-
-//        init {
-//            this.itemView.setOnClickListener {
-//                listener.onItemClicked(adapterPosition)
-//            }
-//        }
 
     }
 

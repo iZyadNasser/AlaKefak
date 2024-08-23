@@ -17,7 +17,7 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:defaultQueryHint="Find your recipe"
+            app:defaultQueryHint="@string/find_your_recipe"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:background="@drawable/custom_search_background"
             app:iconifiedByDefault="false"
