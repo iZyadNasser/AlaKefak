@@ -16,11 +16,18 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private val viewModel: DetailsViewModel by viewModels()
     private lateinit var binding: FragmentDetailsBinding
     private var meal: Meal = Meal()
+    private  var mealId:String=""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentDetailsBinding.bind(view)
+        arguments?.let { bundle ->
+            mealId = bundle.getString("MEAL_ID").toString()
 
+        }
+        viewModel.getMeal(mealId)
         viewModel.notifyMealFetched.observe(viewLifecycleOwner) {
+
             if (it != null) {
                 meal = it
                 binding.ingredients.apply {
@@ -39,6 +46,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     .into(binding.imageView)
             }
         }
+
+
+
+
+
     }
 
 }

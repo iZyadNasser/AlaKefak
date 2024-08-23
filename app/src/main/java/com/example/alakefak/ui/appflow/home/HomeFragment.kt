@@ -51,6 +51,18 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
 
+        adapter.setCommunicator(object : RecipesAdapter.Communicator {
+            override fun onItemClicked(position: Int) {
+                val clickedItem = adapter.getItem(position)
+                val bundle = Bundle().apply {
+                    putString("MEAL_ID", clickedItem.idMeal)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+            }
+        })
+
+
+
         val categoriesRecyclerView = binding.categoriesRecyclerView
         val categoriesRecyclerViewAdapter = CategoriesAdapter(emptyList(), viewModel)
         categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter
@@ -133,5 +145,6 @@ class HomeFragment : Fragment() {
         startActivity(intent)
         requireActivity().finish()
     }
+
 
 }
