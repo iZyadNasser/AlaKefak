@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
 
 class CategoriesAdapter(private var items: List<String>, private val viewModel: HomeViewModel) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
+    var viewHolder: MyViewHolder? = null
+
     class MyViewHolder(private val col: View) : RecyclerView.ViewHolder(col) {
         var categoryBtn = col.findViewById<Button>(R.id.categoryBtn)!!
     }
@@ -32,12 +34,15 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
             }
 
             holder.categoryBtn.setOnClickListener {
+                viewHolder?.categoryBtn?.alpha = 0.7F
                 if (viewModel.selectedFilter != item) {
                     viewModel.selectedFilter = item
                     holder.categoryBtn.alpha = 1F
+                    viewHolder = holder
                 } else {
                     viewModel.selectedFilter = HomeViewModel.NO_FILTER
                     holder.categoryBtn.alpha = 0.7F
+                    viewHolder = null
                 }
                 viewModel.getFilteredItems()
             }

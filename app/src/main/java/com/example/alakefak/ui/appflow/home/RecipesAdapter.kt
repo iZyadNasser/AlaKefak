@@ -43,6 +43,8 @@ class RecipesAdapter(
 
         holder.recipeNameTextView.text = item.strMeal
 
+        // TODO(Use isFavorite flag)
+
         CoroutineScope(Dispatchers.IO).launch {
             val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
 

@@ -3,6 +3,7 @@ package com.example.alakefak.data.source.remote.model
 import com.google.gson.annotations.SerializedName
 
 data class Meal(
+    var isFavorite: Boolean = false,
     @SerializedName("idMeal" )
     var idMeal : String? = null,
     @SerializedName("strMeal" )
