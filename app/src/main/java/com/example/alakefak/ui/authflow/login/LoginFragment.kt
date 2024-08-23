@@ -87,24 +87,31 @@ class LoginFragment : Fragment() {
     }
 
     private fun singInForm() {
-        val email = binding.textFieldEmail.editText?.text.toString()
-        val password = binding.textFieldPassword.editText?.text.toString()
+            val email = binding.textFieldEmail.editText?.text.toString()
+            val password = binding.textFieldPassword.editText?.text.toString()
 
-        if (email.isNotEmpty()) {
-            binding.textFieldEmail.helperText = null
-        }
-        if (password.isNotEmpty()) {
-            binding.textFieldPassword.helperText = null
+            if (email.isEmpty()) {
+                binding.textFieldEmail.helperText = getString(R.string.required)
+            } else {
+                binding.textFieldEmail.helperText = null
+            }
+
+            if (password.isEmpty()) {
+                binding.textFieldPassword.helperText = getString(R.string.required)
+            } else {
+                binding.textFieldPassword.helperText = null
+            }
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                signIn()
+                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
+            } else {
+                disableSignIn()
+                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+            }
         }
 
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            signIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
-        } else {
-            disableSignIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
-        }
-    }
+
 
 
     private fun setupTextWatchers() {
