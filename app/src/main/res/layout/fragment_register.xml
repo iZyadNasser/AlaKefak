@@ -6,32 +6,33 @@
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main_color"
-        android:orientation="vertical"
-        tools:context=".ui.authflow.register.RegisterFragment">
+        android:layout_height="match_parent">
 
-
-        <ImageView
-            android:id="@+id/imageLogo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:src="@drawable/logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:background="@color/main_color"
+            android:orientation="vertical"
+            tools:context=".ui.authflow.register.RegisterFragment">
 
-        <androidx.cardview.widget.CardView
-            style="@style/style_card_view"
-            android:layout_margin="@dimen/margin_large"
-            app:cardCornerRadius="@dimen/margin_large"
-            app:cardElevation="@dimen/margin_large">
 
-            <ScrollView
+            <ImageView
+                android:id="@+id/imageLogo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/height_large"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/style_card_view"
+                android:layout_margin="@dimen/margin_large"
+                app:cardCornerRadius="@dimen/margin_large"
+                app:cardElevation="@dimen/margin_large">
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -143,9 +144,9 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>
