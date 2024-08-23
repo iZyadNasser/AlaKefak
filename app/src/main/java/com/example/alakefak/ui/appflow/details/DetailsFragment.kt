@@ -20,7 +20,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding=FragmentDetailsBinding.inflate(layoutInflater)
+        binding = FragmentDetailsBinding.bind(view)
         arguments?.let { bundle ->
             mealId = bundle.getString("MEAL_ID").toString()
 
