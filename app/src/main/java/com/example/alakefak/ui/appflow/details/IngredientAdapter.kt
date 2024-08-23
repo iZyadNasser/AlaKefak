@@ -32,4 +32,5 @@ class IngredientAdapter (private var ingredients: List<Ingredient> = emptyList()
             binding.measure.text = ingredient.measureName
         }
     }
+
 }
