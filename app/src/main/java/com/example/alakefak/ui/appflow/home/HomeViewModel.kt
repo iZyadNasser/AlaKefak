@@ -62,14 +62,6 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 val response = repository.listMealsByFirstLetter(c).meals
                 if (response != null) {
                     for (item in response) {
-                        /**
-                         * if (item in favoritesLsit) {
-                         *  item.isFavorite = true
-                         * }
-                         */
-
-                    }
-                    for (item in response) {
                         if (item != null) {
                             recipes.add(item)
                         }
