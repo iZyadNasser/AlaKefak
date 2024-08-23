@@ -1,10 +1,21 @@
 package com.example.alakefak.ui.appflow.details
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.alakefak.data.repository.RecipeRepository
 import com.example.alakefak.data.source.remote.model.Ingredient
 import com.example.alakefak.data.source.remote.model.Meal
+import kotlinx.coroutines.launch
 
 class DetailsViewModel () : ViewModel() {
+
+    val repository = RecipeRepository()
+
+    private var _notifyMealFetched = MutableLiveData<Meal>()
+    val notifyMealFetched: LiveData<Meal>
+        get() = _notifyMealFetched
 
     fun covertIngredients(meal: Meal): List<Ingredient> {
         val ingredients = listOf<Ingredient>(
@@ -91,5 +102,11 @@ class DetailsViewModel () : ViewModel() {
         )
         val filteredIngredients = ingredients.filter { it.ingredientName.isNotEmpty() }
         return filteredIngredients
+    }
+
+    fun getMeal(mealId: String) {
+        viewModelScope.launch {
+            _notifyMealFetched.value = repository.lookupById(mealId).meals?.get(0)
+        }
     }
 }

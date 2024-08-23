@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
@@ -23,7 +24,8 @@ import kotlinx.coroutines.withContext
 
 class RecipesAdapter(
     private var myList: List<Meal>,
-    private val favoritesDao: FavoritesDatabaseDao
+    private val favoritesDao: FavoritesDatabaseDao,
+    private val listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
@@ -38,6 +40,7 @@ class RecipesAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = myList[position]
+        holder.setClick(position, item)
         Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
             .into(holder.recipeImageView)
 
@@ -100,11 +103,21 @@ class RecipesAdapter(
     }
 
     override fun getItemCount(): Int = myList.size
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
         val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
         val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
 
+        fun setClick(position: Int, item: Meal) {
+            itemView.setOnClickListener {
+                listener.onItemClick(position, item)
+            }
+        }
+
     }
 
+}
+
+interface OnItemClickListener {
+    fun onItemClick(position: Int, meal: Meal)
 }

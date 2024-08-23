@@ -10,6 +10,10 @@
         android:name="com.example.alakefak.ui.appflow.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -23,4 +27,12 @@
         android:id="@+id/searchFragment"
         android:name="com.example.alakefak.ui.appflow.search.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.alakefak.ui.appflow.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="mealId"
+            app:argType="string" />
+    </fragment>
 </navigation>
