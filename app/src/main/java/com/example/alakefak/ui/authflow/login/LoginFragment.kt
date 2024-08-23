@@ -69,7 +69,6 @@ class LoginFragment : Fragment() {
             val email = binding.textFieldEmail.editText?.text.toString()
             val password = binding.textFieldPassword.editText?.text.toString()
 
-            // Show helper text if fields are empty
             if (email.isEmpty()) {
                 binding.textFieldEmail.helperText = getString(R.string.required)
             } else {
