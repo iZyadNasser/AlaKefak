@@ -53,10 +53,14 @@ class HomeFragment : Fragment() {
 
         adapter.setCommunicator(object : RecipesAdapter.Communicator {
             override fun onItemClicked(position: Int) {
-
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                val clickedItem = adapter.getItem(position)
+                val bundle = Bundle().apply {
+                    putString("MEAL_ID", clickedItem.idMeal)
+                }
+                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
             }
         })
+
 
 
         val categoriesRecyclerView = binding.categoriesRecyclerView
@@ -141,5 +145,6 @@ class HomeFragment : Fragment() {
         startActivity(intent)
         requireActivity().finish()
     }
+
 
 }
