@@ -51,6 +51,14 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
 
+        adapter.setCommunicator(object : RecipesAdapter.Communicator {
+            override fun onItemClicked(position: Int) {
+
+                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+            }
+        })
+
+
         val categoriesRecyclerView = binding.categoriesRecyclerView
         val categoriesRecyclerViewAdapter = CategoriesAdapter(emptyList(), viewModel)
         categoriesRecyclerView.adapter = categoriesRecyclerViewAdapter

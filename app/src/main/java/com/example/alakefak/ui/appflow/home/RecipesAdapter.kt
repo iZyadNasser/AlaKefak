@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -29,12 +30,20 @@ class RecipesAdapter(
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     private val repo = FavoriteRepository(favoritesDao)
+    lateinit var myLister: Communicator
 
+    interface Communicator {
+        fun onItemClicked(position: Int)
+    }
+
+    fun setCommunicator(listner: Communicator) {
+        myLister = listner
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view,myLister)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -85,6 +94,8 @@ class RecipesAdapter(
                 }
             }
         }
+
+
     }
 
 
@@ -104,10 +115,16 @@ class RecipesAdapter(
     }
 
     override fun getItemCount(): Int = myList.size
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    inner class MyViewHolder(itemView: View,listner: Communicator) : RecyclerView.ViewHolder(itemView) {
         val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
         val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
         val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
+        init {
+            itemView.setOnClickListener {
+                listner.onItemClicked(adapterPosition)
+            }
+        }
 
     }
 
