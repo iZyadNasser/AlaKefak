@@ -31,8 +31,5 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.alakefak.ui.appflow.details.DetailsFragment"
         android:label="DetailsFragment" >
-        <argument
-            android:name="mealId"
-            app:argType="string" />
     </fragment>
 </navigation>

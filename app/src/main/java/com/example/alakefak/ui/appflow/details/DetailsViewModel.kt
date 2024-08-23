@@ -14,7 +14,7 @@ class DetailsViewModel () : ViewModel() {
     val repository = RecipeRepository()
 
     private var _notifyMealFetched = MutableLiveData<Meal>()
-    val notifyMealFetched: LiveData<Meal>
+    val notifyMealFetched: LiveData<Meal?>
         get() = _notifyMealFetched
 
     fun covertIngredients(meal: Meal): List<Ingredient> {

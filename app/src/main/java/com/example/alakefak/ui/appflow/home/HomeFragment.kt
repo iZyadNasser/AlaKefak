@@ -26,7 +26,7 @@ import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.FormUtils
 
 
-class HomeFragment : Fragment(), OnItemClickListener {
+class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var adapter: RecipesAdapter
     private lateinit var database: FavoritesDatabase
@@ -47,7 +47,7 @@ class HomeFragment : Fragment(), OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao(), this)
+        val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao())
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
 
@@ -133,10 +133,5 @@ class HomeFragment : Fragment(), OnItemClickListener {
         startActivity(intent)
         requireActivity().finish()
     }
-
-    override fun onItemClick(position: Int, meal: Meal) {
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(meal.idMeal ?: ""))
-    }
-
 
 }
