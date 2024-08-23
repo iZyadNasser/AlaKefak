@@ -26,23 +26,23 @@ class LoginFragment : Fragment() {
     private val args: LoginFragmentArgs by navArgs()
 
     companion object {
-      const val PREFS_NAME = "user_prefs"
+        const val PREFS_NAME = "user_prefs"
         const val KEY_IS_LOGGED_IN = "is_logged_in"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
-
-        if (isLoggedIn) {
-
-            val intent = Intent(activity, RecipeActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        }
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+//        val isLoggedIn = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
+//
+//        if (isLoggedIn) {
+//
+//            val intent = Intent(activity, RecipeActivity::class.java)
+//            startActivity(intent)
+//            activity?.finish()
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
