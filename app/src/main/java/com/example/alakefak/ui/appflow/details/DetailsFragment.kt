@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentDetailsBinding
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.appflow.home.HomeFragment
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
@@ -21,10 +22,13 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
-        arguments?.let { bundle ->
-            mealId = bundle.getString("MEAL_ID").toString()
+//        arguments?.let { bundle ->
+//            mealId = bundle.getString("MEAL_ID").toString()
+//
+//        }
 
-        }
+        mealId = HomeFragment.clickedMeal?.getString("MEAL_ID").toString()
+
         viewModel.getMeal(mealId)
         viewModel.notifyMealFetched.observe(viewLifecycleOwner) {
 

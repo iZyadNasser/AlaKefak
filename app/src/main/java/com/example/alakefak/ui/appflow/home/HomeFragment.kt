@@ -21,6 +21,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.appflow.about.AboutFragment
+import com.example.alakefak.ui.appflow.details.DetailsFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
 import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.FormUtils
@@ -57,7 +58,11 @@ class HomeFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putString("MEAL_ID", clickedItem.idMeal)
                 }
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+                clickedMeal = bundle
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, DetailsFragment())
+                    .commit()
+                //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
             }
         })
 
@@ -147,4 +152,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    companion object {
+        var clickedMeal: Bundle? = null
+    }
 }
