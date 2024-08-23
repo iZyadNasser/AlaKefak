@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
         }
 
         viewModel.favoriteCategory.observe(viewLifecycleOwner) {
-            binding.textFavCategory.text = it
+            binding.textFavCategoryValue.text = it
         }
 
         viewModel.favoriteArea.observe(viewLifecycleOwner) {
@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
         }
 
         viewModel.allFavorites.observe(viewLifecycleOwner) {
-           // viewModel.calculateFavorites()
+            viewModel.calculateFavorites()
         }
     }
 }
