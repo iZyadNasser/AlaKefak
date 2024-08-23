@@ -67,7 +67,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                          *  item.isFavorite = true
                          * }
                          */
-                        /
+
                     }
                     for (item in response) {
                         if (item != null) {
