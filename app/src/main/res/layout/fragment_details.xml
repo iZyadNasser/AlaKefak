@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <View
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/favoritIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="transparent"
+                android:contentDescription="@string/favorite_icon_description"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:layout_marginBottom="-80dp"
+                android:src="@drawable/ic_heart_outline"
+                app:layout_constraintBottom_toTopOf="@id/imageView"
+                app:layout_constraintEnd_toEndOf="@id/container" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/placeholder"
+                app:layout_constraintBottom_toBottomOf="@id/container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/container"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintWidth_percent="0.525"
+                app:shapeAppearanceOverlay="@style/CircularShapeAppearance" />
+
+            <TextView
+                android:id="@+id/FooodName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="52dp"
+                android:layout_marginTop="100dp"
+                android:text="@string/foodname"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="@id/imageView"
+                app:layout_constraintEnd_toStartOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="@id/imageView"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <View
+                android:id="@+id/linne"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="-40dp"
+                android:alpha="0.4"
+                android:background="#E8C8BFBF"
+                app:layout_constraintBottom_toBottomOf="@id/FooodName"
+                app:layout_constraintEnd_toStartOf="@id/imageView"
+                app:layout_constraintStart_toStartOf="@id/FooodName" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/category"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/baseline_category_24"
+                app:layout_constraintStart_toStartOf="@id/linne"
+                app:layout_constraintTop_toBottomOf="@id/linne" />
+
+            <TextView
+                android:id="@+id/area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="@string/area"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/baseline_area_chart_24"
+                app:layout_constraintStart_toStartOf="@id/linne"
+                app:layout_constraintTop_toBottomOf="@id/linne" />
+
+            <TextView
+                android:id="@+id/ingredientstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:text="@string/ingredients"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/instructiontext"
+                app:layout_constraintTop_toBottomOf="@id/container" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ingredients"
+                android:layout_width="0dp"
+                tools:listitem="@layout/item_ingredient"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/instructiontext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/container" />
+
+            <TextView
+                android:id="@+id/instructiontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="100dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/instructions"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="transparent"
+                android:text="@string/Read_more"
+                android:textColor="@color/md_theme_onPrimaryContainer"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/instructiontext" />
+
+            <Button
+                android:id="@+id/youtubebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="@color/orange"
+                android:drawableLeft="@drawable/baseline_ondemand_video_24"
+                android:text="@string/watch_video"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/instructiontext" />
+
+            <WebView
+                android:id="@+id/player_view"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
