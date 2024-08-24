@@ -12,6 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentSearchBinding
+import com.example.alakefak.ui.appflow.details.DetailsFragment
+import com.example.alakefak.ui.appflow.home.HomeFragment.Companion.clickedMeal
+import com.example.alakefak.ui.appflow.home.RecipesAdapter
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
@@ -40,6 +43,20 @@ class SearchFragment : Fragment() {
 
         viewModel.searchResults.observe(viewLifecycleOwner, Observer {
             adapter.setItems(it.toList())
+        })
+
+        adapter.setCommunicator(object : SearchFragmentRecyclerViewAdapter.Communicator {
+            override fun onItemClicked(position: Int) {
+                val clickedItem = adapter.getItem(position)
+                val bundle = Bundle().apply {
+                    putString("MEAL_ID", clickedItem.id)
+                }
+                clickedMeal = bundle
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, DetailsFragment())
+                    .commit()
+                //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+            }
         })
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
