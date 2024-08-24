@@ -68,5 +68,5 @@
     <string name="ingredient">ingredient</string>
     <string name="food" />
     <string name="meal_name">Meal Name\n</string>
-
+    <string name="read_less">Read less</string>
 </resources>
