@@ -66,5 +66,7 @@
     <string name="return_icon_description">Return Icon Description</string>
     <string name="measure">measure</string>
     <string name="ingredient">ingredient</string>
+    <string name="food" />
+    <string name="meal_name">Meal Name\n</string>
 
 </resources>

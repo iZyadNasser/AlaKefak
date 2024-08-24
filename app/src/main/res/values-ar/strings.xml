@@ -73,9 +73,10 @@
     <string name="area">المكان</string>
     <string name="ingredients">المكونات</string>
     <string name="instructions">التعليمات\n</string>
-
+    <string name="measure">المعيار</string>
+    <string name="ingredient">المكونات</string>
     <string name="watch_video">شاهد فيديو</string>
     <string name="Read_more">اقرأ المزيد</string>
-
+    <string name="meal_name">اسم الوصفة\n</string>
 
 </resources>
