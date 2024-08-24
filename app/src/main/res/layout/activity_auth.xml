@@ -11,20 +11,20 @@
         android:id="@+id/auth_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.authflow.AuthActivity"
-        android:background="@color/orange">
+        android:background="@color/orange"
+        tools:context=".ui.authflow.AuthActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:navGraph="@navigation/auth_flow_nav_graph"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/auth_flow_nav_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

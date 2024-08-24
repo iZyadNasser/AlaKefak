@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
@@ -28,59 +30,72 @@ class RecipesAdapter(
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     private val repo = FavoriteRepository(favoritesDao)
+    lateinit var myLister: Communicator
 
+    interface Communicator {
+        fun onItemClicked(position: Int)
+    }
+
+    fun setCommunicator(listner: Communicator) {
+        myLister = listner
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view,myLister)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = myList[position]
-        Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
-            .into(holder.recipeImageView)
+        val item = myList.getOrNull(position)
+        if (item != null) {
+            Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
+                .into(holder.recipeImageView)
 
-        holder.recipeNameTextView.text = item.strMeal
+            holder.recipeNameTextView.text = item.strMeal
 
-        // TODO(Use isFavorite flag)
+            // TODO(Use isFavorite flag)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
-
-            withContext(Dispatchers.Main) {
-                if (favoritesInfo != null) {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                } else {
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                }
-            }
-        }
-
-        holder.heartBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
-                if (favoritesInfo != null) {
-                    withContext(Dispatchers.Main) {
+
+                withContext(Dispatchers.Main) {
+                    if (favoritesInfo != null) {
+                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                    } else {
                         holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
                     }
-                    repo.deleteFavorite(favoritesInfo)
-                } else {
-                    withContext(Dispatchers.Main) {
-                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                }
+            }
+
+            holder.heartBtn.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val favoritesInfo =
+                        repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
+                    if (favoritesInfo != null) {
+                        withContext(Dispatchers.Main) {
+                            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                        }
+                        repo.deleteFavorite(favoritesInfo)
+                    } else {
+                        withContext(Dispatchers.Main) {
+                            holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                        }
+                        val newFav = FavoritesInfo(
+                            id = item.idMeal ?: "",
+                            recipeName = item.strMeal ?: "",
+                            recipeCategory = item.strCategory ?: "",
+                            recipeImg = item.strMealThumb ?: "",
+                            recipeArea = item.strArea ?: "",
+                            userId = RecipeActivity.curUser?.id!!
+                        )
+                        repo.insertFavorite(newFav)
                     }
-                    val newFav = FavoritesInfo(
-                        id = item.idMeal ?: "",
-                        recipeName = item.strMeal ?: "",
-                        recipeCategory = item.strCategory ?: "",
-                        recipeImg = item.strMealThumb ?: "",
-                        recipeArea = item.strArea ?: "",
-                        userId = RecipeActivity.curUser?.id!!
-                    )
-                    repo.insertFavorite(newFav)
                 }
             }
         }
+
+
     }
 
 
@@ -100,11 +115,20 @@ class RecipesAdapter(
     }
 
     override fun getItemCount(): Int = myList.size
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    inner class MyViewHolder(itemView: View,listner: Communicator) : RecyclerView.ViewHolder(itemView) {
         val recipeImageView: ImageView = this.itemView.findViewById(R.id.recipeImage)
         val recipeNameTextView: TextView = this.itemView.findViewById(R.id.recipeName)
         val heartBtn: ImageButton = this.itemView.findViewById(R.id.btnHeart)
+        init {
+            itemView.setOnClickListener {
+                listner.onItemClicked(adapterPosition)
+            }
+        }
 
+    }
+    fun getItem(position: Int): Meal {
+        return myList[position]
     }
 
 }

@@ -21,6 +21,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentHomeBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.appflow.about.AboutFragment
+import com.example.alakefak.ui.appflow.details.DetailsFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
 import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.FormUtils
@@ -50,6 +51,22 @@ class HomeFragment : Fragment() {
         val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao())
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
+
+        adapter.setCommunicator(object : RecipesAdapter.Communicator {
+            override fun onItemClicked(position: Int) {
+                val clickedItem = adapter.getItem(position)
+                val bundle = Bundle().apply {
+                    putString("MEAL_ID", clickedItem.idMeal)
+                }
+                clickedMeal = bundle
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, DetailsFragment())
+                    .commit()
+                //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+            }
+        })
+
+
 
         val categoriesRecyclerView = binding.categoriesRecyclerView
         val categoriesRecyclerViewAdapter = CategoriesAdapter(emptyList(), viewModel)
@@ -135,4 +152,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    companion object {
+        var clickedMeal: Bundle? = null
+    }
 }

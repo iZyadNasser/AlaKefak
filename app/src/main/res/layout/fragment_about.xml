@@ -79,9 +79,9 @@
 
                     <TextView
                         android:id="@+id/missionLabel"
+                        style="@style/title_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/title_style"
                         android:text="@string/mission"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/appDescription" />
@@ -99,9 +99,9 @@
 
                     <TextView
                         android:id="@+id/visionLabel"
+                        style="@style/title_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/title_style"
                         android:text="@string/vision"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/missionDescription" />
@@ -118,10 +118,10 @@
 
                     <TextView
                         android:id="@+id/valuesLabel"
+                        style="@style/title_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/core_values"
-                        style="@style/title_style"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/visionDescription" />
 
@@ -137,10 +137,10 @@
 
                     <TextView
                         android:id="@+id/teamLabel"
+                        style="@style/title_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/team"
-                        style="@style/title_style"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/valuesDescription" />
 
@@ -155,13 +155,12 @@
                         app:layout_constraintTop_toBottomOf="@id/teamLabel" />
 
 
-
                     <TextView
                         android:id="@+id/teamMembersLabel"
+                        style="@style/title_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/team_members"
-                        style="@style/title_style"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/teamDescription" />
 
