@@ -16,6 +16,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,12 +30,27 @@ class FavoritesAdapter(
     RecyclerView.Adapter<FavoritesAdapter.MyViewHolder>() {
     private val repo = FavoriteRepository(favoritesDao)
 
-    class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
+    private lateinit var myLister: Communicator
+
+    interface Communicator {
+        fun onItemClicked(position: Int)
+    }
+
+    fun setCommunicator(listner: Communicator) {
+        myLister = listner
+    }
+
+    class MyViewHolder(val row: View,listner: Communicator) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
         val recipeArea : TextView = row.findViewById(R.id.areaTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeartFav)
+        init {
+            itemView.setOnClickListener {
+                listner.onItemClicked(adapterPosition)
+            }
+        }
 
     }
 
@@ -42,7 +58,7 @@ class FavoritesAdapter(
         val inflater =
             parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val row = inflater.inflate(R.layout.my_fav_item, parent, false)
-        return MyViewHolder(row)
+        return MyViewHolder(row,myLister)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -103,5 +119,9 @@ class FavoritesAdapter(
     fun setupItems(newItems: List<FavoritesInfo>) {
         items = newItems
         notifyDataSetChanged()
+    }
+
+    fun getItem(position: Int): FavoritesInfo {
+        return items[position]
     }
 }
