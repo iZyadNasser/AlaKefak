@@ -23,13 +23,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
 
-        // Enable JavaScript for the WebView
         binding.playerView.settings.javaScriptEnabled = true
 
-        // Retrieve meal ID from arguments
+
         mealId = arguments?.getString("MEAL_ID") ?: ""
 
-        // Fetch the meal data
         viewModel.getMeal(mealId)
         viewModel.notifyMealFetched.observe(viewLifecycleOwner) { fetchedMeal ->
             fetchedMeal?.let { meal ->
@@ -48,14 +46,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     .load(meal.strMealThumb)
                     .into(binding.imgMealDetail)
             }
+
         }
 
-        binding.imgYoutube.setOnClickListener {
-            binding.playerView.visibility = View.VISIBLE
-            val videoUrl = meal.strYoutube?.replace("watch?v=", "embed/")
-            videoUrl?.let { url ->
-                binding.playerView.loadUrl(url)
-            }
-        }
+
     }
 }
