@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.alakefak.R
 import com.example.alakefak.databinding.FragmentDetailsBinding
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.appflow.home.HomeFragment
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
@@ -26,7 +27,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         binding.playerView.settings.javaScriptEnabled = true
 
 
-        mealId = arguments?.getString("MEAL_ID") ?: ""
+        mealId = HomeFragment.clickedMeal?.getString("MEAL_ID").toString()
 
         viewModel.getMeal(mealId)
         viewModel.notifyMealFetched.observe(viewLifecycleOwner) { fetchedMeal ->
