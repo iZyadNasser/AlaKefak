@@ -3,9 +3,12 @@ package com.example.alakefak.ui.appflow.details
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
@@ -29,6 +32,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding = FragmentDetailsBinding.bind(view)
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = DetailsViewModelFactory(database.favoritesDatabaseDao())
@@ -101,11 +105,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 }
                 isExpanded = !isExpanded
             }
-
-
-
         }
-
-
     }
+
 }
