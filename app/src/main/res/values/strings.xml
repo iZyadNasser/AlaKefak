@@ -82,6 +82,10 @@
     <string name="favorite_icon_description" translatable="false">Favorite Icon Description</string>
     <string name="return_icon_description" translatable="false">Return Icon Description</string>
     <string name="measure">measure</string>
-    <string name="ingredient">ingredient</string>
+    <string name="ingredients_content" translatable="false"> ingredients_content</string>
+    <string name="youtube" translatable="false">youtube</string>
+    <string name="food" translatable="false">food</string>
+    <string name="meal_name">Meal Name</string>
+
 
 </resources>

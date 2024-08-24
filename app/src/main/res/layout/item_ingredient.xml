@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_height="wrap_content"
-            android:text="@string/ingredient"
+            android:text="@string/ingredients"
             android:textSize="16sp"
             android:textColor="@color/md_theme_onPrimaryContainer" />
 

@@ -65,6 +65,9 @@
     <string name="favorite_icon_description">Favorite Icon Description</string>
     <string name="return_icon_description">Return Icon Description</string>
     <string name="measure">measure</string>
-    <string name="ingredient">ingredient</string>
+    <string name="ingredients_content" translatable="false"> ingredients_content</string>
+    <string name="youtube">youtube</string>
+    <string name="food">food</string>
+    <string name="meal_name">Meal Name</string>
 
 </resources>

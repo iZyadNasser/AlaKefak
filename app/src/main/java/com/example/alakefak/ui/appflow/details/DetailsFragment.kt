@@ -1,10 +1,10 @@
 package com.example.alakefak.ui.appflow.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
@@ -16,42 +16,46 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private val viewModel: DetailsViewModel by viewModels()
     private lateinit var binding: FragmentDetailsBinding
     private var meal: Meal = Meal()
-    private  var mealId:String=""
+    private var mealId: String = ""
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
-        arguments?.let { bundle ->
-            mealId = bundle.getString("MEAL_ID").toString()
 
-        }
+        // Enable JavaScript for the WebView
+        binding.playerView.settings.javaScriptEnabled = true
+
+        // Retrieve meal ID from arguments
+        mealId = arguments?.getString("MEAL_ID") ?: ""
+
+        // Fetch the meal data
         viewModel.getMeal(mealId)
-        viewModel.notifyMealFetched.observe(viewLifecycleOwner) {
-
-            if (it != null) {
-                meal = it
-                binding.ingredients.apply {
+        viewModel.notifyMealFetched.observe(viewLifecycleOwner) { fetchedMeal ->
+            fetchedMeal?.let { meal ->
+                this.meal = meal
+                binding.content.apply {
                     layoutManager = LinearLayoutManager(context)
                     adapter = IngredientAdapter(viewModel.covertIngredients(meal))
                 }
 
-                binding.FooodName.text = meal.strMeal
-                binding.category.text = meal.strCategory
-                binding.area.text = meal.strArea
-                binding.instructiontext.text = meal.strInstructions
-
+                binding.categoryInfo.text = meal.strCategory
+                binding.areaInfo.text = meal.strArea
+                binding.instructions.text = meal.strInstructions
+                binding.foodname.text = meal.strMeal
 
                 Glide.with(this@DetailsFragment)
                     .load(meal.strMealThumb)
-                    .into(binding.imageView)
+                    .into(binding.imgMealDetail)
             }
         }
 
-
-
-
-
+        binding.imgYoutube.setOnClickListener {
+            binding.playerView.visibility = View.VISIBLE
+            val videoUrl = meal.strYoutube?.replace("watch?v=", "embed/")
+            videoUrl?.let { url ->
+                binding.playerView.loadUrl(url)
+            }
+        }
     }
-
 }
-

@@ -69,13 +69,13 @@
     <string name="removed_from_favorites">تم الحذف من المفضلة</string>
     <string name="categories">الأصناف</string>
     <string name="foodname">اسم الطعام</string>
-    <string name="category">الصنف</string>
-    <string name="area">المكان</string>
     <string name="ingredients">المكونات</string>
     <string name="instructions">التعليمات\n</string>
-
+    <string name="measure">المعيار</string>
     <string name="watch_video">شاهد فيديو</string>
     <string name="Read_more">اقرأ المزيد</string>
+    <string name="category">الفئة</string>
+    <string name="area">الموقع</string>
 
 
 </resources>
