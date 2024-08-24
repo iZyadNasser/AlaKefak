@@ -5,24 +5,33 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
+import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.databinding.FragmentDetailsBinding
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.appflow.favorites.FavoritesFragmentViewModel
+import com.example.alakefak.ui.appflow.favorites.FavoritesFragmentViewModelFactory
 import com.example.alakefak.ui.appflow.home.HomeFragment
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
-    private val viewModel: DetailsViewModel by viewModels()
+    private lateinit var viewModel: DetailsViewModel
     private lateinit var binding: FragmentDetailsBinding
     private var meal: Meal = Meal()
     private var mealId: String = ""
     private var isPlayerViewVisible = false
+    private lateinit var database: FavoritesDatabase
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
+        database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
+        val viewModelFactory = DetailsViewModelFactory(database.favoritesDatabaseDao())
+        viewModel = ViewModelProvider(this, viewModelFactory)[DetailsViewModel::class.java]
 
         binding.playerView.settings.javaScriptEnabled = true
 
@@ -61,6 +70,24 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 } else {
 
                     binding.playerView.visibility = View.GONE
+                }
+            }
+
+            if (meal.isFavorite) {
+                binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
+            } else {
+                binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+            }
+
+            binding.btnSave.setOnClickListener {
+                if (meal.isFavorite) {
+                    meal.isFavorite = false
+                    binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+                    viewModel.removeFromFav(meal)
+                } else {
+                    meal.isFavorite = true
+                    binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
+                    viewModel.addToFav(meal)
                 }
             }
 
