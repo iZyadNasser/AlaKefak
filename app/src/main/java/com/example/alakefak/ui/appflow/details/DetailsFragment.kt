@@ -2,7 +2,9 @@ package com.example.alakefak.ui.appflow.details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
@@ -29,11 +31,21 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private lateinit var database: FavoritesDatabase
     private var isExpanded = false
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentDetailsBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentDetailsBinding.bind(view)
+
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = DetailsViewModelFactory(database.favoritesDatabaseDao())
         viewModel = ViewModelProvider(this, viewModelFactory)[DetailsViewModel::class.java]
