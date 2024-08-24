@@ -30,21 +30,6 @@
                 android:src="@drawable/placeholder"
                 app:layout_collapseMode="parallax" />
 
-            <TextView
-                android:id="@+id/foodname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="120dp"
-                android:text="@string/meal_name"
-                android:shadowColor="@color/white"
-                android:shadowDx="5"
-                android:shadowDy="5"
-                android:shadowRadius="2"
-                android:textColor="@color/md_theme_onPrimaryFixed"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
 
             <androidx.appcompat.widget.Toolbar
@@ -68,13 +53,33 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="45dp">
 
+            <TextView
+                android:id="@+id/foodname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/meal_name"
+                android:shadowColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/main_color"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
             <LinearLayout
                 android:id="@+id/mealinfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/foodname"
+               >
 
                 <TextView
                     android:id="@+id/categoryInfo"
@@ -152,7 +157,7 @@
                 android:maxLines="4"
                 android:text="@string/instructions"
                 android:textColor="@color/orange"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
