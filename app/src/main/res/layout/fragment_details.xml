@@ -178,7 +178,6 @@
                     android:ellipsize="end"
                     android:maxLines="4"
                     android:text="@string/instructions"
-                    android:textColor="@color/orange"
                     android:textSize="16sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
