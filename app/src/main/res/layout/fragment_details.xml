@@ -16,7 +16,7 @@
             <View
                 android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="380dp"
                 android:background="@drawable/bg_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.5"
@@ -27,26 +27,25 @@
                 android:id="@+id/favoritIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="20dp"
                 android:background="@color/main_color"
                 android:contentDescription="@string/favorite_icon_description"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:layout_marginBottom="-80dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/ic_heart_outline"
-                app:layout_constraintBottom_toTopOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/container" />
 
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/placeholder"
-                app:layout_constraintBottom_toBottomOf="@id/container"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/container"
+                app:layout_constraintTop_toBottomOf="@id/favoritIcon"
                 app:layout_constraintVertical_bias="1.0"
                 app:layout_constraintWidth_percent="0.525"
                 app:shapeAppearanceOverlay="@style/CircularShapeAppearance" />
@@ -55,51 +54,45 @@
                 android:id="@+id/FooodName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="52dp"
                 android:text="@string/foodname"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold|italic"
-                app:layout_constraintBottom_toBottomOf="@id/imageView"
-                app:layout_constraintEnd_toStartOf="@id/imageView"
-                app:layout_constraintTop_toTopOf="@id/imageView"
+               app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="280dp"
                 app:layout_constraintVertical_bias="0.1" />
 
-            <View
-                android:id="@+id/linne"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginBottom="-40dp"
-                android:alpha="0.4"
-                android:background="#E8C8BFBF"
-                app:layout_constraintBottom_toBottomOf="@id/FooodName"
-                app:layout_constraintEnd_toStartOf="@id/imageView"
-                app:layout_constraintStart_toStartOf="@id/FooodName" />
 
             <TextView
                 android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
                 android:text="@string/category"
                 android:textColor="@color/white"
+                android:layout_marginTop="80dp"
+                android:layout_marginStart="20dp"
                 android:textSize="16sp"
                 app:drawableStartCompat="@drawable/baseline_category_24"
-                app:layout_constraintStart_toStartOf="@id/linne"
-                app:layout_constraintTop_toBottomOf="@id/linne" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
             <TextView
                 android:id="@+id/area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/area"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:drawableStartCompat="@drawable/baseline_area_chart_24"
-                app:layout_constraintStart_toStartOf="@id/linne"
-                app:layout_constraintTop_toBottomOf="@id/linne" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/category"
+                 />
 
             <TextView
                 android:id="@+id/ingredientstext"
