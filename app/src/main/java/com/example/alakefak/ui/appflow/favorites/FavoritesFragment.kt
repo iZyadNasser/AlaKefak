@@ -8,7 +8,11 @@ import android.view.ViewGroup
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
+import com.example.alakefak.ui.appflow.details.DetailsFragment
+import com.example.alakefak.ui.appflow.home.HomeFragment.Companion.clickedMeal
+import com.example.alakefak.ui.appflow.home.RecipesAdapter
 
 
 class FavoritesFragment : Fragment() {
@@ -32,11 +36,29 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
 
+        adapter.setCommunicator(object : FavoritesAdapter.Communicator {
+            override fun onItemClicked(position: Int) {
+                val clickedItem = adapter.getItem(position)
+                val bundle = Bundle().apply {
+                    putString("MEAL_ID", clickedItem.id)
+                }
+                clickedMeal = bundle
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
+                    .replace(R.id.nav_host_fragment, DetailsFragment())
+                    .addToBackStack(null)
+                    .commit()
+                //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+            }
+        })
+
         viewModel.favorite.observe(viewLifecycleOwner, Observer { favoriteItems ->
             adapter.setupItems(favoriteItems)
         })
 
         viewModel.getAllItems()
+
+
     }
 
     private fun setUpRecyclerView(){
