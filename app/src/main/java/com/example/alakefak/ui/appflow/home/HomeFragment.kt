@@ -119,7 +119,9 @@ class HomeFragment : Fragment() {
                 }
                 R.id.aboutUs -> {
                     requireActivity().supportFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
                         .replace(R.id.nav_host_fragment, AboutFragment())
+                        .addToBackStack(null)
                         .commit()
                     true
                 }
