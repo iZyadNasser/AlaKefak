@@ -8,29 +8,19 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
-import com.example.alakefak.data.repository.FavoriteRepository
-import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
-import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
-import com.example.alakefak.ui.appflow.RecipeActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.example.alakefak.ui.appflow.favorites.FavoritesFragmentViewModel
 
 class RecipesAdapter(
     private var myList: List<Meal>,
-    private val favoritesDao: FavoritesDatabaseDao
+    private val viewModel: HomeViewModel
 ) :
     RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
-    private val repo = FavoriteRepository(favoritesDao)
-    lateinit var myLister: Communicator
+    private lateinit var myLister: Communicator
 
     interface Communicator {
         fun onItemClicked(position: Int)
@@ -54,44 +44,23 @@ class RecipesAdapter(
 
             holder.recipeNameTextView.text = item.strMeal
 
-            // TODO(Use isFavorite flag)
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val favoritesInfo = repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
-
-                withContext(Dispatchers.Main) {
-                    if (favoritesInfo != null) {
-                        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                    } else {
-                        holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    }
-                }
+            if (item.isFavorite) {
+                holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+            } else {
+                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
             }
 
             holder.heartBtn.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    val favoritesInfo =
-                        repo.findItem(item.idMeal ?: "", RecipeActivity.curUser?.id!!)
-                    if (favoritesInfo != null) {
-                        withContext(Dispatchers.Main) {
-                            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                        }
-                        repo.deleteFavorite(favoritesInfo)
-                    } else {
-                        withContext(Dispatchers.Main) {
-                            holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                        }
-                        val newFav = FavoritesInfo(
-                            id = item.idMeal ?: "",
-                            recipeName = item.strMeal ?: "",
-                            recipeCategory = item.strCategory ?: "",
-                            recipeImg = item.strMealThumb ?: "",
-                            recipeArea = item.strArea ?: "",
-                            userId = RecipeActivity.curUser?.id!!
-                        )
-                        repo.insertFavorite(newFav)
-                    }
+                if (item.isFavorite) {
+                    item.isFavorite = false
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                    viewModel.deleteFav(item)
+                } else {
+                    item.isFavorite = true
+                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                    viewModel.insertFav(item)
                 }
+
             }
         }
 

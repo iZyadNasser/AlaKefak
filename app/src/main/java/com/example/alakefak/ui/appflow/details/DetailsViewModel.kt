@@ -111,7 +111,11 @@ class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) :
 
     fun getMeal(mealId: String) {
         viewModelScope.launch {
-            _notifyMealFetched.value = repository.lookupById(mealId).meals?.get(0)
+            val item = repository.lookupById(mealId).meals?.get(0)!!
+            if (favoriteDatabaseDoa.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
+                item.isFavorite = true
+            }
+            _notifyMealFetched.value = item
         }
     }
 
@@ -125,6 +129,7 @@ class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) :
             userId = RecipeActivity.curUser?.id!!
         )
         viewModelScope.launch {
+            meal.isFavorite = false
             favoriteRepository.deleteFavorite(favObj)
         }
     }
@@ -139,6 +144,7 @@ class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) :
             userId = RecipeActivity.curUser?.id!!
         )
         viewModelScope.launch {
+            meal.isFavorite = true
             favoriteRepository.insertFavorite(favObj)
         }
     }
