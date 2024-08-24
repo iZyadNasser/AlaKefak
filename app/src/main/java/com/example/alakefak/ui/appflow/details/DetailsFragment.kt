@@ -19,6 +19,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private var meal: Meal = Meal()
     private var mealId: String = ""
     private var isPlayerViewVisible = false
+    private var isExpanded = false
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,6 +67,20 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             }
 
         }
+
+
+
+        binding.readmore.setOnClickListener {
+            if (isExpanded) {
+                binding.instructions.maxLines = 4
+                binding.readmore.text = getString(R.string.Read_more)
+            } else {
+                binding.instructions.maxLines = Int.MAX_VALUE
+                binding.readmore.text = getString(R.string.read_less)
+            }
+            isExpanded = !isExpanded
+        }
+
 
 
     }
