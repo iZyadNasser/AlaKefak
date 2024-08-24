@@ -55,5 +55,18 @@
     <string name="remove">Remove</string>
     <string name="removed_from_favorites">Removed from favorites</string>
     <string name="categories">Categories</string>
-
+    <string name="foodname">Food Name </string>
+    <string name="category">Category</string>
+    <string name="area">Area</string>
+    <string name="Read_more"><u>Read More</u></string>
+    <string name="watch_video">Watch Video</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="favorite_icon_description">Favorite Icon Description</string>
+    <string name="return_icon_description">Return Icon Description</string>
+    <string name="measure">measure</string>
+    <string name="ingredient">ingredient</string>
+    <string name="food" />
+    <string name="meal_name">Meal Name\n</string>
+    <string name="read_less">Read less</string>
 </resources>

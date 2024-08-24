@@ -17,29 +17,28 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:defaultQueryHint="@string/find_your_recipe"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:background="@drawable/custom_search_background"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:defaultQueryHint="@string/find_your_recipe"
             app:iconifiedByDefault="false"
-            app:submitBackground="@drawable/custom_search_background"/>
+            app:submitBackground="@drawable/custom_search_background" />
 
         <TextView
             android:id="@+id/resultsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="28sp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-          />
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/search_result_layout"
-            tools:itemCount="16"
             android:layout_marginTop="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="16"
+            tools:listitem="@layout/search_result_layout" />
     </LinearLayout>
 </layout>

@@ -17,8 +17,6 @@ import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.authflow.FormUtils
-import com.example.alakefak.ui.authflow.FormUtils.validEmail
-import com.example.alakefak.ui.authflow.FormUtils.validPassword
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -75,31 +73,11 @@ class LoginFragment : Fragment() {
             }
         }
 
-        emailFocusListener()
-        passwordFocusListener()
         setupTextWatchers()
         handleOnClicks()
         singInForm()
         binding.textFieldEmail.editText?.setText(args.email)
         binding.textFieldPassword.editText?.setText(args.password)
-    }
-
-    private fun emailFocusListener() {
-        binding.textFieldEmail.editText?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                val emailText = binding.textFieldEmail.editText?.text.toString()
-                binding.textFieldEmail.helperText = validEmail(emailText, context)
-            }
-        }
-    }
-
-    private fun passwordFocusListener() {
-        binding.textFieldPassword.editText?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                val passwordText = binding.textFieldPassword.editText?.text.toString()
-                binding.textFieldPassword.helperText = validPassword(passwordText, context)
-            }
-        }
     }
 
     private fun handleOnClicks() {
@@ -110,25 +88,37 @@ class LoginFragment : Fragment() {
     }
 
     private fun singInForm() {
-        val validEmail = binding.textFieldEmail.helperText == null
-        val validPassword = binding.textFieldPassword.helperText == null
+            val email = binding.textFieldEmail.editText?.text.toString()
+            val password = binding.textFieldPassword.editText?.text.toString()
 
-        if (validEmail && validPassword) {
-            signIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
-        } else {
-            disableSignIn()
-            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+            if (email.isEmpty()) {
+                binding.textFieldEmail.helperText = getString(R.string.required)
+            } else {
+                binding.textFieldEmail.helperText = null
+            }
+
+            if (password.isEmpty()) {
+                binding.textFieldPassword.helperText = getString(R.string.required)
+            } else {
+                binding.textFieldPassword.helperText = null
+            }
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                signIn()
+                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
+            } else {
+                disableSignIn()
+                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+            }
         }
-    }
+
+
+
 
     private fun setupTextWatchers() {
         val textWatcher = object : TextWatcher {
+
             override fun afterTextChanged(s: Editable?) {
-                val passwordText = binding.textFieldPassword.editText?.text.toString()
-                val emailText = binding.textFieldEmail.editText?.text.toString()
-                binding.textFieldEmail.helperText = validEmail(emailText, context)
-                binding.textFieldPassword.helperText = validPassword(passwordText, context)
                 singInForm()
             }
 
@@ -153,6 +143,4 @@ class LoginFragment : Fragment() {
     private fun disableSignIn() {
         binding.loginBtn.isEnabled = false
     }
-
-
 }

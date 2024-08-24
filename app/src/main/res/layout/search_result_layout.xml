@@ -56,7 +56,7 @@
             android:textSize="@dimen/text_size_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/searchResultImageView"
-            app:layout_constraintTop_toBottomOf="@id/searchResultCategory"/>
+            app:layout_constraintTop_toBottomOf="@id/searchResultCategory" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
