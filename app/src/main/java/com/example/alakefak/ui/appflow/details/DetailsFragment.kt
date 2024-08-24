@@ -24,6 +24,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private var mealId: String = ""
     private var isPlayerViewVisible = false
     private lateinit var database: FavoritesDatabase
+    private var isExpanded = false
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -90,6 +91,18 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     viewModel.addToFav(meal)
                 }
             }
+            binding.readmore.setOnClickListener {
+                if (isExpanded) {
+                    binding.instructions.maxLines = 4
+                    binding.readmore.text = getString(R.string.Read_more)
+                } else {
+                    binding.instructions.maxLines = Int.MAX_VALUE
+                    binding.readmore.text = getString(R.string.read_less)
+                }
+                isExpanded = !isExpanded
+            }
+
+
 
         }
 
