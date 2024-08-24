@@ -4,14 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.repository.RecipeRepository
+import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
+import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Ingredient
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.launch
 
-class DetailsViewModel () : ViewModel() {
+class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) : ViewModel() {
 
     val repository = RecipeRepository()
+    val favoriteRepository = FavoriteRepository(favoriteDatabaseDoa)
 
     private var _notifyMealFetched = MutableLiveData<Meal>()
     val notifyMealFetched: LiveData<Meal?>
@@ -106,7 +111,41 @@ class DetailsViewModel () : ViewModel() {
 
     fun getMeal(mealId: String) {
         viewModelScope.launch {
-            _notifyMealFetched.value = repository.lookupById(mealId).meals?.get(0)
+            val item = repository.lookupById(mealId).meals?.get(0)!!
+            if (favoriteDatabaseDoa.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
+                item.isFavorite = true
+            }
+            _notifyMealFetched.value = item
+        }
+    }
+
+    fun removeFromFav(meal: Meal) {
+        val favObj = FavoritesInfo(
+            id = meal.idMeal!!,
+            recipeName = meal.strMeal!!,
+            recipeImg = meal.strMealThumb!!,
+            recipeCategory = meal.strCategory!!,
+            recipeArea = meal.strArea!!,
+            userId = RecipeActivity.curUser?.id!!
+        )
+        viewModelScope.launch {
+            meal.isFavorite = false
+            favoriteRepository.deleteFavorite(favObj)
+        }
+    }
+
+    fun addToFav(meal: Meal) {
+        val favObj = FavoritesInfo(
+            id = meal.idMeal!!,
+            recipeName = meal.strMeal!!,
+            recipeImg = meal.strMealThumb!!,
+            recipeCategory = meal.strCategory!!,
+            recipeArea = meal.strArea!!,
+            userId = RecipeActivity.curUser?.id!!
+        )
+        viewModelScope.launch {
+            meal.isFavorite = true
+            favoriteRepository.insertFavorite(favObj)
         }
     }
 }

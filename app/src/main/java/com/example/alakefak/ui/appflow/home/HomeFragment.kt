@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = RecipesAdapter(emptyList(),database.favoritesDatabaseDao())
+        val adapter = RecipesAdapter(emptyList(),viewModel)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
 
