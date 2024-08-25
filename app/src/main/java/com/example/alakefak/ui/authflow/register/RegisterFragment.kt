@@ -1,6 +1,5 @@
 package com.example.alakefak.ui.authflow.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,9 +14,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
-import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.authflow.ErrorStates
-import com.example.alakefak.ui.authflow.FormUtils
 import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
 import com.example.alakefak.ui.authflow.FormUtils.validEmail
 import com.example.alakefak.ui.authflow.FormUtils.validPassword
@@ -79,12 +76,12 @@ class RegisterFragment : Fragment() {
                 }
 
                 ErrorStates.NONE -> {
-//                    val intent = Intent(activity, RecipeActivity::class.java)
-//                    intent.putExtra(FormUtils.INTENT_KEY, viewModel.user)
-//                    startActivity(intent)
-//                    activity?.finish()
-
-                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(binding.emailTextField.editText?.text.toString(), binding.passwordTextField.editText?.text.toString()))
+                    findNavController().navigate(
+                        RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
+                            binding.emailTextField.editText?.text.toString(),
+                            binding.passwordTextField.editText?.text.toString()
+                        )
+                    )
                 }
 
                 else -> {}
@@ -126,14 +123,20 @@ class RegisterFragment : Fragment() {
             if (!focused) {
                 val passwordText = binding.passwordTextField.editText?.text.toString()
                 val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
+                binding.passwordConfirmFieldText.helperText =
+                    validConfirmPassword(passwordText, confirmPasswordText, context)
             }
         }
     }
 
     private fun handleOnClicks() {
         binding.signInTextView.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment("", ""))
+            findNavController().navigate(
+                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
+                    "",
+                    ""
+                )
+            )
         }
         binding.registerbtn.setOnClickListener {
             handleUserData()
@@ -179,7 +182,8 @@ class RegisterFragment : Fragment() {
 
                 binding.emailTextField.helperText = validEmail(emailText, context)
                 binding.passwordTextField.helperText = validPassword(passwordText, context)
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
+                binding.passwordConfirmFieldText.helperText =
+                    validConfirmPassword(passwordText, confirmPasswordText, context)
                 binding.userNameTextField.helperText = validUsername(usernameText, context)
                 singInForm()
             }

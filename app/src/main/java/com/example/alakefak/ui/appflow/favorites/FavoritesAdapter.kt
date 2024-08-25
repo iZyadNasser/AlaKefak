@@ -16,7 +16,6 @@ import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
-import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,12 +39,15 @@ class FavoritesAdapter(
         myLister = listner
     }
 
-    class MyViewHolder(val row: View,listner: Communicator) : RecyclerView.ViewHolder(row) {
+    class MyViewHolder(private val row: View, listner: Communicator) :
+        RecyclerView.ViewHolder(row) {
+
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
-        val recipeArea : TextView = row.findViewById(R.id.areaTextView)
+        val recipeArea: TextView = row.findViewById(R.id.areaTextView)
         var recipeImg: ImageView = row.findViewById(R.id.recipeFavImageView)
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeartFav)
+
         init {
             itemView.setOnClickListener {
                 listner.onItemClicked(adapterPosition)
@@ -58,25 +60,37 @@ class FavoritesAdapter(
         val inflater =
             parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val row = inflater.inflate(R.layout.my_fav_item, parent, false)
-        return MyViewHolder(row,myLister)
+        return MyViewHolder(row, myLister)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items.getOrNull(position)
         if (item != null) {
-            holder.recipeName.text = item.recipeName
-            holder.recipeCategory.text = item.recipeCategory
-            holder.recipeArea.text = item.recipeArea
-            holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-            Glide.with(holder.itemView.context)
-                .load(item.recipeImg)
-                .transform(RoundedCorners(30))
-                .into(holder.recipeImg)
+            bindFavoritesData(holder, item)
+            handleHeartOnClick(holder, item)
+        }
+    }
 
-            holder.heartBtn.setOnClickListener {
-                showFavoriteConfirmationDialogue(holder, item, holder.itemView.context)
-            }
+    private fun bindFavoritesData(
+        holder: MyViewHolder,
+        item: FavoritesInfo
+    ) {
+        holder.recipeName.text = item.recipeName
+        holder.recipeCategory.text = item.recipeCategory
+        holder.recipeArea.text = item.recipeArea
+        holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+        Glide.with(holder.itemView.context)
+            .load(item.recipeImg)
+            .transform(RoundedCorners(30))
+            .into(holder.recipeImg)
+    }
 
+    private fun handleHeartOnClick(
+        holder: MyViewHolder,
+        item: FavoritesInfo?
+    ) {
+        holder.heartBtn.setOnClickListener {
+            showFavoriteConfirmationDialogue(holder, item!!, holder.itemView.context)
         }
     }
 
@@ -89,8 +103,10 @@ class FavoritesAdapter(
         builder.apply {
             setMessage(context.getString(R.string.remove_favorites_confirmation))
             setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(context,
-                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT
+                ).show()
                 dialog.dismiss()
                 handleFavoriteBtn(holder, item)
             }

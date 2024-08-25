@@ -39,34 +39,50 @@ class RecipesAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = myList.getOrNull(position)
         if (item != null) {
-            Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
-                .into(holder.recipeImageView)
-
-            holder.recipeNameTextView.text = item.strMeal
-
-            if (item.isFavorite) {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-            } else {
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-            }
-
-            holder.heartBtn.setOnClickListener {
-                if (item.isFavorite) {
-                    item.isFavorite = false
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                    viewModel.deleteFav(item)
-                } else {
-                    item.isFavorite = true
-                    holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
-                    viewModel.insertFav(item)
-                }
-
-            }
+            bindRecipesData(holder, item)
+            handleHeartState(item, holder)
         }
-
-
     }
 
+    private fun bindRecipesData(
+        holder: MyViewHolder,
+        item: Meal
+    ) {
+        Glide.with(holder.recipeImageView.context).load(item.strMealThumb)
+            .into(holder.recipeImageView)
+        holder.recipeNameTextView.text = item.strMeal
+    }
+
+    private fun handleHeartState(
+        item: Meal,
+        holder: MyViewHolder
+    ) {
+        if (item.isFavorite) {
+            holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+        } else {
+            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+        }
+
+        handleFavButtonOnClick(holder, item)
+    }
+
+    private fun handleFavButtonOnClick(
+        holder: MyViewHolder,
+        item: Meal
+    ) {
+        holder.heartBtn.setOnClickListener {
+            if (item.isFavorite) {
+                item.isFavorite = false
+                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+                viewModel.deleteFav(item)
+            } else {
+                item.isFavorite = true
+                holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
+                viewModel.insertFav(item)
+            }
+
+        }
+    }
 
     private fun animateHeart(holder: MyViewHolder) {
         val scaleX = ObjectAnimator.ofFloat(holder.heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
@@ -94,7 +110,6 @@ class RecipesAdapter(
                 listner.onItemClicked(adapterPosition)
             }
         }
-
     }
     fun getItem(position: Int): Meal {
         return myList[position]

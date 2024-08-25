@@ -15,9 +15,7 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater)
-
         setOnClickListeners()
-
         return binding.root
     }
 

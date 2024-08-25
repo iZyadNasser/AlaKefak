@@ -1,6 +1,5 @@
 package com.example.alakefak.ui.authflow.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -23,25 +22,6 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginFragmentViewModel
     private val args: LoginFragmentArgs by navArgs()
 
-//    companion object {
-//        private const val PREFS_NAME = "user_prefs"
-//        private const val KEY_IS_LOGGED_IN = "is_logged_in"
-//    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-//        val isLoggedIn = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
-//
-//        if (isLoggedIn) {
-//
-//            val intent = Intent(activity, RecipeActivity::class.java)
-//            startActivity(intent)
-//            activity?.finish()
-//        }
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,22 +36,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.user.observe(viewLifecycleOwner) {
-            if (viewModel.user.value == null) {
-                Toast.makeText(
-                    this.context,
-                    getString(R.string.incorrect_email_password_please_try_again),
-                    Toast.LENGTH_LONG
-                ).show()
-            } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE){
-//                signIn()
-                val intent = Intent(activity, RecipeActivity::class.java)
-                intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
-                startActivity(intent)
-                activity?.finish()
-            }
-        }
-
+        observeFormState()
         setupTextWatchers()
         handleOnClicks()
         singInForm()
@@ -79,50 +44,31 @@ class LoginFragment : Fragment() {
         binding.textFieldPassword.editText?.setText(args.password)
     }
 
-    private fun handleOnClicks() {
-        binding.loginBtn.setOnClickListener {
-            viewModel.handleUserData(binding.textFieldEmail.editText?.text.toString(), binding.textFieldPassword.editText?.text.toString())
-            singInForm()
+
+    private fun observeFormState() {
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (viewModel.user.value == null) {
+                Toast.makeText(
+                    this.context,
+                    getString(R.string.incorrect_email_password_please_try_again),
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE) {
+                val intent = Intent(activity, RecipeActivity::class.java)
+                intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
+                startActivity(intent)
+                activity?.finish()
+            }
         }
     }
 
-    private fun singInForm() {
-            val email = binding.textFieldEmail.editText?.text.toString()
-            val password = binding.textFieldPassword.editText?.text.toString()
-
-            if (email.isEmpty()) {
-                binding.textFieldEmail.helperText = getString(R.string.required)
-            } else {
-                binding.textFieldEmail.helperText = null
-            }
-
-            if (password.isEmpty()) {
-                binding.textFieldPassword.helperText = getString(R.string.required)
-            } else {
-                binding.textFieldPassword.helperText = null
-            }
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                signIn()
-                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
-            } else {
-                disableSignIn()
-                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
-            }
-        }
-
-
-
-
     private fun setupTextWatchers() {
         val textWatcher = object : TextWatcher {
-
             override fun afterTextChanged(s: Editable?) {
                 singInForm()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
@@ -130,12 +76,43 @@ class LoginFragment : Fragment() {
         binding.textFieldPassword.editText?.addTextChangedListener(textWatcher)
     }
 
-    private fun signIn() {
-//        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-//        val editor = sharedPrefs.edit()
-//        editor.putBoolean(KEY_IS_LOGGED_IN, true)
-//        editor.apply()
+    private fun handleOnClicks() {
+        binding.loginBtn.setOnClickListener {
+            viewModel.handleUserData(
+                binding.textFieldEmail.editText?.text.toString(),
+                binding.textFieldPassword.editText?.text.toString()
+            )
+            singInForm()
+        }
+    }
 
+    private fun singInForm() {
+        val email = binding.textFieldEmail.editText?.text.toString()
+        val password = binding.textFieldPassword.editText?.text.toString()
+
+        if (email.isEmpty()) {
+            binding.textFieldEmail.helperText = getString(R.string.required)
+        } else {
+            binding.textFieldEmail.helperText = null
+        }
+
+        if (password.isEmpty()) {
+            binding.textFieldPassword.helperText = getString(R.string.required)
+        } else {
+            binding.textFieldPassword.helperText = null
+        }
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            signIn()
+            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
+        } else {
+            disableSignIn()
+            binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+        }
+    }
+
+
+    private fun signIn() {
         binding.loginBtn.isEnabled = true
     }
 

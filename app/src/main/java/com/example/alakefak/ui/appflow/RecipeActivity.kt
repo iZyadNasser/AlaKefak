@@ -19,39 +19,43 @@ class RecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
-
         val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
-
         curUser = user
-
         val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        handleFragmentsNavigation(navView)
+    }
 
+    private fun handleFragmentsNavigation(navView: BottomNavigationView) {
         navView.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.home -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, HomeFragment())
                         .commit()
                     true
                 }
+
                 R.id.fav -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, FavoritesFragment())
                         .commit()
                     true
                 }
+
                 R.id.profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, ProfileFragment())
                         .commit()
                     true
                 }
+
                 R.id.search -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, SearchFragment())
                         .commit()
                     true
                 }
+
                 else -> false
             }
         }

@@ -7,12 +7,6 @@
 
     </data>
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:fillViewport="true"-->
-<!--        tools:context=".ui.appflow.home.HomeFragment">-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -104,10 +98,27 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/my_col_item" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/popular_recipes"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/recyclerview_item" />
             </LinearLayout>
 
-            <include layout="@layout/recipes_recyclerview" />
+
 
         </LinearLayout>
-<!--    </androidx.core.widget.NestedScrollView>-->
 </layout>

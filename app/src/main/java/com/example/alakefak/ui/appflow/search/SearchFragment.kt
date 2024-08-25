@@ -1,7 +1,6 @@
 package com.example.alakefak.ui.appflow.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
+import com.example.alakefak.data.source.local.model.SearchResult
 import com.example.alakefak.databinding.FragmentSearchBinding
 import com.example.alakefak.ui.appflow.details.DetailsFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment.Companion.clickedMeal
-import com.example.alakefak.ui.appflow.home.RecipesAdapter
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
@@ -28,10 +27,8 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchBinding.inflate(layoutInflater)
-
         searchView = binding.searchView
         recyclerView = binding.recyclerView
-
         adapter = SearchFragmentRecyclerViewAdapter(ArrayList())
         recyclerView.adapter = adapter
 
@@ -41,26 +38,49 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setStatsObservers()
+        handleSearchRecyclerViewItemOnClick()
+        handleSearchListener()
+    }
+
+    private fun setStatsObservers() {
         viewModel.searchResults.observe(viewLifecycleOwner, Observer {
             adapter.setItems(it.toList())
         })
+    }
 
+    private fun handleSearchRecyclerViewItemOnClick() {
         adapter.setCommunicator(object : SearchFragmentRecyclerViewAdapter.Communicator {
             override fun onItemClicked(position: Int) {
                 val clickedItem = adapter.getItem(position)
-                val bundle = Bundle().apply {
-                    putString("MEAL_ID", clickedItem.id)
-                }
+                val bundle = passDataToDetailsFragment(clickedItem)
                 clickedMeal = bundle
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
-                    .replace(R.id.nav_host_fragment, DetailsFragment())
-                    .addToBackStack(null)
-                    .commit()
-                //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+                navigateToDetailsFragment()
             }
         })
+    }
 
+    private fun passDataToDetailsFragment(clickedItem: SearchResult): Bundle {
+        val bundle = Bundle().apply {
+            putString("MEAL_ID", clickedItem.id)
+        }
+        return bundle
+    }
+
+    private fun navigateToDetailsFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.enter_anim,
+                R.anim.exit_anim,
+                R.anim.pop_enter_anim,
+                R.anim.pop_exit_anim
+            )
+            .replace(R.id.nav_host_fragment, DetailsFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun handleSearchListener() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.clearFocus()
@@ -79,4 +99,5 @@ class SearchFragment : Fragment() {
             }
         })
     }
+
 }
