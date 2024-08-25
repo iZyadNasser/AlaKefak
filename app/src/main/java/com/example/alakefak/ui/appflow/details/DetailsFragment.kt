@@ -41,7 +41,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentDetailsBinding.inflate(layoutInflater)
         return binding.root
@@ -63,6 +63,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun setStatsObservers() {
+        val lottieView = binding.lottieAnimationView
+        viewModel.pageLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                lottieView.visibility = View.VISIBLE
+                lottieView.playAnimation()
+            } else {
+                lottieView.cancelAnimation()
+                lottieView.visibility = View.GONE
+            }
+        }
+
         viewModel.notifyMealFetched.observe(viewLifecycleOwner) { fetchedMeal ->
             fetchedMeal?.let { meal ->
                 bindDetailsData(meal)

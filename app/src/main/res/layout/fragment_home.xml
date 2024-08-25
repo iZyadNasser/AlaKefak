@@ -7,12 +7,6 @@
 
     </data>
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:fillViewport="true"-->
-<!--        tools:context=".ui.appflow.home.HomeFragment">-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,13 +93,22 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/categoriesLottieAnimationView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="72dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/loading_anim" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoriesRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/my_col_item" />
+                    tools:listitem="@layout/my_col_item"
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <TextView
@@ -117,6 +120,13 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/recipesLottieAnimationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:lottie_rawRes="@raw/loading_anim"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
@@ -126,5 +136,4 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/recyclerview_item" />
         </LinearLayout>
-<!--    </androidx.core.widget.NestedScrollView>-->
 </layout>
