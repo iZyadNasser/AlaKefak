@@ -98,6 +98,7 @@ class HomeFragment : Fragment() {
             )
             .replace(R.id.nav_host_fragment, DetailsFragment())
             .addToBackStack(null)
+            .setReorderingAllowed(true)
             .commit()
     }
 

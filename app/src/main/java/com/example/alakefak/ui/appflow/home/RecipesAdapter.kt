@@ -122,5 +122,4 @@ class RecipesAdapter(
     fun getItem(position: Int): Meal {
         return myList[position]
     }
-
 }
