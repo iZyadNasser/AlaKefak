@@ -23,11 +23,11 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginFragmentViewModel
     private val args: LoginFragmentArgs by navArgs()
 
-//    companion object {
-//        private const val PREFS_NAME = "user_prefs"
-//        private const val KEY_IS_LOGGED_IN = "is_logged_in"
-//    }
-//
+    companion object {
+        const val PREFS_NAME = "user_prefs"
+        const val KEY_IS_LOGGED_IN = "is_logged_in"
+    }
+
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //
@@ -66,6 +66,7 @@ class LoginFragment : Fragment() {
             } else if (viewModel.user.value != LoginFragmentViewModel.DEFAULT_USER_VALUE){
 //                signIn()
                 val intent = Intent(activity, RecipeActivity::class.java)
+                intent.putExtra("source", "login")
                 intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
                 startActivity(intent)
                 activity?.finish()
@@ -131,10 +132,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun signIn() {
-//        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-//        val editor = sharedPrefs.edit()
-//        editor.putBoolean(KEY_IS_LOGGED_IN, true)
-//        editor.apply()
+        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPrefs.edit()
+        editor.putBoolean(KEY_IS_LOGGED_IN, true)
+        editor.apply()
 
         binding.loginBtn.isEnabled = true
     }
