@@ -44,7 +44,9 @@ class FavoritesFragment : Fragment() {
                 }
                 clickedMeal = bundle
                 requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
                     .replace(R.id.nav_host_fragment, DetailsFragment())
+                    .addToBackStack(null)
                     .commit()
                 //findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
             }

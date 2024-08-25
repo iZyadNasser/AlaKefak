@@ -63,7 +63,7 @@
     <string name="favorites">المفضلة</string>
     <string name="sign_out_confirmation">هل أنت متأكد من رغبتك في تسجيل الخروج؟</string>
     <string name="signed_out_successfully">تم تسجيل الخروج بنجاح</string>
-    <string name="cancel">إالغاء</string>
+    <string name="cancel">إلغاء</string>
     <string name="remove_favorites_confirmation">هل أنت متأكد من رغبتك في حذف هذه الوصفة من المفضلة؟</string>
     <string name="remove">حذف</string>
     <string name="removed_from_favorites">تم الحذف من المفضلة</string>
