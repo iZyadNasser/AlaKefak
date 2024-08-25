@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
 import com.example.alakefak.data.source.remote.model.Meal
-import com.example.alakefak.ui.appflow.favorites.FavoritesFragmentViewModel
 
 class RecipesAdapter(
     private var myList: List<Meal>,
@@ -26,8 +25,8 @@ class RecipesAdapter(
         fun onItemClicked(position: Int)
     }
 
-    fun setCommunicator(listner: Communicator) {
-        myLister = listner
+    fun setCommunicator(listener: Communicator) {
+        myLister = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

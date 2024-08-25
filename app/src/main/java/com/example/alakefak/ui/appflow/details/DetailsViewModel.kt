@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) : ViewModel() {
 
     val repository = RecipeRepository()
-    val favoriteRepository = FavoriteRepository(favoriteDatabaseDoa)
+    private val favoriteRepository = FavoriteRepository(favoriteDatabaseDoa)
 
     private var _notifyMealFetched = MutableLiveData<Meal>()
     val notifyMealFetched: LiveData<Meal?>

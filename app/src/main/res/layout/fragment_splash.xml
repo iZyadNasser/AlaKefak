@@ -11,10 +11,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/your_image_view_id"
+            android:id="@+id/logoImageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/orange"
+            android:background="@color/main_color"
+            android:contentDescription="@string/ala_kefak_logo"
             android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
