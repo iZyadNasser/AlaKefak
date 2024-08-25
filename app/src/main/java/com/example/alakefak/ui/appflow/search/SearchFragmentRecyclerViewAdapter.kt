@@ -54,6 +54,7 @@ class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
             Glide.with(holder.itemView.context)
                 .load(item.imageUrl)
                 .transform(RoundedCorners(30))
+                .placeholder(R.drawable.placeholder)
                 .into(holder.recipeImageView)
         }
     }

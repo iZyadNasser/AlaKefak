@@ -70,6 +70,7 @@ class FavoritesAdapter(
             Glide.with(holder.itemView.context)
                 .load(item.recipeImg)
                 .transform(RoundedCorners(30))
+                .placeholder(R.drawable.placeholder)
                 .into(holder.recipeImg)
 
             holder.heartBtn.setOnClickListener {
@@ -86,6 +87,7 @@ class FavoritesAdapter(
     ) {
         val builder = AlertDialog.Builder(context)
         builder.apply {
+            setTitle("Remove item from favorites")
             setMessage(context.getString(R.string.remove_favorites_confirmation))
             setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
                 Toast.makeText(context,
