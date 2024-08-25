@@ -38,18 +38,20 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
             }
 
             holder.categoryBtn.setOnClickListener {
-                lastPressedButton?.alpha = 0.7F
-                notifyDataSetChanged()
-                if (viewModel.selectedFilter != item) {
-                    viewModel.selectedFilter = item
-                    holder.categoryBtn.alpha = 1F
-                    lastPressedButton = holder.categoryBtn
-                } else {
-                    viewModel.selectedFilter = HomeViewModel.NO_FILTER
-                    holder.categoryBtn.alpha = 0.7F
-                    lastPressedButton = null
+                if (!HomeViewModel.currentlyLoading) {
+                    lastPressedButton?.alpha = 0.7F
+                    notifyDataSetChanged()
+                    if (viewModel.selectedFilter != item) {
+                        viewModel.selectedFilter = item
+                        holder.categoryBtn.alpha = 1F
+                        lastPressedButton = holder.categoryBtn
+                    } else {
+                        viewModel.selectedFilter = HomeViewModel.NO_FILTER
+                        holder.categoryBtn.alpha = 0.7F
+                        lastPressedButton = null
+                    }
+                    viewModel.getFilteredItems()
                 }
-                viewModel.getFilteredItems()
             }
         }
     }

@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     var selectedFilter = NO_FILTER
+    var recipes = mutableListOf<Meal>()
+
 
     private val repository = RecipeRepository()
     private val favRepo = FavoriteRepository(dao)
@@ -23,7 +25,6 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         get() = _categories
 
 
-    var recipes = mutableListOf<Meal>()
 
     private var _notifyDataChange = MutableLiveData(false)
     val notifyDataChange: LiveData<Boolean>
@@ -64,6 +65,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     private fun getAllRecipesFromAPI() {
         val newRecipes = mutableListOf<Meal>()
         viewModelScope.launch {
+            currentlyLoading = true
             _recipesLoading.value = true
             for (item in recipes) {
                 if (favRepo.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
@@ -85,6 +87,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 }
             }
             _recipesLoading.value = false
+            currentlyLoading = false
             _notifyDataChange.value = !_notifyDataChange.value!!
         }
     }
@@ -95,6 +98,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             getAllRecipesFromAPI()
         } else {
             viewModelScope.launch {
+                currentlyLoading = true
                 _recipesLoading.value = true
                 val reducedMeals = repository.filterByCategory(selectedFilter).meals
 
@@ -109,6 +113,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 }
 
                 _recipesLoading.value = false
+                currentlyLoading = false
                 _notifyDataChange.value = !_notifyDataChange.value!!
             }
         }
@@ -138,6 +143,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
 
     companion object {
         const val NO_FILTER = "all"
+        var currentlyLoading = false
     }
 
 }
