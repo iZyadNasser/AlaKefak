@@ -23,4 +23,8 @@ class AuthRepository(private val userDatabaseDao: UserDatabaseDao) {
     suspend fun doesUserNameExist(userName: String): Boolean {
         return userDatabaseDao.doesUserNameExist(userName)
     }
+
+    suspend fun getAllUsers(): List<User> {
+        return userDatabaseDao.getAllUsers()
+    }
 }

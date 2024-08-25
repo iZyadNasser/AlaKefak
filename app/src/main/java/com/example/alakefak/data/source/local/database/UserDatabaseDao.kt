@@ -22,4 +22,7 @@ interface UserDatabaseDao {
 
     @Query("SELECT EXISTS(SELECT 1 FROM users WHERE user_name = :userName)")
     suspend fun doesUserNameExist(userName: String): Boolean
+
+    @Query("SELECT * FROM users")
+    suspend fun getAllUsers(): List<User>
 }
