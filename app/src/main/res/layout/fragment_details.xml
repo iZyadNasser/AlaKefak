@@ -42,7 +42,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/food"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/error_placeholder"
+                    android:src="@drawable/placeholder"
                     app:layout_collapseMode="parallax" />
 
 
@@ -228,14 +228,14 @@
 
             <ImageButton
                 android:id="@+id/img_youtube"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/Youtube"
-                android:minWidth="120dp"
+                android:minWidth="100dp"
                 android:minHeight="60dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_ondemand_video_24" />

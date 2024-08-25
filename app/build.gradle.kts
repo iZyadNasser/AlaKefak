@@ -100,5 +100,5 @@ dependencies {
 
     implementation(libs.volley)
 
-    implementation(libs.lottie)
+    implementation(libs.lottie.v610)
 }
