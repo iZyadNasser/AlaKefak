@@ -10,7 +10,7 @@ import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.launch
 
-class FavoritesFragmentViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
+class FavoritesFragmentViewModel(dao : FavoritesDatabaseDao):ViewModel() {
     private val repo = FavoriteRepository(dao)
     private var _favorite = MutableLiveData<List<FavoritesInfo>>()
     val favorite: LiveData<List<FavoritesInfo>>

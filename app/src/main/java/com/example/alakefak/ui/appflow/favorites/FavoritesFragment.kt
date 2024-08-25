@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.alakefak.databinding.FragmentFavoritesBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.ui.appflow.details.DetailsFragment
@@ -27,7 +28,8 @@ class FavoritesFragment : Fragment() {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
         database = FavoritesDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = FavoritesFragmentViewModelFactory(database.favoritesDatabaseDao())
-        viewModel = ViewModelProvider(this, viewModelFactory)[FavoritesFragmentViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, viewModelFactory)[FavoritesFragmentViewModel::class.java]
         return binding.root
 
     }
@@ -44,7 +46,12 @@ class FavoritesFragment : Fragment() {
                 }
                 clickedMeal = bundle
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
+                    .setCustomAnimations(
+                        R.anim.enter_anim,
+                        R.anim.exit_anim,
+                        R.anim.pop_enter_anim,
+                        R.anim.pop_exit_anim
+                    )
                     .replace(R.id.nav_host_fragment, DetailsFragment())
                     .addToBackStack(null)
                     .commit()
@@ -52,17 +59,46 @@ class FavoritesFragment : Fragment() {
             }
         })
 
-        viewModel.favorite.observe(viewLifecycleOwner, Observer { favoriteItems ->
-            adapter.setupItems(favoriteItems)
-        })
+        viewModel.favorite.observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty()) {
+                binding.emptyTextView.visibility = View.VISIBLE
+                binding.favoritesRecyclerView.visibility = View.GONE
+            } else {
+                binding.emptyTextView.visibility = View.GONE
+                binding.favoritesRecyclerView.visibility = View.VISIBLE
+                adapter.setupItems(it)
+            }
+        }
 
         viewModel.getAllItems()
+        observeDataChanges()
 
 
     }
 
-    private fun setUpRecyclerView(){
-        adapter = FavoritesAdapter(emptyList(),database.favoritesDatabaseDao())
+    private fun setUpRecyclerView() {
+        adapter = FavoritesAdapter(emptyList(), database.favoritesDatabaseDao())
         binding.favoritesRecyclerView.adapter = adapter
+    }
+
+    private fun observeDataChanges() {
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                checkForEmptyState()
+            }
+
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                checkForEmptyState()
+            }
+        })
+    }
+
+    private fun checkForEmptyState() {
+        if (adapter.itemCount == 0) {
+            binding.emptyTextView.visibility = View.VISIBLE
+            binding.favoritesRecyclerView.visibility = View.GONE
+        }
     }
 }
