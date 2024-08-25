@@ -2,7 +2,6 @@ package com.example.alakefak.ui.appflow.details
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,15 +12,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.FavoritesDatabase
-import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentDetailsBinding
-import com.example.alakefak.ui.appflow.favorites.FavoritesAdapter.MyViewHolder
 import com.example.alakefak.ui.appflow.home.HomeFragment
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.Volley
+
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
@@ -32,6 +35,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private var isPlayerViewVisible = false
     private lateinit var database: FavoritesDatabase
     private var isExpanded = false
+    private lateinit var requestQueue: RequestQueue
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +57,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         binding.playerView.settings.javaScriptEnabled = true
         mealId = HomeFragment.clickedMeal?.getString("MEAL_ID").toString()
         viewModel.getMeal(mealId)
+        requestQueue = Volley.newRequestQueue(requireContext())
 
         setStatsObservers()
     }
@@ -85,20 +90,43 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             .into(binding.imgMealDetail)
     }
 
+    private fun checkVideoAvailability(videoUrl: String, callback: (Boolean) -> Unit) {
+        val url = "https://www.youtube.com/oembed?url=$videoUrl&format=json"
+        val request = JsonObjectRequest(Request.Method.GET, url, null,
+            {
+                callback(true)
+            },
+            {
+                callback(false)
+            }
+        )
+        requestQueue.add(request)
+    }
+
+
     private fun handleVideoOnClick() {
-        binding.imgYoutube.setOnClickListener {
-            isPlayerViewVisible = !isPlayerViewVisible
-            if (isPlayerViewVisible) {
-                binding.playerView.visibility = View.VISIBLE
-                val videoUrl = meal.strYoutube?.replace("watch?v=", "embed/")
-                videoUrl?.let { url ->
-                    binding.playerView.loadUrl(url)
+        checkVideoAvailability(meal.strYoutube ?: "") { isAvailable ->
+            if (isAvailable) {
+                binding.imgYoutube.visibility = View.VISIBLE
+                binding.imgYoutube.setOnClickListener {
+                    isPlayerViewVisible = !isPlayerViewVisible
+                    if (isPlayerViewVisible) {
+                        binding.playerView.visibility = View.VISIBLE
+                        val videoUrl = meal.strYoutube?.replace("watch?v=", "embed/")
+                        videoUrl?.let { url ->
+                            binding.playerView.loadUrl(url)
+                        }
+                    } else {
+                        binding.playerView.visibility = View.GONE
+                    }
                 }
             } else {
-                binding.playerView.visibility = View.GONE
+                binding.imgYoutube.visibility = View.GONE
             }
         }
     }
+
+
 
     private fun handleHeartState() {
         if (meal.isFavorite) {

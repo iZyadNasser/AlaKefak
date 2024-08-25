@@ -22,6 +22,7 @@ pagingRuntime = "3.3.2"
 roomCompiler = "2.5.0"
 roomKtx = "2.6.1"
 roomKtxVersion = "2.5.2"
+volley = "1.2.1"
 
 [libraries]
 androidx-activity-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
@@ -56,6 +57,7 @@ androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = 
 material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterMoshi" }
 room-compiler-v261 = { module = "androidx.room:room-compiler", version.ref = "androidxRoomCompiler" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
