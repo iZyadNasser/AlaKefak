@@ -2,6 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -9,22 +13,22 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
+            android:background="@color/main_color"
             android:padding="16dp">
 
-
             <ImageView
-                android:id="@+id/text_view"
+                android:id="@+id/imageViewGetStartedLogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/ala_kefak_logo"
                 android:src="@drawable/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_view_welcome"
+                android:id="@+id/textViewWelcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome_to_ala_kefak"
@@ -35,10 +39,10 @@
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/imageViewGetStartedLogo" />
 
             <TextView
-                android:id="@+id/text_view_description"
+                android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -48,15 +52,16 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_welcome" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonGetStarted"
                 android:layout_width="wrap_content"
+                android:layout_gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="128dp"
                 android:background="@drawable/rounded_button_background"
-                android:drawableEnd="@drawable/baseline_arrow_forwardd_24"
+                android:drawableEnd="@drawable/baseline_arrow_forward_24"
                 android:text="@string/get_started"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
@@ -64,7 +69,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_description" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

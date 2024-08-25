@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
     private lateinit var viewModel: SplashViewModel
+    private val navOptions = AuthActivity.navOptions
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +47,7 @@ class SplashFragment : Fragment() {
 
     private fun navigateToRegisterFragment() {
         val action = SplashFragmentDirections.actionSplashFragmentToRegisterFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(action, navOptions)
     }
 
     private fun setObservers() {
@@ -81,7 +82,7 @@ class SplashFragment : Fragment() {
 
     private fun navigateToWelcomeFragment() {
         val action = SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(action, navOptions)
     }
 
     companion object {
