@@ -62,6 +62,7 @@ class SplashFragment : Fragment() {
             val intent = Intent(requireContext(), RecipeActivity::class.java)
             intent.putExtra("source", "splash")
             startActivity(intent)
+            requireActivity().finish()
         } else {
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
         }
