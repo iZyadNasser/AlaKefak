@@ -1,12 +1,12 @@
 package com.example.alakefak.ui.authflow.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,17 +15,21 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
-import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.authflow.ErrorStates
-import com.example.alakefak.ui.authflow.FormUtils
 import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
 import com.example.alakefak.ui.authflow.FormUtils.validEmail
 import com.example.alakefak.ui.authflow.FormUtils.validPassword
 import com.example.alakefak.ui.authflow.FormUtils.validUsername
+import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: RegisterFragmentViewModel
+    private lateinit var emailView: TextInputLayout
+    private lateinit var usernameView: TextInputLayout
+    private lateinit var passwordView: TextInputLayout
+    private lateinit var confirmPasswordView: TextInputLayout
+    private lateinit var registerBtn: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +39,16 @@ class RegisterFragment : Fragment() {
         val database = UserDatabase.getDatabase(requireContext().applicationContext)
         val viewModelFactory = RegisterFragmentViewModelFactory(database)
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterFragmentViewModel::class.java]
+        initializeViews()
         return binding.root
+    }
+
+    private fun initializeViews() {
+        emailView = binding.textFieldEmailRegister
+        usernameView = binding.textFieldUsername
+        passwordView = binding.textFieldPasswordRegister
+        confirmPasswordView = binding.textFieldConfirmPassword
+        registerBtn = binding.btnRegister
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,12 +92,12 @@ class RegisterFragment : Fragment() {
                 }
 
                 ErrorStates.NONE -> {
-//                    val intent = Intent(activity, RecipeActivity::class.java)
-//                    intent.putExtra(FormUtils.INTENT_KEY, viewModel.user)
-//                    startActivity(intent)
-//                    activity?.finish()
-
-                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(binding.emailTextField.editText?.text.toString(), binding.passwordTextField.editText?.text.toString()))
+                    findNavController().navigate(
+                        RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
+                            emailView.editText?.text.toString(),
+                            passwordView.editText?.text.toString()
+                        )
+                    )
                 }
 
                 else -> {}
@@ -93,49 +106,55 @@ class RegisterFragment : Fragment() {
     }
 
     private fun usernameFocusListener() {
-        binding.userNameTextField.setOnFocusChangeListener { _, focused ->
+        usernameView.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                val usernameText = binding.userNameTextField.editText?.text.toString()
-                binding.userNameTextField.helperText = validUsername(usernameText, context)
+                val usernameText = usernameView.editText?.text.toString()
+                usernameView.helperText = validUsername(usernameText, context)
             }
         }
     }
 
     private fun emailFocusListener() {
-        binding.emailTextField.editText?.setOnFocusChangeListener { _, focused ->
+        emailView.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                val emailText = binding.emailTextField.editText?.text.toString()
-                binding.emailTextField.helperText = validEmail(emailText, context)
+                val emailText = emailView.editText?.text.toString()
+                emailView.helperText = validEmail(emailText, context)
             }
         }
     }
 
 
     private fun passwordFocusListener() {
-        binding.passwordTextField.editText?.setOnFocusChangeListener { _, focused ->
+        passwordView.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                val passwordText = binding.passwordTextField.editText?.text.toString()
-                binding.passwordTextField.helperText = validPassword(passwordText, context)
+                val passwordText = passwordView.editText?.text.toString()
+                passwordView.helperText = validPassword(passwordText, context)
             }
         }
     }
 
 
     private fun confirmPasswordFocusListener() {
-        binding.passwordConfirmFieldText.editText?.setOnFocusChangeListener { _, focused ->
+        confirmPasswordView.editText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                val passwordText = binding.passwordTextField.editText?.text.toString()
-                val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
+                val passwordText = passwordView.editText?.text.toString()
+                val confirmPasswordText = confirmPasswordView.editText?.text.toString()
+                confirmPasswordView.helperText =
+                    validConfirmPassword(passwordText, confirmPasswordText, context)
             }
         }
     }
 
     private fun handleOnClicks() {
-        binding.signInTextView.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment("", ""))
+        binding.textViewSignIn.setOnClickListener {
+            findNavController().navigate(
+                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
+                    "",
+                    ""
+                )
+            )
         }
-        binding.registerbtn.setOnClickListener {
+        registerBtn.setOnClickListener {
             handleUserData()
             singInForm()
         }
@@ -144,43 +163,42 @@ class RegisterFragment : Fragment() {
     private fun handleUserData() {
         val user = User(
             id = 0,
-            userName = binding.userNameTextField.editText?.text.toString(),
-            email = binding.emailTextField.editText?.text.toString(),
-            password = binding.passwordTextField.editText?.text.toString()
+            userName = usernameView.editText?.text.toString(),
+            email = emailView.editText?.text.toString(),
+            password = passwordView.editText?.text.toString()
         )
-
         viewModel.handleUserData(user)
     }
 
-
     private fun singInForm() {
-        val validEmail = binding.emailTextField.helperText == null
-        val validPassword = binding.passwordTextField.helperText == null
-        val validConfirmPassword = binding.passwordConfirmFieldText.helperText == null
-        val validUserName = binding.userNameTextField.helperText == null
+        val validEmail = emailView.helperText == null
+        val validPassword = passwordView.helperText == null
+        val validConfirmPassword = confirmPasswordView.helperText == null
+        val validUserName = usernameView.helperText == null
 
         if (validEmail && validPassword && validConfirmPassword && validUserName) {
             signIn()
-            binding.registerbtn.setBackgroundColor(resources.getColor(R.color.main_color))
+            registerBtn.setBackgroundColor(resources.getColor(R.color.main_color))
         } else {
             disableSignIn()
-            binding.registerbtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+            registerBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
         }
-
     }
 
     private fun setupTextWatchers() {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                val emailText = binding.emailTextField.editText?.text.toString()
-                val usernameText = binding.userNameTextField.editText?.text.toString()
-                val passwordText = binding.passwordTextField.editText?.text.toString()
-                val confirmPasswordText = binding.passwordConfirmFieldText.editText?.text.toString()
-
-                binding.emailTextField.helperText = validEmail(emailText, context)
-                binding.passwordTextField.helperText = validPassword(passwordText, context)
-                binding.passwordConfirmFieldText.helperText = validConfirmPassword(passwordText, confirmPasswordText, context)
-                binding.userNameTextField.helperText = validUsername(usernameText, context)
+                emailView.helperText = validEmail(emailView.editText?.text.toString(), context)
+                passwordView.helperText =
+                    validPassword(passwordView.editText?.text.toString(), context)
+                confirmPasswordView.helperText =
+                    validConfirmPassword(
+                        passwordView.editText?.text.toString(),
+                        confirmPasswordView.editText?.text.toString(),
+                        context
+                    )
+                usernameView.helperText =
+                    validUsername(usernameView.editText?.text.toString(), context)
                 singInForm()
             }
 
@@ -189,19 +207,19 @@ class RegisterFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
-        binding.emailTextField.editText?.addTextChangedListener(textWatcher)
-        binding.passwordTextField.editText?.addTextChangedListener(textWatcher)
-        binding.passwordConfirmFieldText.editText?.addTextChangedListener(textWatcher)
-        binding.userNameTextField.editText?.addTextChangedListener(textWatcher)
+        emailView.editText?.addTextChangedListener(textWatcher)
+        passwordView.editText?.addTextChangedListener(textWatcher)
+        confirmPasswordView.editText?.addTextChangedListener(textWatcher)
+        usernameView.editText?.addTextChangedListener(textWatcher)
     }
 
 
     private fun signIn() {
-        binding.registerbtn.isEnabled = true
+        registerBtn.isEnabled = true
     }
 
     private fun disableSignIn() {
-        binding.registerbtn.isEnabled = false
+        registerBtn.isEnabled = false
     }
 
 

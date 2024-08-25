@@ -10,7 +10,7 @@ import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.ui.authflow.ErrorStates
 import kotlinx.coroutines.launch
 
-class RegisterFragmentViewModel(private val userDatabase: UserDatabase): ViewModel() {
+class RegisterFragmentViewModel(private val userDatabase: UserDatabase) : ViewModel() {
     private val repository = AuthRepository(userDatabase.userDatabaseDao())
     lateinit var user: User
 
