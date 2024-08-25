@@ -22,6 +22,10 @@ class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) :
     val notifyMealFetched: LiveData<Meal?>
         get() = _notifyMealFetched
 
+    private var _pageLoading = MutableLiveData(false)
+    val pageLoading: LiveData<Boolean>
+        get() = _pageLoading
+
     fun covertIngredients(meal: Meal): List<Ingredient> {
         val ingredients = listOf<Ingredient>(
             Ingredient(
@@ -111,10 +115,12 @@ class DetailsViewModel (private val favoriteDatabaseDoa: FavoritesDatabaseDao) :
 
     fun getMeal(mealId: String) {
         viewModelScope.launch {
+            _pageLoading.value = true
             val item = repository.lookupById(mealId).meals?.get(0)!!
             if (favoriteDatabaseDoa.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
                 item.isFavorite = true
             }
+            _pageLoading.value = false
             _notifyMealFetched.value = item
         }
     }

@@ -96,4 +96,5 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.activity.activity.ktx)
     implementation(libs.material)
+    implementation(libs.lottie)
 }
