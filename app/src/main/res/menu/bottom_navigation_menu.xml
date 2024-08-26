@@ -2,7 +2,7 @@
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/home_icon"
+        android:icon="@drawable/home_ic"
         android:title="@string/home"/>
     <item
         android:id="@+id/search"
@@ -12,7 +12,7 @@
     <item
         android:id="@+id/fav"
         android:enabled="true"
-        android:icon="@drawable/favourites_icon"
+        android:icon="@drawable/hearts"
         android:title="@string/favourites"/>
     <item
         android:id="@+id/profile"
