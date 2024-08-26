@@ -59,13 +59,14 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="45dp">
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="44dp">
 
                 <TextView
                     android:id="@+id/foodname"
@@ -100,9 +101,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="16dp"
                         android:textColor="@color/md_theme_onSurface_highContrast"
-                        android:drawablePadding="5dp"
+                        android:drawablePadding="4dp"
                         android:text="@string/category"
                         android:textSize="14sp"
                         app:drawableLeftCompat="@drawable/baseline_category_24" />
@@ -113,8 +114,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/md_theme_onSurface_highContrast"
-                        android:layout_marginStart="15dp"
-                        android:drawablePadding="5dp"
+                        android:layout_marginStart="16dp"
+                        android:drawablePadding="4dp"
                         android:text="@string/area"
                         android:textSize="14sp"
                         app:drawableStartCompat="@drawable/baseline_location_on_24" />
@@ -125,8 +126,8 @@
                     android:id="@+id/ingredient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:includeFontPadding="false"
                     android:text="@string/ingredients"
@@ -142,9 +143,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
-                    android:layout_height="360dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-
                     android:textColor="@color/orange"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -217,7 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -230,7 +230,7 @@
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/Youtube"
                 android:minWidth="100dp"
-                android:minHeight="60dp"
+                android:minHeight="64dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_ondemand_video_24" />
 
