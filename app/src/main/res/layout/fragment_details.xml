@@ -137,28 +137,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/mealinfo" />
 
-                <TextView
-                    android:id="@+id/tv_instructions_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/orange"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ingredient" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="360dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="-32dp"
+
                     android:textColor="@color/orange"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_instructions_content"
+                    app:layout_constraintBottom_toTopOf="@id/instructionsTitle"
+                    app:layout_constraintTop_toBottomOf="@id/ingredient"
                     tools:listitem="@layout/item_ingredient" />
 
                 <TextView
