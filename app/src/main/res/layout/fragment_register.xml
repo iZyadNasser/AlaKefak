@@ -30,8 +30,7 @@
             <androidx.cardview.widget.CardView
                 style="@style/style_card_view"
                 android:layout_margin="@dimen/margin_large"
-                app:cardCornerRadius="@dimen/margin_large"
-                app:cardElevation="@dimen/margin_large">
+                app:cardCornerRadius="@dimen/margin_large">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
