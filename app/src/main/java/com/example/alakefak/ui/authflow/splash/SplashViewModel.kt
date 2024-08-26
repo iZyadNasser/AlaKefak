@@ -6,11 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.alakefak.data.repository.AuthRepository
 import com.example.alakefak.data.source.local.database.UserDatabase
-import com.example.alakefak.data.source.local.database.UserDatabaseDao
 import com.example.alakefak.data.source.local.model.User
 import kotlinx.coroutines.launch
 
-class SplashViewModel(private val db: UserDatabase): ViewModel() {
+class SplashViewModel(db: UserDatabase) : ViewModel() {
     val database = db.userDatabaseDao()
     val repository = AuthRepository(database)
 

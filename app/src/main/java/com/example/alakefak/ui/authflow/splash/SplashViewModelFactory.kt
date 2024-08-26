@@ -3,7 +3,6 @@ package com.example.alakefak.ui.authflow.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.alakefak.data.source.local.database.UserDatabase
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModel
 
 class SplashViewModelFactory(
     private val database: UserDatabase

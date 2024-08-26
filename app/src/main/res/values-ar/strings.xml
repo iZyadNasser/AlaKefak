@@ -45,7 +45,6 @@
     <string name="renad_alalfy">- ريناد الألفي</string>
     <string name="team_members">" أعضاء فريق العمل"</string>
     <string name="find_your_recipe">ابحث عن وجبتك</string>
-    <string name="check_amazing_recipes">تصفح الوجبات المذهلة</string>
     <string name="about_us">من نحن؟</string>
     <string name="app_description"><b>على كيفك</b> هو تطبيق وصفات يوفر لمستخدميه مجموعة من الوصفات المتنوعة إلى جانب مكوناتها و طريقة تحضيرها.</string>
     <string name="mission_desc"> - مهمتنا هي جعل الطهي في المنزل أسهل وأكثر متعة من خلال تقديم مجموعة متنوعة من الوصفات اللذيذة التي يمكن للمستخدمين الاختيار منها.  </string>
@@ -79,4 +78,9 @@
     <string name="Read_more">اقرأ المزيد</string>
     <string name="meal_name">اسم الوصفة\n</string>
     <string name="read_less">اقرأ أقل</string>
+    <string name="ala_kefak_logo">شعار على كيفك</string>
+    <string name="search_for_recipes">ابحث عن وصفات، ، أو بلد النشأة.</string>
+    <string name="empty_fav">قائمة المفضلات لديك فارغة. ابدأ باستكشاف الوصفات وأضف مفضلاتك هنا!</string>
+    <string name="oops">عذرًا! لم نتمكن من العثور على أي تطابقات.</string>
+    <string name="check_out_amazing_recipes">تصفح الوجبات المذهلة!</string>
 </resources>

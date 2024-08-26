@@ -10,13 +10,12 @@ import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
-import kotlin.time.measureTime
 
 class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     var selectedFilter = NO_FILTER
+    var recipes = mutableListOf<Meal>()
+
 
     private val repository = RecipeRepository()
     private val favRepo = FavoriteRepository(dao)
@@ -26,12 +25,18 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         get() = _categories
 
 
-    var recipes = mutableListOf<Meal>()
 
     private var _notifyDataChange = MutableLiveData(false)
     val notifyDataChange: LiveData<Boolean>
         get() = _notifyDataChange
 
+    private var _categoriesLoading = MutableLiveData(false)
+    val categoriesLoading: LiveData<Boolean>
+        get() = _categoriesLoading
+
+    private var _recipesLoading = MutableLiveData(false)
+    val recipesLoading: LiveData<Boolean>
+        get() = _recipesLoading
 
 
     init {
@@ -41,6 +46,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
 
     private fun getCategories() {
         viewModelScope.launch {
+            _categoriesLoading.value = true
             val meals = repository.listCategories().meals
             val listOfCategories = mutableListOf<String>()
 
@@ -51,7 +57,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                     }
                 }
             }
-
+            _categoriesLoading.value = false
             _categories.value = listOfCategories
         }
     }
@@ -59,6 +65,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     private fun getAllRecipesFromAPI() {
         val newRecipes = mutableListOf<Meal>()
         viewModelScope.launch {
+            currentlyLoading = true
+            _recipesLoading.value = true
             for (item in recipes) {
                 if (favRepo.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
                     item.isFavorite = true
@@ -78,6 +86,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                     }
                 }
             }
+            _recipesLoading.value = false
+            currentlyLoading = false
             _notifyDataChange.value = !_notifyDataChange.value!!
         }
     }
@@ -88,6 +98,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             getAllRecipesFromAPI()
         } else {
             viewModelScope.launch {
+                currentlyLoading = true
+                _recipesLoading.value = true
                 val reducedMeals = repository.filterByCategory(selectedFilter).meals
 
                 if (reducedMeals != null) {
@@ -100,6 +112,8 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                     }
                 }
 
+                _recipesLoading.value = false
+                currentlyLoading = false
                 _notifyDataChange.value = !_notifyDataChange.value!!
             }
         }
@@ -129,6 +143,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
 
     companion object {
         const val NO_FILTER = "all"
+        var currentlyLoading = false
     }
 
 }

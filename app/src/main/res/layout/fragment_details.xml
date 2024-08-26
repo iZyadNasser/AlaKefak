@@ -12,6 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:lottie_rawRes="@raw/loading_anim"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
@@ -65,24 +74,24 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/meal_name"
                     android:shadowColor="@color/white"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/meal_name"
                     android:textColor="@color/main_color"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <LinearLayout
                     android:id="@+id/mealinfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/foodname">
 
 
@@ -94,7 +103,6 @@
                         android:layout_marginStart="15dp"
                         android:drawablePadding="5dp"
                         android:text="@string/category"
-                        android:textColor="@color/orange"
                         android:textSize="14sp"
                         app:drawableLeftCompat="@drawable/baseline_category_24" />
 
@@ -106,7 +114,6 @@
                         android:layout_marginStart="15dp"
                         android:drawablePadding="5dp"
                         android:text="@string/area"
-                        android:textColor="@color/orange"
                         android:textSize="14sp"
                         app:drawableStartCompat="@drawable/baseline_location_on_24" />
 
@@ -190,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:gravity="end"
                     android:text="@string/Read_more"
                     android:textColor="@color/orange"
@@ -197,7 +205,6 @@
                     android:textStyle="bold"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"
                     app:layout_constraintTop_toBottomOf="@id/instructions" />
 
                 <WebView
@@ -221,14 +228,14 @@
 
             <ImageButton
                 android:id="@+id/img_youtube"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/Youtube"
-                android:minWidth="120dp"
+                android:minWidth="100dp"
                 android:minHeight="60dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_ondemand_video_24" />
@@ -240,12 +247,12 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_btn"
             android:baselineAlignBottom="false"
             android:clickable="true"
             android:contentDescription="@string/favorite_icon_description"
             android:focusable="true"
             android:src="@drawable/ic_heart_outline"
-            android:background="@drawable/bg_btn"
             app:fabSize="normal"
             app:layout_anchor="@id/appBar"
             app:layout_anchorGravity="bottom|end" />

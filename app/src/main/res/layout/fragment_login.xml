@@ -19,7 +19,7 @@
             tools:context=".ui.authflow.login.LoginFragment">
 
             <ImageView
-                android:id="@+id/imageLogo"
+                android:id="@+id/imageViewLogoRegister"
                 style="@style/style_image_view"
                 android:layout_height="260dp"
                 android:contentDescription="@string/nulll"

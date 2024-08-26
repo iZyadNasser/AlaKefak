@@ -10,13 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.alakefak.data.source.local.database.UserDatabase
-import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentSplashBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.login.LoginFragment
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModel
-import com.example.alakefak.ui.authflow.register.RegisterFragmentViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,6 +23,7 @@ import kotlinx.coroutines.launch
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
     private lateinit var viewModel: SplashViewModel
+    private val navOptions = AuthActivity.navOptions
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +40,17 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (AuthActivity.signedOut) {
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToRegisterFragment())
+            navigateToRegisterFragment()
         }
+        setObservers()
+    }
+
+    private fun navigateToRegisterFragment() {
+        val action = SplashFragmentDirections.actionSplashFragmentToRegisterFragment()
+        findNavController().navigate(action, navOptions)
+    }
+
+    private fun setObservers() {
         viewModel.users.observe(viewLifecycleOwner) {
             RecipeActivity.users = it
 
@@ -55,18 +62,31 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateBasedOnLoginStatus() {
-        val sharedPrefs = requireContext().getSharedPreferences(LoginFragment.PREFS_NAME, Context.MODE_PRIVATE)
+        val sharedPrefs =
+            requireContext().getSharedPreferences(LoginFragment.PREFS_NAME, Context.MODE_PRIVATE)
         val isLoggedIn = sharedPrefs.getBoolean(LoginFragment.KEY_IS_LOGGED_IN, false)
 
         if (isLoggedIn) {
-            val intent = Intent(requireContext(), RecipeActivity::class.java)
-            intent.putExtra("source", "splash")
-            startActivity(intent)
-            requireActivity().finish()
+            navigateToRecipeActivity()
         } else {
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+            navigateToWelcomeFragment()
         }
+    }
 
+    private fun navigateToRecipeActivity() {
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
+        intent.putExtra(LOGIN_SOURCE_PREF_NAME, LOGIN_SOURCE_SPLASH)
+        startActivity(intent)
+        requireActivity().finish()
+    }
 
+    private fun navigateToWelcomeFragment() {
+        val action = SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
+        findNavController().navigate(action, navOptions)
+    }
+
+    companion object {
+        const val LOGIN_SOURCE_PREF_NAME = "source"
+        const val LOGIN_SOURCE_SPLASH = "splash"
     }
 }

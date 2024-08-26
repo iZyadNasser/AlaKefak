@@ -17,11 +17,11 @@
             android:orientation="vertical"
             tools:context=".ui.authflow.register.RegisterFragment">
 
-
             <ImageView
-                android:id="@+id/imageLogo"
+                android:id="@+id/imageViewLogoRegister"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_large"
+                android:contentDescription="@string/ala_kefak_logo"
                 android:src="@drawable/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,11 +33,9 @@
                 app:cardCornerRadius="@dimen/margin_large"
                 app:cardElevation="@dimen/margin_large">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
 
                     <TextView
                         android:id="@+id/signUpTextView"
@@ -50,7 +48,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/userNameTextField"
+                        android:id="@+id/textFieldUsername"
                         style="@style/EditTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -66,13 +64,13 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/emailTextField"
+                        android:id="@+id/textFieldEmailRegister"
                         style="@style/EditTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:counterMaxLength="40"
                         app:endIconMode="clear_text"
-                        app:layout_constraintTop_toBottomOf="@+id/userNameTextField"
+                        app:layout_constraintTop_toBottomOf="@+id/textFieldUsername"
                         app:startIconDrawable="@drawable/ic_email">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -83,13 +81,13 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/passwordTextField"
+                        android:id="@+id/textFieldPasswordRegister"
                         style="@style/EditTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:counterMaxLength="15"
                         app:errorEnabled="true"
-                        app:layout_constraintTop_toBottomOf="@+id/emailTextField"
+                        app:layout_constraintTop_toBottomOf="@+id/textFieldEmailRegister"
                         app:passwordToggleEnabled="true"
                         app:startIconDrawable="@drawable/ic_password">
 
@@ -101,13 +99,13 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/passwordConfirmFieldText"
+                        android:id="@+id/textFieldConfirmPassword"
                         style="@style/EditTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:counterMaxLength="15"
                         app:errorEnabled="true"
-                        app:layout_constraintTop_toBottomOf="@+id/passwordTextField"
+                        app:layout_constraintTop_toBottomOf="@+id/textFieldPasswordRegister"
                         app:passwordToggleEnabled="true"
                         app:startIconDrawable="@drawable/ic_password">
 
@@ -118,18 +116,17 @@
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/registerbtn"
+                        android:id="@+id/btnRegister"
                         style="@style/style_button"
                         android:text="@string/create_account"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmFieldText" />
+                        app:layout_constraintTop_toBottomOf="@+id/textFieldConfirmPassword" />
 
                     <TextView
-                        android:id="@+id/signInTextView"
+                        android:id="@+id/textViewSignIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
@@ -140,13 +137,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/registerbtn" />
-
-
+                        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
-
         </LinearLayout>
     </ScrollView>
 </layout>

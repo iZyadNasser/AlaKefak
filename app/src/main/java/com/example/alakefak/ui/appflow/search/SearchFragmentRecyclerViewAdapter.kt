@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.model.SearchResult
-import com.example.alakefak.data.source.remote.model.Meal
 
 class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
     RecyclerView.Adapter<SearchFragmentRecyclerViewAdapter.SearchFragmentRecyclerViewViewHolder>() {
@@ -22,11 +21,11 @@ class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
         fun onItemClicked(position: Int)
     }
 
-    fun setCommunicator(listner: Communicator) {
-        myLister = listner
+    fun setCommunicator(listener: Communicator) {
+        myLister = listener
     }
 
-    inner class SearchFragmentRecyclerViewViewHolder(private val row: View, listner: Communicator) : RecyclerView.ViewHolder(row) {
+    inner class SearchFragmentRecyclerViewViewHolder(private val row: View, listener: Communicator) : RecyclerView.ViewHolder(row) {
         val recipeName = row.findViewById<TextView>(R.id.searchRsultName)
         val recipeCategory = row.findViewById<TextView>(R.id.searchResultCategory)
         val recipeImageView = row.findViewById<ImageView>(R.id.searchResultImageView)
@@ -34,7 +33,7 @@ class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
 
         init {
             itemView.setOnClickListener {
-                listner.onItemClicked(adapterPosition)
+                listener.onItemClicked(adapterPosition)
             }
         }
     }
@@ -55,6 +54,7 @@ class SearchFragmentRecyclerViewAdapter(private var items: List<SearchResult>) :
             Glide.with(holder.itemView.context)
                 .load(item.imageUrl)
                 .transform(RoundedCorners(30))
+                .placeholder(R.drawable.placeholder)
                 .into(holder.recipeImageView)
         }
     }

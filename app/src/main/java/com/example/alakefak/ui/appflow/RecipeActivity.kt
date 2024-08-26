@@ -1,7 +1,9 @@
 package com.example.alakefak.ui.appflow
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
@@ -81,9 +83,11 @@ class RecipeActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     companion object {
         var users: List<User>? = null
         var curUser: User? = null
+        var lastPressedButton: Button? = null
     }
 
 }

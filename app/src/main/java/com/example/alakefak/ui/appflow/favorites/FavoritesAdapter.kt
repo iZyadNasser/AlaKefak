@@ -16,7 +16,6 @@ import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
-import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,11 +35,11 @@ class FavoritesAdapter(
         fun onItemClicked(position: Int)
     }
 
-    fun setCommunicator(listner: Communicator) {
-        myLister = listner
+    fun setCommunicator(listener: Communicator) {
+        myLister = listener
     }
 
-    class MyViewHolder(val row: View,listner: Communicator) : RecyclerView.ViewHolder(row) {
+    class MyViewHolder(private val row: View, listener: Communicator) : RecyclerView.ViewHolder(row) {
         var recipeName: TextView = row.findViewById(R.id.nameTextView)
         var recipeCategory: TextView = row.findViewById(R.id.categoryTextView)
         val recipeArea : TextView = row.findViewById(R.id.areaTextView)
@@ -48,7 +47,7 @@ class FavoritesAdapter(
         val heartBtn: ImageButton = itemView.findViewById(R.id.btnHeartFav)
         init {
             itemView.setOnClickListener {
-                listner.onItemClicked(adapterPosition)
+                listener.onItemClicked(adapterPosition)
             }
         }
 
@@ -71,6 +70,7 @@ class FavoritesAdapter(
             Glide.with(holder.itemView.context)
                 .load(item.recipeImg)
                 .transform(RoundedCorners(30))
+                .placeholder(R.drawable.placeholder)
                 .into(holder.recipeImg)
 
             holder.heartBtn.setOnClickListener {
@@ -87,6 +87,7 @@ class FavoritesAdapter(
     ) {
         val builder = AlertDialog.Builder(context)
         builder.apply {
+            setTitle("Remove item from favorites")
             setMessage(context.getString(R.string.remove_favorites_confirmation))
             setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
                 Toast.makeText(context,

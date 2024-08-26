@@ -17,6 +17,7 @@
         android:alpha="0.7"
         android:background="@drawable/rounded_button"
         android:text="Button"
+        android:textAllCaps="false"
         android:textColor="@color/white" />
 
 </LinearLayout>
