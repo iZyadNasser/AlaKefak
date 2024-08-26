@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
+import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.ErrorStates
 import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
 import com.example.alakefak.ui.authflow.FormUtils.validEmail
@@ -40,6 +42,18 @@ class RegisterFragment : Fragment() {
         val viewModelFactory = RegisterFragmentViewModelFactory(database)
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterFragmentViewModel::class.java]
         initializeViews()
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (AuthActivity.signedOut) {
+                    requireActivity().finish()
+                } else {
+                    isEnabled = false
+                    requireActivity().onBackPressed()
+                }
+            }
+        })
+
         return binding.root
     }
 

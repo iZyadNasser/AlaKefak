@@ -1,6 +1,7 @@
 package com.example.alakefak.ui.appflow.home
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,6 +21,8 @@ import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.appflow.about.AboutFragment
 import com.example.alakefak.ui.appflow.details.DetailsFragment
 import com.example.alakefak.ui.authflow.AuthActivity
+import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.KEY_IS_LOGGED_IN
+import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.PREFS_NAME
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
@@ -230,8 +233,12 @@ class HomeFragment : Fragment() {
 
 
     private fun navigateToRegisterFragment() {
+        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPrefs.edit()
+        editor.putBoolean(KEY_IS_LOGGED_IN, false)
+        editor.apply()
         val intent = Intent(requireActivity(), AuthActivity::class.java)
-        intent.putExtra("key", true)
+        intent.putExtra(AuthActivity.SIGN_OUT_CHECK_INTENT_KEY, true)
         startActivity(intent)
         requireActivity().finish()
     }
