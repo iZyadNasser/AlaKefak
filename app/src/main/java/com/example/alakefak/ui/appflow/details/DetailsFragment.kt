@@ -1,5 +1,7 @@
 package com.example.alakefak.ui.appflow.details
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.graphics.drawable.Drawable
@@ -7,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -142,8 +145,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private fun handleHeartState() {
         if (meal.isFavorite) {
             binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
+            animateHeart(binding.btnSave)
         } else {
             binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+            animateHeart(binding.btnSave)
         }
 
         handleFavButtonOnClick()
@@ -156,27 +161,43 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             } else {
                 meal.isFavorite = true
                 binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
+                animateHeart(binding.btnSave)
                 viewModel.addToFav(meal)
             }
         }
     }
+
     private fun showFavoriteConfirmationDialogue() {
         val builder = AlertDialog.Builder(context)
         builder.apply {
             setTitle("Remove item from favorites")
             setMessage(context.getString(R.string.remove_favorites_confirmation))
             setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(context,
-                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.removed_from_favorites),
+                    Toast.LENGTH_SHORT
+                ).show()
                 dialog.dismiss()
                 meal.isFavorite = false
                 binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+                animateHeart(binding.btnSave)
                 viewModel.removeFromFav(meal)
             }
             setNegativeButton(R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
             show()
+        }
+    }
+
+    private fun animateHeart(heartBtn: ImageButton) {
+        val scaleX = ObjectAnimator.ofFloat(heartBtn, "scaleX", 0.8f, 1.2f, 1.0f)
+        val scaleY = ObjectAnimator.ofFloat(heartBtn, "scaleY", 0.8f, 1.2f, 1.0f)
+        AnimatorSet().apply {
+            playTogether(scaleX, scaleY)
+            duration = 300
+            start()
         }
     }
     private fun handleReadMoreOnClick() {
