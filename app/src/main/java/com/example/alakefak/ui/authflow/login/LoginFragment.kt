@@ -16,12 +16,14 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
-import com.example.alakefak.ui.authflow.FormUtils
+import com.example.alakefak.ui.authflow.AuthActivity
+import com.example.alakefak.ui.authflow.Utils
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginFragmentViewModel
     private val args: LoginFragmentArgs by navArgs()
+    private val navOptions = AuthActivity.navOptions
 
     companion object {
         const val PREFS_NAME = "user_prefs"
@@ -52,7 +54,7 @@ class LoginFragment : Fragment() {
 //                signIn()
                 val intent = Intent(activity, RecipeActivity::class.java)
                 intent.putExtra("source", "login")
-                intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
+                intent.putExtra(Utils.INTENT_KEY, viewModel.user.value)
                 startActivity(intent)
                 activity?.finish()
             }

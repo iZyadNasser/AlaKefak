@@ -6,20 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alakefak.R
-import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.ActivityRecipeBinding
 import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
 import com.example.alakefak.ui.appflow.profile.ProfileFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
-import com.example.alakefak.ui.authflow.FormUtils
-import com.example.alakefak.ui.authflow.login.LoginFragment
-import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.KEY_IS_LOGGED_IN
-import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.PREFS_NAME
-import com.example.alakefak.ui.authflow.splash.SplashFragment
+import com.example.alakefak.ui.authflow.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.Gson
 
 class RecipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecipeBinding
@@ -29,10 +23,16 @@ class RecipeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, HomeFragment())
+            .addToBackStack("home")
+            .setReorderingAllowed(true)
+            .commit()
+
         val src = intent.getStringExtra("source")
 
         if (src == "login") {
-            val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
+            val user = intent.getParcelableExtra<User>(Utils.INTENT_KEY)
             curUser = user
             val sharedPrefs = getSharedPreferences("user", Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()
@@ -57,28 +57,46 @@ class RecipeActivity : AppCompatActivity() {
                 R.id.home -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, HomeFragment())
+                        .addToBackStack("home")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.fav -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, FavoritesFragment())
+                        .addToBackStack("fav")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, ProfileFragment())
+                        .addToBackStack("profile")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.search -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, SearchFragment())
+                        .addToBackStack("search")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 else -> false
+            }
+        }
+
+        supportFragmentManager.addOnBackStackChangedListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+            when (fragment) {
+                is HomeFragment -> navView.menu.findItem(R.id.home).isChecked = true
+                is FavoritesFragment -> navView.menu.findItem(R.id.fav).isChecked = true
+                is ProfileFragment -> navView.menu.findItem(R.id.profile).isChecked = true
+                is SearchFragment -> navView.menu.findItem(R.id.search).isChecked = true
             }
         }
     }
@@ -88,6 +106,7 @@ class RecipeActivity : AppCompatActivity() {
         var users: List<User>? = null
         var curUser: User? = null
         var lastPressedButton: Button? = null
+        var curFragment: String = "home"
     }
 
 }

@@ -15,7 +15,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.example.alakefak.R
@@ -23,10 +26,8 @@ import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentDetailsBinding
 import com.example.alakefak.ui.appflow.home.HomeFragment
-import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.Volley
+import com.example.alakefak.ui.authflow.Utils
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -168,26 +169,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun showFavoriteConfirmationDialogue() {
-        val builder = AlertDialog.Builder(context)
-        builder.apply {
-            setTitle("Remove item from favorites")
-            setMessage(context.getString(R.string.remove_favorites_confirmation))
-            setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(
-                    context,
-                    context.getString(R.string.removed_from_favorites),
-                    Toast.LENGTH_SHORT
-                ).show()
-                dialog.dismiss()
-                meal.isFavorite = false
-                binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
-                animateHeart(binding.btnSave)
-                viewModel.removeFromFav(meal)
-            }
-            setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
-            show()
+        Utils.showSignOutDialog(
+            context = requireContext(),
+            title = getString(R.string.remove_item_from_favorites),
+            message = getString(R.string.remove_favorites_confirmation),
+            positiveButtonText = getString(R.string.remove),
+            negativeButtonText = getString(R.string.cancel)
+        ) {
+            meal.isFavorite = false
+            binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+            animateHeart(binding.btnSave)
+            viewModel.removeFromFav(meal)
         }
     }
 
@@ -201,16 +193,41 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
     private fun handleReadMoreOnClick() {
+        setupReadMoreButton()
+
         binding.readmore.setOnClickListener {
-            if (isExpanded) {
-                binding.instructions.maxLines = 4
-                binding.readmore.text = getString(R.string.Read_more)
-            } else {
-                binding.instructions.maxLines = Int.MAX_VALUE
-                binding.readmore.text = getString(R.string.read_less)
-            }
-            isExpanded = !isExpanded
+            toggleReadMore()
         }
+    }
+
+    private fun setupReadMoreButton() {
+        binding.instructions.post {
+            val lineCount = binding.instructions.lineCount
+            if (lineCount < 4) {
+                binding.readmore.visibility = View.GONE
+            } else {
+                binding.readmore.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun toggleReadMore() {
+        if (isExpanded) {
+            collapseText()
+        } else {
+            expandText()
+        }
+        isExpanded = !isExpanded
+    }
+
+    private fun collapseText() {
+        binding.instructions.maxLines = 4
+        binding.readmore.text = getString(R.string.Read_more)
+    }
+
+    private fun expandText() {
+        binding.instructions.maxLines = Int.MAX_VALUE
+        binding.readmore.text = getString(R.string.read_less)
     }
 
 

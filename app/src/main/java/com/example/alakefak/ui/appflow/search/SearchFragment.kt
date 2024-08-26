@@ -87,7 +87,7 @@ class SearchFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     binding.resultsTextView.text = getString(R.string.empty_text)
-                    binding.textViewEmptySearch.text = getString(R.string.empty_fav)
+                    binding.textViewEmptySearch.text = getString(R.string.search_for_recipes)
                     binding.textViewEmptySearch.visibility = View.VISIBLE
                     binding.searchLottieAnimationView.visibility = View.VISIBLE
                     binding.searchLottieAnimationView.playAnimation()

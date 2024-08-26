@@ -18,10 +18,10 @@ import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
 import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.ErrorStates
-import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
-import com.example.alakefak.ui.authflow.FormUtils.validEmail
-import com.example.alakefak.ui.authflow.FormUtils.validPassword
-import com.example.alakefak.ui.authflow.FormUtils.validUsername
+import com.example.alakefak.ui.authflow.Utils.validConfirmPassword
+import com.example.alakefak.ui.authflow.Utils.validEmail
+import com.example.alakefak.ui.authflow.Utils.validPassword
+import com.example.alakefak.ui.authflow.Utils.validUsername
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
@@ -32,6 +32,7 @@ class RegisterFragment : Fragment() {
     private lateinit var passwordView: TextInputLayout
     private lateinit var confirmPasswordView: TextInputLayout
     private lateinit var registerBtn: Button
+    private val navOptions = AuthActivity.navOptions
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -110,7 +111,8 @@ class RegisterFragment : Fragment() {
                         RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
                             emailView.editText?.text.toString(),
                             passwordView.editText?.text.toString()
-                        )
+                        ),
+                        navOptions
                     )
                 }
 
@@ -165,7 +167,8 @@ class RegisterFragment : Fragment() {
                 RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(
                     "",
                     ""
-                )
+                ),
+                navOptions
             )
         }
         registerBtn.setOnClickListener {

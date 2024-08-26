@@ -1,5 +1,6 @@
 package com.example.alakefak.ui.appflow.home
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -21,6 +22,7 @@ import com.example.alakefak.ui.appflow.RecipeActivity
 import com.example.alakefak.ui.appflow.about.AboutFragment
 import com.example.alakefak.ui.appflow.details.DetailsFragment
 import com.example.alakefak.ui.authflow.AuthActivity
+import com.example.alakefak.ui.authflow.Utils
 import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.KEY_IS_LOGGED_IN
 import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.PREFS_NAME
 
@@ -105,6 +107,7 @@ class HomeFragment : Fragment() {
             .commit()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setStatsObservers(
         categoriesRecyclerViewAdapter: CategoriesAdapter,
         recipesRecyclerViewAdapter: RecipesAdapter
@@ -142,6 +145,9 @@ class HomeFragment : Fragment() {
 
         viewModel.notifyDataChange.observe(viewLifecycleOwner) {
             recipesRecyclerViewAdapter.updateItems(viewModel.recipes)
+        }
+        viewModel.favAdded.observe(viewLifecycleOwner) {
+            viewModel.getNewFavs()
         }
     }
 
@@ -199,23 +205,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun showSignOutDialogue() {
-        val builder = context?.let { AlertDialog.Builder(it) }
-        builder?.apply {
-            setMessage(getString(R.string.sign_out_confirmation))
-            setPositiveButton(R.string.sign_out) { dialog, _ ->
-                Toast.makeText(
-                    context,
-                    getString(R.string.signed_out_successfully), Toast.LENGTH_SHORT
-                ).show()
-                dialog.dismiss()
-                navigateToRegisterFragment()
-            }
-            setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                dialog.dismiss()
-            }
-            show()
+        Utils.showSignOutDialog(
+            context = requireContext(),
+            title = getString(R.string.sign_out),
+            message = getString(R.string.sign_out_confirmation),
+            positiveButtonText = getString(R.string.sign_out),
+            negativeButtonText = getString(R.string.cancel),
+        ) {
+            navigateToRegisterFragment()
         }
-
     }
 
     private fun navigateToAboutFragment() {
