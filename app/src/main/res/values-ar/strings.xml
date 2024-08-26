@@ -79,8 +79,9 @@
     <string name="meal_name">اسم الوصفة\n</string>
     <string name="read_less">اقرأ أقل</string>
     <string name="ala_kefak_logo">شعار على كيفك</string>
-    <string name="search_for_recipes">ابحث عن وصفات، ، أو بلد النشأة.</string>
+    <string name="search_for_recipes">ابحث عن وصفات،وجبات ،أو بلد النشأة.</string>
     <string name="empty_fav">قائمة المفضلات لديك فارغة. ابدأ باستكشاف الوصفات وأضف مفضلاتك هنا!</string>
     <string name="oops">عذرًا! لم نتمكن من العثور على أي تطابقات.</string>
     <string name="check_out_amazing_recipes">تصفح الوجبات المذهلة!</string>
+    <string name="remove_item_from_favorites">حذف الوصفة من المفضلة</string>
 </resources>

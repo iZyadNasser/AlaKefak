@@ -18,10 +18,10 @@ import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.FragmentRegisterBinding
 import com.example.alakefak.ui.authflow.AuthActivity
 import com.example.alakefak.ui.authflow.ErrorStates
-import com.example.alakefak.ui.authflow.FormUtils.validConfirmPassword
-import com.example.alakefak.ui.authflow.FormUtils.validEmail
-import com.example.alakefak.ui.authflow.FormUtils.validPassword
-import com.example.alakefak.ui.authflow.FormUtils.validUsername
+import com.example.alakefak.ui.authflow.Utils.validConfirmPassword
+import com.example.alakefak.ui.authflow.Utils.validEmail
+import com.example.alakefak.ui.authflow.Utils.validPassword
+import com.example.alakefak.ui.authflow.Utils.validUsername
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {

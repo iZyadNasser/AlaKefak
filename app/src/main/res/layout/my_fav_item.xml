@@ -25,21 +25,20 @@
             android:id="@+id/circleCardFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            
+
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_circle"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btnHeartFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
             android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_heart_filled"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,8 +63,10 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_small"
+            android:drawablePadding="4dp"
             android:text="@string/vegetarian"
             android:textSize="@dimen/text_size_small"
+            app:drawableStartCompat="@drawable/category_icon_orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
             app:layout_constraintTop_toBottomOf="@id/nameTextView" />
@@ -77,11 +78,13 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_small"
+            android:drawablePadding="4dp"
             android:text="@string/italian"
             android:textSize="@dimen/text_size_small"
+            app:drawableStartCompat="@drawable/location_icon_orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/recipeFavImageView"
-            app:layout_constraintTop_toBottomOf="@id/categoryTextView"/>
+            app:layout_constraintTop_toBottomOf="@id/categoryTextView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

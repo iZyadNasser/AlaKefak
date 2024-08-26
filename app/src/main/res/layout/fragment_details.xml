@@ -16,9 +16,9 @@
             android:id="@+id/lottieAnimationView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:lottie_rawRes="@raw/loading_anim"
+            app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_autoPlay="true" />
+            app:lottie_rawRes="@raw/loading_anim" />
 
 
         <com.google.android.material.appbar.AppBarLayout
@@ -59,13 +59,14 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="45dp">
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="44dp">
 
                 <TextView
                     android:id="@+id/foodname"
@@ -81,7 +82,6 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <LinearLayout
                     android:id="@+id/mealinfo"
@@ -100,10 +100,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="15dp"
-                        android:drawablePadding="5dp"
+                        android:layout_marginStart="16dp"
+                        android:drawablePadding="4dp"
                         android:text="@string/category"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onSurface_highContrast"
+                        android:textSize="16sp"
                         app:drawableLeftCompat="@drawable/baseline_category_24" />
 
                     <TextView
@@ -111,10 +112,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="15dp"
-                        android:drawablePadding="5dp"
+                        android:layout_marginStart="16dp"
+                        android:drawablePadding="4dp"
                         android:text="@string/area"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onSurface_highContrast"
+                        android:textSize="16sp"
                         app:drawableStartCompat="@drawable/baseline_location_on_24" />
 
                 </LinearLayout>
@@ -123,8 +125,8 @@
                     android:id="@+id/ingredient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:includeFontPadding="false"
                     android:text="@string/ingredients"
@@ -135,28 +137,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/mealinfo" />
 
-                <TextView
-                    android:id="@+id/tv_instructions_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/orange"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ingredient" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="360dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="-32dp"
                     android:textColor="@color/orange"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_instructions_content"
+                    app:layout_constraintTop_toBottomOf="@id/ingredient"
                     tools:listitem="@layout/item_ingredient" />
 
                 <TextView
@@ -169,7 +160,7 @@
                     android:maxLines="4"
                     android:text="@string/instructions"
                     android:textColor="@color/orange"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -185,6 +176,7 @@
                     android:ellipsize="end"
                     android:maxLines="4"
                     android:text="@string/instructions"
+                    android:textAppearance="?attr/textAppearanceBody1"
                     android:textSize="16sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -203,7 +195,7 @@
                     android:textColor="@color/orange"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:visibility="visible"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/instructions" />
 
@@ -223,7 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -236,7 +228,7 @@
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/Youtube"
                 android:minWidth="100dp"
-                android:minHeight="60dp"
+                android:minHeight="64dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_ondemand_video_24" />
 
@@ -244,9 +236,9 @@
 
         <ImageButton
             android:id="@+id/btnSave"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/bg_btn"
             android:baselineAlignBottom="false"
             android:clickable="true"

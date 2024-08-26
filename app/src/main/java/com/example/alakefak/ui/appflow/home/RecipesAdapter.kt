@@ -2,6 +2,7 @@ package com.example.alakefak.ui.appflow.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.alakefak.R
 import com.example.alakefak.data.source.remote.model.Meal
+import com.example.alakefak.ui.authflow.Utils
 
 class RecipesAdapter(
     private var myList: List<Meal>,
@@ -74,23 +76,17 @@ class RecipesAdapter(
         item: Meal,
         context: Context
     ) {
-        val builder = AlertDialog.Builder(context)
-        builder.apply {
-            setTitle("Remove item from favorites")
-            setMessage(context.getString(R.string.remove_favorites_confirmation))
-            setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(context,
-                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-                item.isFavorite = false
-                animateHeart(holder)
-                holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
-                viewModel.deleteFav(item)
-            }
-            setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
-            show()
+        Utils.showSignOutDialog(
+            context = context,
+            title = context.getString(R.string.remove_item_from_favorites),
+            message = context.getString(R.string.remove_favorites_confirmation),
+            positiveButtonText = context.getString(R.string.remove),
+            negativeButtonText = context.getString(R.string.cancel)
+        ) {
+            item.isFavorite = false
+            animateHeart(holder)
+            holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
+            viewModel.deleteFav(item)
         }
     }
     private fun animateHeart(holder: MyViewHolder) {
@@ -103,6 +99,7 @@ class RecipesAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<Meal>) {
         myList = newItems
         notifyDataSetChanged()
