@@ -23,6 +23,12 @@ class RecipeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, HomeFragment())
+            .addToBackStack("home")
+            .setReorderingAllowed(true)
+            .commit()
+
         val src = intent.getStringExtra("source")
 
         if (src == "login") {
@@ -51,28 +57,46 @@ class RecipeActivity : AppCompatActivity() {
                 R.id.home -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, HomeFragment())
+                        .addToBackStack("home")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.fav -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, FavoritesFragment())
+                        .addToBackStack("fav")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, ProfileFragment())
+                        .addToBackStack("profile")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 R.id.search -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, SearchFragment())
+                        .addToBackStack("search")
+                        .setReorderingAllowed(true)
                         .commit()
                     true
                 }
                 else -> false
+            }
+        }
+
+        supportFragmentManager.addOnBackStackChangedListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+            when (fragment) {
+                is HomeFragment -> navView.menu.findItem(R.id.home).isChecked = true
+                is FavoritesFragment -> navView.menu.findItem(R.id.fav).isChecked = true
+                is ProfileFragment -> navView.menu.findItem(R.id.profile).isChecked = true
+                is SearchFragment -> navView.menu.findItem(R.id.search).isChecked = true
             }
         }
     }
@@ -82,6 +106,7 @@ class RecipeActivity : AppCompatActivity() {
         var users: List<User>? = null
         var curUser: User? = null
         var lastPressedButton: Button? = null
+        var curFragment: String = "home"
     }
 
 }

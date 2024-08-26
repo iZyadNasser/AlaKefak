@@ -12,7 +12,7 @@ import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
+class HomeViewModel(dao: FavoritesDatabaseDao) : ViewModel() {
     var selectedFilter = NO_FILTER
     var recipes = mutableListOf<Meal>()
 
@@ -65,7 +65,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         }
     }
 
-    fun getAllRecipesFromAPI() {
+    private fun getAllRecipesFromAPI() {
         viewModelScope.launch {
             currentlyLoading = true
             _recipesLoading.value = true
@@ -80,7 +80,11 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 if (response != null) {
                     for (item in response) {
                         if (item != null) {
-                            if (favRepo.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
+                            if (favRepo.findItem(
+                                    item.idMeal!!,
+                                    RecipeActivity.curUser?.id!!
+                                ) != null
+                            ) {
                                 item.isFavorite = true
                             }
                             recipes.add(item)
@@ -130,7 +134,12 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     fun deleteFav(meal: Meal) {
         viewModelScope.launch {
             meal.isFavorite = false
-            favRepo.deleteFavorite(favRepo.findItem(meal.idMeal ?: "",RecipeActivity.curUser?.id!!)!!)
+            favRepo.deleteFavorite(
+                favRepo.findItem(
+                    meal.idMeal ?: "",
+                    RecipeActivity.curUser?.id!!
+                )!!
+            )
         }
     }
 
