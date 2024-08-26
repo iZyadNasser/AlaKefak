@@ -12,12 +12,12 @@
     <item
         android:id="@+id/fav"
         android:enabled="true"
-        android:icon="@drawable/hearts"
+        android:icon="@drawable/fav_ic"
         android:title="@string/favourites"/>
     <item
         android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/account_icon"
+        android:icon="@drawable/user_circle"
         android:title="@string/profile" />
 
 </menu>
