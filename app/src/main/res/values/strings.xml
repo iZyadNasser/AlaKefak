@@ -92,6 +92,6 @@
     <string name="empty_fav">Your favorites list is empty. Start exploring recipes and add your favorites here!</string>
     <string name="oops">Oops! We couldn\'t find any matches.</string>
     <string name="check_out_amazing_recipes">Check Out Amazing Recipes!</string>
-    <string name="remove_item_from_favorites">Remove item from favorites</string>
+    <string name="remove_item_from_favorites">Remove item from favourites</string>
 
 </resources>
