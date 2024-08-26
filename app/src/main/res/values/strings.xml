@@ -67,9 +67,9 @@
     <string name="sign_out_confirmation">Are you sure you want to sign out?</string>
     <string name="signed_out_successfully">Signed out successfully</string>
     <string name="cancel">Cancel</string>
-    <string name="remove_favorites_confirmation">Are you sure you want to remove this item from favorites?</string>
+    <string name="remove_favorites_confirmation">Are you sure you want to remove this item from favourites?</string>
     <string name="remove">Remove</string>
-    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="removed_from_favorites">Removed from favourites</string>
     <string name="categories">Categories</string>
     <string name="foodname">Food Name </string>
     <string name="category">Category</string>
