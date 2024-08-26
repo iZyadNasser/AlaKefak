@@ -15,7 +15,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.example.alakefak.R
@@ -23,10 +26,7 @@ import com.example.alakefak.data.source.local.database.FavoritesDatabase
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.databinding.FragmentDetailsBinding
 import com.example.alakefak.ui.appflow.home.HomeFragment
-import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.Volley
 import com.example.alakefak.ui.authflow.Utils
 
 
@@ -141,6 +141,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
+
+
     private fun handleHeartState() {
         if (meal.isFavorite) {
             binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
@@ -191,16 +193,41 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
     private fun handleReadMoreOnClick() {
+        setupReadMoreButton()
+
         binding.readmore.setOnClickListener {
-            if (isExpanded) {
-                binding.instructions.maxLines = 4
-                binding.readmore.text = getString(R.string.Read_more)
-            } else {
-                binding.instructions.maxLines = Int.MAX_VALUE
-                binding.readmore.text = getString(R.string.read_less)
-            }
-            isExpanded = !isExpanded
+            toggleReadMore()
         }
+    }
+
+    private fun setupReadMoreButton() {
+        binding.instructions.post {
+            val lineCount = binding.instructions.lineCount
+            if (lineCount < 4) {
+                binding.readmore.visibility = View.GONE
+            } else {
+                binding.readmore.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun toggleReadMore() {
+        if (isExpanded) {
+            collapseText()
+        } else {
+            expandText()
+        }
+        isExpanded = !isExpanded
+    }
+
+    private fun collapseText() {
+        binding.instructions.maxLines = 4
+        binding.readmore.text = getString(R.string.Read_more)
+    }
+
+    private fun expandText() {
+        binding.instructions.maxLines = Int.MAX_VALUE
+        binding.readmore.text = getString(R.string.read_less)
     }
 
 
