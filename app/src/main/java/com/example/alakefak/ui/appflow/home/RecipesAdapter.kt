@@ -60,6 +60,7 @@ class RecipesAdapter(
 
                 } else {
                     item.isFavorite = true
+                    animateHeart(holder)
                     holder.heartBtn.setImageResource(R.drawable.ic_heart_filled)
                     viewModel.insertFav(item)
                 }
@@ -82,6 +83,7 @@ class RecipesAdapter(
                     context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
                 item.isFavorite = false
+                animateHeart(holder)
                 holder.heartBtn.setImageResource(R.drawable.ic_heart_outline)
                 viewModel.deleteFav(item)
             }
