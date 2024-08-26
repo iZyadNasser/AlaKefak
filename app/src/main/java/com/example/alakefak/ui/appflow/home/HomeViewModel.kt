@@ -24,8 +24,6 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     val categories: LiveData<List<String>>
         get() = _categories
 
-
-
     private var _notifyDataChange = MutableLiveData(false)
     val notifyDataChange: LiveData<Boolean>
         get() = _notifyDataChange
@@ -45,7 +43,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
 
     init {
         getCategories()
-        getAllRecipesFromAPI()
+//        getAllRecipesFromAPI()
         getAllFavs()
     }
 
@@ -68,7 +66,6 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     }
 
     fun getAllRecipesFromAPI() {
-        val newRecipes = mutableListOf<Meal>()
         viewModelScope.launch {
             currentlyLoading = true
             _recipesLoading.value = true
@@ -76,7 +73,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 if (favRepo.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
                     item.isFavorite = true
                 }
-                newRecipes.add(item)
+                recipes.add(item)
             }
             for (c in 'a'..'z') {
                 val response = repository.listMealsByFirstLetter(c).meals
@@ -116,7 +113,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
                 if (reducedMeals != null) {
                     for (meal in reducedMeals) {
                         val item = repository.lookupById(meal?.idMeal!!).meals?.get(0)!!
-                        if (favRepo.findItem(item?.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
+                        if (favRepo.findItem(item.idMeal!!, RecipeActivity.curUser?.id!!) != null) {
                             item.isFavorite = true
                         }
                         recipes.add(item)
@@ -152,9 +149,18 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         }
     }
 
-    fun resetApi() {
-        recipes = mutableListOf()
-        getAllRecipesFromAPI()
+    private fun resetApi() {
+        recipes = ArrayList()
+    }
+
+    fun getNewFavs() {
+        if (selectedFilter == NO_FILTER) {
+            resetApi()
+            getAllRecipesFromAPI()
+        } else {
+            resetApi()
+            getFilteredItems()
+        }
     }
 
     companion object {

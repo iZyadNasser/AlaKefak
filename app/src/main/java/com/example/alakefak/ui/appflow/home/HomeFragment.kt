@@ -147,7 +147,7 @@ class HomeFragment : Fragment() {
             recipesRecyclerViewAdapter.updateItems(viewModel.recipes)
         }
         viewModel.favAdded.observe(viewLifecycleOwner) {
-            viewModel.resetApi()
+            viewModel.getNewFavs()
         }
     }
 
