@@ -2,6 +2,7 @@ package com.example.alakefak.ui.appflow.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -98,6 +99,7 @@ class RecipesAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<Meal>) {
         myList = newItems
         notifyDataSetChanged()

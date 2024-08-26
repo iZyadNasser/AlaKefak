@@ -1,5 +1,6 @@
 package com.example.alakefak.ui.appflow.favorites
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -114,6 +115,7 @@ class FavoritesAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setupItems(newItems: List<FavoritesInfo>) {
         items = newItems
         notifyDataSetChanged()
