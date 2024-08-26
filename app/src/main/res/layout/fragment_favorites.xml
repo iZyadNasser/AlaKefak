@@ -37,15 +37,15 @@
             tools:listitem="@layout/my_fav_item" />
 
         <TextView
-            android:id="@+id/emptyTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewEmptyFav"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Your favorites list is empty. Start exploring recipes and add your favorites here!"
-            android:textSize="20sp"
-            android:visibility="visible"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="140dp"
+            android:text="@string/empty_fav"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/favTextView" />
@@ -54,11 +54,14 @@
             android:id="@+id/favoritesLottieAnimationView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:lottie_rawRes="@raw/heart_anim"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            app:layout_constraintTop_toBottomOf="@id/emptyTextView"
+            android:layout_marginTop="120dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/favTextView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/heart_anim" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

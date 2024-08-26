@@ -74,4 +74,7 @@
         <item name="android:textStyle">bold</item>
         <item name="drawableStartCompat">@drawable/orange_bullet_icon</item>
     </style>
+    <style name="SearchViewHintStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorHint">#8E8989</item>
+    </style>
 </resources>

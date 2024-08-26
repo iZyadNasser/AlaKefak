@@ -61,12 +61,12 @@ class FavoritesFragment : Fragment() {
 
         viewModel.favorite.observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty()) {
-                binding.emptyTextView.visibility = View.VISIBLE
+                binding.textViewEmptyFav.visibility = View.VISIBLE
                 binding.favoritesLottieAnimationView.visibility = View.VISIBLE
                 binding.favoritesLottieAnimationView.playAnimation()
 
             } else {
-                binding.emptyTextView.visibility = View.GONE
+                binding.textViewEmptyFav.visibility = View.GONE
                 binding.favoritesLottieAnimationView.cancelAnimation()
                 binding.favoritesLottieAnimationView.visibility = View.GONE
                 adapter.setupItems(it)
@@ -98,7 +98,7 @@ class FavoritesFragment : Fragment() {
 
     private fun checkForEmptyState() {
         if (adapter.itemCount == 0) {
-            binding.emptyTextView.visibility = View.VISIBLE
+            binding.textViewEmptyFav.visibility = View.VISIBLE
             binding.favoritesLottieAnimationView.visibility = View.VISIBLE
             binding.favoritesLottieAnimationView.playAnimation()
         }

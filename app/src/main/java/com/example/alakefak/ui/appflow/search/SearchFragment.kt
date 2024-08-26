@@ -41,10 +41,21 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.searchResults.observe(viewLifecycleOwner, Observer {
-            adapter.setItems(it.toList())
-        })
+        viewModel.searchResults.observe(viewLifecycleOwner, Observer { results ->
+            adapter.setItems(results.toList())
 
+
+            if (results.isEmpty()) {
+                binding.textViewEmptySearch.visibility = View.VISIBLE
+                binding.searchLottieAnimationView.visibility = View.VISIBLE
+                binding.searchLottieAnimationView.playAnimation()
+            } else {
+                binding.textViewEmptySearch.visibility = View.GONE
+                binding.searchLottieAnimationView.cancelAnimation()
+                binding.searchLottieAnimationView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            }
+        })
         adapter.setCommunicator(object : SearchFragmentRecyclerViewAdapter.Communicator {
             override fun onItemClicked(position: Int) {
                 val clickedItem = adapter.getItem(position)
@@ -53,7 +64,12 @@ class SearchFragment : Fragment() {
                 }
                 clickedMeal = bundle
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.enter_anim, R.anim.exit_anim, R.anim.pop_enter_anim, R.anim.pop_exit_anim)
+                    .setCustomAnimations(
+                        R.anim.enter_anim,
+                        R.anim.exit_anim,
+                        R.anim.pop_enter_anim,
+                        R.anim.pop_exit_anim
+                    )
                     .replace(R.id.nav_host_fragment, DetailsFragment())
                     .addToBackStack(null)
                     .commit()
@@ -71,8 +87,19 @@ class SearchFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     binding.resultsTextView.text = getString(R.string.empty_text)
+                    binding.textViewEmptySearch.text = getString(R.string.empty_fav)
+                    binding.textViewEmptySearch.visibility = View.VISIBLE
+                    binding.searchLottieAnimationView.visibility = View.VISIBLE
+                    binding.searchLottieAnimationView.playAnimation()
+                    binding.recyclerView.visibility = View.GONE
                 } else {
+
                     binding.resultsTextView.text = getString(R.string.results)
+                    binding.textViewEmptySearch.text = getString(R.string.oops)
+                    binding.textViewEmptySearch.visibility = View.GONE
+                    binding.searchLottieAnimationView.cancelAnimation()
+                    binding.searchLottieAnimationView.visibility = View.GONE
+                    binding.recyclerView.visibility = View.VISIBLE
                 }
                 viewModel.search(newText ?: "")
                 return false

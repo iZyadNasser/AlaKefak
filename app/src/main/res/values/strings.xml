@@ -30,7 +30,6 @@
     <string name="this_account_already_exists_do_you_want_to_sign_in">This account already exists! Do you want to sign in?</string>
     <string name="incorrect_email_password_please_try_again">Incorrect email/password, please try again.</string>
     <string name="search_for_a_recipe">Search for a recipe</string>
-    <string name="search_recipe_by_name_category_or_area">Search recipe by name, category or area...</string>
     <string name="home">Home</string>
     <string name="favourites">Favourites</string>
     <string name="about">About</string>
@@ -43,7 +42,7 @@
     <string name="your_favourite_cuisine">Your favourite cuisine</string>
     <string name="search">Search</string>
     <string name="hello_user">Hello</string>
-    <string name="check_amazing_recipes">Check Amazing Recipes</string>
+    <string name="check_amazing_recipes">Check out Amazing Recipes!</string>
     <string name="about_us">About Us</string>
     <string name="app_description"><b>Ala Kefak</b> is a recipes application that provides users with a variety of recipes, along with their ingredients and instructions.</string>
     <string name="mission_desc">- Our mission is to make cooking at home easier and more enjoyable by providing users with a wide range of delicious recipes to choose from.</string>
@@ -89,5 +88,9 @@
     <string name="Youtube">youtube</string>
     <string name="read_less">Read less</string>
     <string name="ala_kefak_logo">Ala Kefak logo</string>
+    <string name="search_for_recipes">Search for recipes, categories, or cuisines.</string>
+    <string name="empty_fav">Your favorites list is empty. Start exploring recipes and add your favorites here!</string>
+    <string name="oops">Oops! We couldn\'t find any matches.</string>
+    <string name="check_out_amazing_recipes">Check Out Amazing Recipes!</string>
 
 </resources>

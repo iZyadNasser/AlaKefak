@@ -71,4 +71,8 @@
     <string name="Youtube">youtube</string>
     <string name="read_less">Read Less</string>
     <string name="ala_kefak_logo">Ala Kefak logo</string>
+    <string name="search_for_recipes">Search for recipes, categories, or cuisines.</string>
+    <string name="empty_fav">Your favorites list is empty. Start exploring recipes and add your favorites here!</string>
+    <string name="oops">Oops! We couldn\'t find any matches.</string>
+    <string name="check_out_amazing_recipes">Check Out Amazing Recipes!</string>
 </resources>
