@@ -59,7 +59,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
+
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,10 +141,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="360dp"
                     android:layout_marginStart="20dp"
                     android:textColor="@color/orange"
-                    app:layout_constraintBottom_toTopOf="@id/instructionsTitle"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ingredient"
@@ -195,7 +195,7 @@
                     android:textColor="@color/orange"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:visibility="gone"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/instructions" />
 
