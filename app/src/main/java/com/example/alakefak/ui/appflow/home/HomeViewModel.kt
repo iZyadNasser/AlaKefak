@@ -10,7 +10,9 @@ import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
 import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 
 class HomeViewModel(dao: FavoritesDatabaseDao) : ViewModel() {
     var selectedFilter = NO_FILTER
@@ -43,13 +45,12 @@ class HomeViewModel(dao: FavoritesDatabaseDao) : ViewModel() {
 
     init {
         getCategories()
-//        getAllRecipesFromAPI()
         getAllFavs()
     }
 
     private fun getCategories() {
+        _categoriesLoading.value = true
         viewModelScope.launch {
-            _categoriesLoading.value = true
             val meals = repository.listCategories().meals
             val listOfCategories = mutableListOf<String>()
 
