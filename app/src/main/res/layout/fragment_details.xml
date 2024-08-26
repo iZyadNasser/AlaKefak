@@ -16,9 +16,9 @@
             android:id="@+id/lottieAnimationView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:lottie_rawRes="@raw/loading_anim"
+            app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_autoPlay="true" />
+            app:lottie_rawRes="@raw/loading_anim" />
 
 
         <com.google.android.material.appbar.AppBarLayout
@@ -101,6 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
+                        android:textColor="@color/md_theme_onSurface_highContrast"
                         android:drawablePadding="5dp"
                         android:text="@string/category"
                         android:textSize="14sp"
@@ -111,6 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textColor="@color/md_theme_onSurface_highContrast"
                         android:layout_marginStart="15dp"
                         android:drawablePadding="5dp"
                         android:text="@string/area"
@@ -182,11 +184,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:ellipsize="end"
-                    android:maxLines="4"
                     android:text="@string/instructions"
                     android:textSize="16sp"
                     android:textStyle="normal"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:maxLines="4"
+                    android:ellipsize="end"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/instructionsTitle" />
@@ -203,7 +206,7 @@
                     android:textColor="@color/orange"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/instructions" />
 
