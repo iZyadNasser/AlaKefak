@@ -2,6 +2,7 @@ package com.example.alakefak.ui.appflow.home
 
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
         if (item != null) {
             holder.categoryBtn.text = item
             if (item != viewModel.selectedFilter) {
-                holder.categoryBtn.alpha = 0.7F
+                holder.categoryBtn.setBackgroundColor(Color.parseColor("#8E8989"))
                 viewHolder = null
             } else {
                 holder.categoryBtn.alpha = 1F
@@ -36,14 +37,14 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
             }
 
             holder.categoryBtn.setOnClickListener {
-                viewHolder?.alpha = 0.7F
+                viewHolder?.setBackgroundColor(Color.parseColor("#8E8989"))
                 if (viewModel.selectedFilter != item) {
                     viewModel.selectedFilter = item
                     holder.categoryBtn.alpha = 1F
                     viewHolder = holder.categoryBtn
                 } else {
                     viewModel.selectedFilter = HomeViewModel.NO_FILTER
-                    holder.categoryBtn.alpha = 0.7F
+                    holder.categoryBtn.setBackgroundColor(Color.parseColor("#8E8989"))
                     viewHolder = null
                 }
                 viewModel.getFilteredItems()

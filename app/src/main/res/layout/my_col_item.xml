@@ -14,7 +14,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:alpha="0.7"
         android:background="@drawable/rounded_button"
         android:text="Button"
         android:textColor="@color/white" />
