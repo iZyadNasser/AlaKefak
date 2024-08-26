@@ -27,6 +27,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
+import com.example.alakefak.ui.authflow.Utils
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -140,8 +141,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
-
-
     private fun handleHeartState() {
         if (meal.isFavorite) {
             binding.btnSave.setImageResource(R.drawable.ic_heart_filled)
@@ -168,26 +167,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun showFavoriteConfirmationDialogue() {
-        val builder = AlertDialog.Builder(context)
-        builder.apply {
-            setTitle("Remove item from favorites")
-            setMessage(context.getString(R.string.remove_favorites_confirmation))
-            setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(
-                    context,
-                    context.getString(R.string.removed_from_favorites),
-                    Toast.LENGTH_SHORT
-                ).show()
-                dialog.dismiss()
-                meal.isFavorite = false
-                binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
-                animateHeart(binding.btnSave)
-                viewModel.removeFromFav(meal)
-            }
-            setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
-            show()
+        Utils.showSignOutDialog(
+            context = requireContext(),
+            title = getString(R.string.remove_item_from_favorites),
+            message = getString(R.string.remove_favorites_confirmation),
+            positiveButtonText = getString(R.string.remove),
+            negativeButtonText = getString(R.string.cancel)
+        ) {
+            meal.isFavorite = false
+            binding.btnSave.setImageResource(R.drawable.ic_heart_outline)
+            animateHeart(binding.btnSave)
+            viewModel.removeFromFav(meal)
         }
     }
 

@@ -6,20 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.alakefak.R
-import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.data.source.local.model.User
 import com.example.alakefak.databinding.ActivityRecipeBinding
 import com.example.alakefak.ui.appflow.favorites.FavoritesFragment
 import com.example.alakefak.ui.appflow.home.HomeFragment
 import com.example.alakefak.ui.appflow.profile.ProfileFragment
 import com.example.alakefak.ui.appflow.search.SearchFragment
-import com.example.alakefak.ui.authflow.FormUtils
-import com.example.alakefak.ui.authflow.login.LoginFragment
-import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.KEY_IS_LOGGED_IN
-import com.example.alakefak.ui.authflow.login.LoginFragment.Companion.PREFS_NAME
-import com.example.alakefak.ui.authflow.splash.SplashFragment
+import com.example.alakefak.ui.authflow.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.Gson
 
 class RecipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecipeBinding
@@ -32,7 +26,7 @@ class RecipeActivity : AppCompatActivity() {
         val src = intent.getStringExtra("source")
 
         if (src == "login") {
-            val user = intent.getParcelableExtra<User>(FormUtils.INTENT_KEY)
+            val user = intent.getParcelableExtra<User>(Utils.INTENT_KEY)
             curUser = user
             val sharedPrefs = getSharedPreferences("user", Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()
