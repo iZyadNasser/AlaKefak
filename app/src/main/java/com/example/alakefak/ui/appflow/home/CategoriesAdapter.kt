@@ -25,30 +25,31 @@ class CategoriesAdapter(private var items: List<String>, private val viewModel: 
         return MyViewHolder(col)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items.getOrNull(position)
         if (item != null) {
             holder.categoryBtn.text = item
             if (holder.categoryBtn == lastPressedButton) {
-                holder.categoryBtn.setBackgroundColor(Color.parseColor("#B0B0B0"))
+                holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button)
             }
             if (item != viewModel.selectedFilter) {
-                holder.categoryBtn.alpha = 0.7F
+                holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button)
             } else {
-                holder.categoryBtn.alpha = 1F
+                holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button_active)
             }
 
             holder.categoryBtn.setOnClickListener {
                 if (!HomeViewModel.currentlyLoading) {
-                    lastPressedButton?.setBackgroundColor(Color.parseColor("#8E8989"))
+                    holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button)
                     notifyDataSetChanged()
                     if (viewModel.selectedFilter != item) {
                         viewModel.selectedFilter = item
-                        holder.categoryBtn.alpha = 1F
+                        holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button_active)
                         lastPressedButton = holder.categoryBtn
                     } else {
                         viewModel.selectedFilter = HomeViewModel.NO_FILTER
-                        holder.categoryBtn.setBackgroundColor(Color.parseColor("#8E8989"))
+                        holder.categoryBtn.setBackgroundResource(R.drawable.rounded_button)
                         lastPressedButton = null
                     }
                     viewModel.getFilteredItems()
