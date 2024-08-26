@@ -38,10 +38,15 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
     val recipesLoading: LiveData<Boolean>
         get() = _recipesLoading
 
+    private var _favAdded = MutableLiveData<List<FavoritesInfo>>()
+    val favAdded: LiveData<List<FavoritesInfo>>
+        get() = _favAdded
+
 
     init {
-        getAllRecipesFromAPI()
         getCategories()
+        getAllRecipesFromAPI()
+        getAllFavs()
     }
 
     private fun getCategories() {
@@ -62,7 +67,7 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
         }
     }
 
-    private fun getAllRecipesFromAPI() {
+    fun getAllRecipesFromAPI() {
         val newRecipes = mutableListOf<Meal>()
         viewModelScope.launch {
             currentlyLoading = true
@@ -89,6 +94,12 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             _recipesLoading.value = false
             currentlyLoading = false
             _notifyDataChange.value = !_notifyDataChange.value!!
+        }
+    }
+
+    private fun getAllFavs() {
+        viewModelScope.launch {
+            _favAdded.value = favRepo.getAllFavorites(RecipeActivity.curUser?.id!!)
         }
     }
 
@@ -139,6 +150,11 @@ class HomeViewModel(private val dao : FavoritesDatabaseDao):ViewModel() {
             item.isFavorite = true
             favRepo.insertFavorite(newFav)
         }
+    }
+
+    fun resetApi() {
+        recipes = mutableListOf()
+        getAllRecipesFromAPI()
     }
 
     companion object {

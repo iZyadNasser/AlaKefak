@@ -16,7 +16,10 @@ import com.example.alakefak.R
 import com.example.alakefak.data.repository.FavoriteRepository
 import com.example.alakefak.data.source.local.database.FavoritesDatabaseDao
 import com.example.alakefak.data.source.local.model.FavoritesInfo
+import com.example.alakefak.data.source.remote.model.Meal
 import com.example.alakefak.ui.appflow.RecipeActivity
+import com.example.alakefak.ui.appflow.home.RecipesAdapter.MyViewHolder
+import com.example.alakefak.ui.authflow.Utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -85,20 +88,14 @@ class FavoritesAdapter(
         item: FavoritesInfo,
         context: Context
     ) {
-        val builder = AlertDialog.Builder(context)
-        builder.apply {
-            setTitle("Remove item from favorites")
-            setMessage(context.getString(R.string.remove_favorites_confirmation))
-            setPositiveButton(context.getString(R.string.remove)) { dialog, _ ->
-                Toast.makeText(context,
-                    context.getString(R.string.removed_from_favorites), Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-                handleFavoriteBtn(holder, item)
-            }
-            setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
-            show()
+        Utils.showSignOutDialog(
+            context = context,
+            title = context.getString(R.string.remove_item_from_favorites),
+            message = context.getString(R.string.remove_favorites_confirmation),
+            positiveButtonText = context.getString(R.string.remove),
+            negativeButtonText = context.getString(R.string.cancel)
+        ) {
+            handleFavoriteBtn(holder, item)
         }
     }
 

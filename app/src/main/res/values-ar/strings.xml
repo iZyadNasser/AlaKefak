@@ -83,4 +83,5 @@
     <string name="empty_fav">قائمة المفضلات لديك فارغة. ابدأ باستكشاف الوصفات وأضف مفضلاتك هنا!</string>
     <string name="oops">عذرًا! لم نتمكن من العثور على أي تطابقات.</string>
     <string name="check_out_amazing_recipes">تصفح الوجبات المذهلة!</string>
+    <string name="remove_item_from_favorites">Remove item from favorites</string>
 </resources>

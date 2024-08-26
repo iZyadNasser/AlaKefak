@@ -16,7 +16,7 @@ import com.example.alakefak.R
 import com.example.alakefak.data.source.local.database.UserDatabase
 import com.example.alakefak.databinding.FragmentLoginBinding
 import com.example.alakefak.ui.appflow.RecipeActivity
-import com.example.alakefak.ui.authflow.FormUtils
+import com.example.alakefak.ui.authflow.Utils
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
 //                signIn()
                 val intent = Intent(activity, RecipeActivity::class.java)
                 intent.putExtra("source", "login")
-                intent.putExtra(FormUtils.INTENT_KEY, viewModel.user.value)
+                intent.putExtra(Utils.INTENT_KEY, viewModel.user.value)
                 startActivity(intent)
                 activity?.finish()
             }
