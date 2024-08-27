@@ -185,12 +185,12 @@ _Profile screen displaying user information and statistics._
 
 If you have any questions, feedback, or suggestions, feel free to reach out to us at:
 
- -[Zyad  Nasser](mailto:zyadhammad531@gmail.com)
+ - [Zyad  Nasser](mailto:zyadhammad531@gmail.com)
 
- -[Malak  Raef](mailto:malak.raef20@gmail.com)
+ - [Malak  Raef](mailto:malak.raef20@gmail.com)
 
- -[Mariam Farouk](mailto:mariamfareed804@gmail.com)
+ - [Mariam Farouk](mailto:mariamfareed804@gmail.com)
 
-  -[Renad  Alalafy](mailto:renadalalfy@gmail.com)
+  - [Renad  Alalafy](mailto:renadalalfy@gmail.com)
 
   
