@@ -218,19 +218,19 @@
             android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/img_youtube"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/imgYoutube"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/orange"
-                android:contentDescription="@string/Youtube"
-                android:minWidth="100dp"
-                android:minHeight="64dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_ondemand_video_24" />
+                android:layout_marginBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/watch_video2"
+                android:drawableEnd="@drawable/play"
+                android:padding="16dp"
+                android:textColor="@color/main_color"
+                android:background="@drawable/rounded_button_white" />
 
         </LinearLayout>
 
