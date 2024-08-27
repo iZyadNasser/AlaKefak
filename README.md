@@ -22,6 +22,14 @@ AlaKefak is an Android application designed to help users find, organize, and ma
   - View your name and email.
   - Access statistics on the number of favorite meals, favorite cuisine, and favorite category.
   - Logout functionality.
+- **About Us**: Information about AlaKefak, including our mission, vision, core values, and team.
+- **Recipe Details**: View comprehensive information about a selected recipe, including:
+  - **Recipe Name**: The name of the recipe.
+  - **Category**: The category under which the recipe is classified (e.g., breakfast, side, vegan, dessert).
+  - **Area**: The geographical region or cuisine type associated with the recipe.
+  - **Ingredients**: A detailed list of ingredients required for the recipe.
+  - **Instructions**: Step-by-step cooking instructions.
+  - **YouTube Video**: An embedded YouTube video for additional visual guidance.
 
 ## Technologies Used
 - **Kotlin**: Primary programming language.
@@ -63,33 +71,91 @@ AlaKefak is an Android application designed to help users find, organize, and ma
 
    Watch the video below to see how AlaKefak makes recipe management effortless and enjoyable.
 
-   [![Watch the demo](https://drive.google.com/file/d/1JTIhGKwE89rD81rdRnukaUAtqQfI3Irx/view)]
+   [Watch the demo](https://drive.google.com/file/d/1JTIhGKwE89rD81rdRnukaUAtqQfI3Irx/view)
 
 
 ## Screenshots
 
+### Get Started
+
+<div>
+<img src="https://github.com/user-attachments/assets/f2ea3c3d-0e47-42ae-b264-64597370a0a0" alt="Splash Screen" width="300"/>
+
+<img src="https://github.com/user-attachments/assets/f1006010-1b02-413e-82dc-12849c574d8e" alt="Get Started Screen" width="300"/>
+
+_Splash Screen and Get Started Screen._
+</div>
+
+### Register and Login Screen
+<div>
+<img src="https://github.com/user-attachments/assets/c4760060-4286-4845-af79-1e0f6fda7fce" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/465355e5-d3b3-462f-ba01-6b0ab8d1b852" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/2673460e-708f-4dc8-9fc4-1867e3ea23f9" alt="Get Started Screen" width="300"/>
+
+<img src="https://github.com/user-attachments/assets/152f9b0b-f128-490b-b1b5-4709abb68770" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/33e6d0b1-b7f2-4fa0-a1f2-cf27b7e30d56" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/314eb497-ef86-4798-852e-d403587584a5" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/7f92b0ad-9ca1-4442-ba0a-fe9fa0ed1e2f" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/ee89e7d8-c5a6-4963-b6b9-b5c9d934bba2" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/6f825c22-07d5-4c00-8724-ad35b690abeb" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/99275f52-454b-4a05-bcf6-8c9e2c42e0ee" alt="Get Started Screen" width="300"/>
+
+<img src="https://github.com/user-attachments/assets/df059bf8-fb99-43cd-8b01-4839f62100f1" alt="Get Started Screen" width="300"/>
+
+<img src="https://github.com/user-attachments/assets/10d428ee-22d0-4a82-8157-b5193a0e9584" alt="Get Started Screen" width="300"/>
+
+
+
+
+  
+_Secure user authentication with validation on name, email, and password in both the UI and database. Database validation during login.
+</div>
 ### Home Screen
-<img src="![image](https://github.com/user-attachments/assets/00e044e5-669a-44ba-b69d-ea2fc7a117d7)" alt="Home Screen" width="300"/>
+<div>
+<img src="https://github.com/user-attachments/assets/8f8269f9-6d71-4967-9b53-74a816d469a6" alt="Home Screen" width="300"/>
 
+<img src="https://github.com/user-attachments/assets/f0b113c1-f289-488c-bcba-352301f49bc3" alt="Dialogue" width="300"/>
 
+<img src="https://github.com/user-attachments/assets/33fdd55f-8b32-411f-8190-fb2be9f528f9" alt="Dialogue" width="300"/>
 
 _Home screen where users can browse, filter, and add recipes to favorites._
+</div>
+## About Us
+<div>
+<img src="https://github.com/user-attachments/assets/d6a908dc-fad0-4cd3-aebd-d68919c25895" alt="Home Screen" width="300"/>
 
+<img src="https://github.com/user-attachments/assets/45415d3e-daaf-48cf-a2e3-049c55549ea3" alt="Home Screen" width="300"/>
+_Information about AlaKefak, including our mission, vision, core values, and team._
+
+</div>
 ### Search Screen
-<img src="https://github.com/user-attachments/assets/9ddac73e-2fe0-4648-b34f-bd7002dbdbab" alt="Search Screen" width="300"/>
-
+<div>
+<img src="https://github.com/user-attachments/assets/82d9206f-6cc9-4a75-82af-51718460b780" alt="Search Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/dff53c0e-247e-4e28-989e-9cd80b0bb5c2" alt="Search Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/3467b58c-0439-4f0b-9b14-97aee2a83e73" alt="Search Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/c7b38954-4e26-4805-a4cc-f23aaa90c0ff" alt="Search Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/fecaa5c2-5eee-4ef6-bcf6-e3ab395e4e55" alt="Search Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/3d3d4f59-2c5e-4d1a-9782-29c18efd2514" alt="Search Screen" width="300"/>
 
 _Search screen where users can find recipes by category, area, name, or letters._
-
+</div>
 ### Favourites Screen
-<img src="https://github.com/user-attachments/assets/03ef135c-8690-44f4-9125-8a8237e8b366" alt="Favorites Screen" width="300"/>
-
+<div>
+<img src="https://github.com/user-attachments/assets/f44492d9-9c8e-414d-9ece-dc7d4a932234" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/48860227-f928-4692-a675-4f5e2a15998b" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/09ef9ddd-2ad1-4c69-a42a-fb8b25e8e0f2" alt="Favorites Screen" width="300"/>
 _Favorites screen displaying the list of saved recipes._
+</div>
 
 ### Profile Screen
-<img src="https://github.com/user-attachments/assets/b4b23df3-0fdf-462d-a23b-fed4f28e03f3" alt="Profile Screen" width="300"/>
+<div>
+<img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" width="300"/>
 
 _Profile screen displaying user information and statistics._
+
+</div>
+
 
 ### Contact Us
 
