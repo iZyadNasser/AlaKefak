@@ -188,8 +188,8 @@ If you have any questions, feedback, or suggestions, feel free to reach out to u
 
 - [Malak Raef](mailto:malak.raef20@gmail.com)
 
--[MariamFarouk](mailto:mariamfareed804@gmail.com)
+ -[MariamFarouk](mailto:mariamfareed804@gmail.com)
 
--[RenadAlalafy](mailto:renadalalfy@gmail.com)
+ -[RenadAlalafy](mailto:renadalalfy@gmail.com)
 
   
