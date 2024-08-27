@@ -71,7 +71,7 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 ## Demo
   ### Step-by-Step Walkthrough
 
-   This demo video provides a step-by-step walkthrough of the AlaKefak app:
+   This demo video provides a step-by-step walkthrough of the Ala Kefak app:
 
    - **Registration and Login**: Start by setting up your account and logging in.
    - **Browsing Recipes**: Learn how to explore and filter recipes.
