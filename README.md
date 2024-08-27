@@ -116,9 +116,8 @@ _Secure user authentication with validation on name, email, and password in both
 ### Home Screen
 <div>
 <img src="https://github.com/user-attachments/assets/8f8269f9-6d71-4967-9b53-74a816d469a6" alt="Home Screen" width="300"/>
-
+<img src="https://github.com/user-attachments/assets/81822bc0-e559-4e97-8d1c-ffee720e7426" alt="Dialogue" width="300"/>
 <img src="https://github.com/user-attachments/assets/f0b113c1-f289-488c-bcba-352301f49bc3" alt="Dialogue" width="300"/>
-
 <img src="https://github.com/user-attachments/assets/33fdd55f-8b32-411f-8190-fb2be9f528f9" alt="Dialogue" width="300"/>
 
 _Home screen where users can browse, filter, and add recipes to favorites._
