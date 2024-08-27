@@ -195,10 +195,10 @@ class RegisterFragment : Fragment() {
 
         if (validEmail && validPassword && validConfirmPassword && validUserName) {
             signIn()
-            registerBtn.setBackgroundColor(resources.getColor(R.color.main_color))
+            registerBtn.setBackgroundResource(R.drawable.rounded_button_active)
         } else {
             disableSignIn()
-            registerBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+            registerBtn.setBackgroundResource(R.drawable.rounded_button)
         }
     }
 

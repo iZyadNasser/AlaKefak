@@ -92,10 +92,10 @@ class LoginFragment : Fragment() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signIn()
-                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.main_color))
+                binding.loginBtn.setBackgroundResource(R.drawable.rounded_button_active)
             } else {
                 disableSignIn()
-                binding.loginBtn.setBackgroundColor(resources.getColor(R.color.button_disabled_color))
+                binding.loginBtn.setBackgroundResource(R.drawable.rounded_button)
             }
         }
 
