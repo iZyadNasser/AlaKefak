@@ -67,7 +67,7 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 - Customize your profile with your name, email, and view statistics about your favorite meals, cuisine, and category.
 - Logout from your profile when done.
 
-  ## Demo
+## Demo
     ### Step-by-Step Walkthrough
 
    This demo video provides a step-by-step walkthrough of the AlaKefak app:
