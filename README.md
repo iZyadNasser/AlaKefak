@@ -69,14 +69,14 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 - Logout from your profile when done.
 
 ## Demo
-    ### Step-by-Step Walkthrough
+  ### Step-by-Step Walkthrough
 
    This demo video provides a step-by-step walkthrough of the AlaKefak app:
 
-     - **Registration and Login**: Start by setting up your account and logging in.
-     - **Browsing Recipes**: Learn how to explore and filter recipes.
-     - **Adding Favorites**: Watch how to save your favorite recipes for easy access.
-     - **Profile Management**: See how to update your profile and view your cooking statistics.
+   - **Registration and Login**: Start by setting up your account and logging in.
+   - **Browsing Recipes**: Learn how to explore and filter recipes.
+   - **Adding Favorites**: Watch how to save your favorite recipes for easy access.
+   - **Profile Management**: See how to update your profile and view your cooking statistics.
 
    Watch the video below to see how AlaKefak makes recipe management effortless and enjoyable.
 
@@ -113,7 +113,7 @@ _Splash Screen and Get Started Screen._
 
 <img src="https://github.com/user-attachments/assets/10d428ee-22d0-4a82-8157-b5193a0e9584" alt="Register and Login Screen" width="300"/>
 
-_Secure user authentication with validation on name, email, and password in both the UI and database. Database validation during login.
+_Secure user authentication with validation on name, email, and password in both the UI and database. Database validation during login._
 </div>
 
 
@@ -132,7 +132,7 @@ _Home screen where users can browse, filter, and add recipes to favorites._
 <img src="https://github.com/user-attachments/assets/d6a908dc-fad0-4cd3-aebd-d68919c25895" alt="Home Screen" width="300"/>
 <img src="https://github.com/user-attachments/assets/45415d3e-daaf-48cf-a2e3-049c55549ea3" alt="Home Screen" width="300"/>
   
-_Information about AlaKefak, including our mission, vision, core values, and team._
+_Information about Ala Kefak, including our mission, vision, core values, and team._
 </div>
 
 ### Search Screen
@@ -152,7 +152,9 @@ _Search screen where users can find recipes by category, area, name, or letters.
 <img src="https://github.com/user-attachments/assets/f44492d9-9c8e-414d-9ece-dc7d4a932234" alt="Favorites Screen" width="300"/>
 <img src="https://github.com/user-attachments/assets/48860227-f928-4692-a675-4f5e2a15998b" alt="Favorites Screen" width="300"/>
 <img src="https://github.com/user-attachments/assets/09ef9ddd-2ad1-4c69-a42a-fb8b25e8e0f2" alt="Favorites Screen" width="300"/>
+  
 _Favorites screen displaying the list of saved recipes._
+
 </div>
 
 ### Details Screen
@@ -165,7 +167,7 @@ _Favorites screen displaying the list of saved recipes._
 <img src="https://github.com/user-attachments/assets/fe3e7576-3a62-4d4a-b7f8-e6aca96a06e6" alt="Favorites Screen" width="300"/>
 <img src="https://github.com/user-attachments/assets/68a463ff-af3b-43f3-bae0-a12fdd6363f6" alt="Favorites Screen" width="300"/>
 
-_Recipe Details Screen showing the recipe name, category, area, ingredients, instructions, and YouTube video.*
+_Recipe Details Screen showing the recipe name, category, area, ingredients, instructions, and YouTube video._
 
 </div>
 
