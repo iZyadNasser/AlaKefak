@@ -1,4 +1,4 @@
-# AlaKefak
+# Ala Kefak
 
 AlaKefak is an Android application designed to help users find, organize, and manage their favorite recipes. Whether you're looking for new meal ideas, planning your next dish, or simply want to keep track of your favorite recipes, AlaKefak makes it easy and convenient.
 
@@ -17,9 +17,9 @@ AlaKefak is an Android application designed to help users find, organize, and ma
   - Remove recipes from your favorites.
   - Access detailed information for each recipe.
 - **Search**:
-  - Find recipes by category, area, complete name, or by letters.
+  - Find recipes by category, area, complete name, or by letters and access details of the recipe.
 - **Profile**:
-  - View your name and password.
+  - View your name and email.
   - Access statistics on the number of favorite meals, favorite cuisine, and favorite category.
   - Logout functionality.
 
@@ -48,7 +48,7 @@ AlaKefak is an Android application designed to help users find, organize, and ma
 - Logout and access the "About Us" section.
 - Use the search feature to find specific recipes by category, area, name, or letters.
 - Manage your favorites by viewing, accessing details, and removing recipes.
-- Customize your profile with your name, password, and view statistics about your favorite meals, cuisine, and category.
+- Customize your profile with your name, email, and view statistics about your favorite meals, cuisine, and category.
 - Logout from your profile when done.
 
   ## Demo
@@ -69,7 +69,7 @@ AlaKefak is an Android application designed to help users find, organize, and ma
 ## Screenshots
 
 ### Home Screen
-<img src="https://github.com/user-attachments/assets/aab2274a-0379-4f52-8718-43673cccf467" alt="Home Screen" width="300"/>
+<img src="![image](https://github.com/user-attachments/assets/00e044e5-669a-44ba-b69d-ea2fc7a117d7)" alt="Home Screen" width="300"/>
 
 
 
