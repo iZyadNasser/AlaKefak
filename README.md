@@ -6,30 +6,35 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 - **Login and Register**:
   - Secure user authentication with validation on name, email, and password in both the UI and database.
   - Database validation during login.
+    
 - **Home Page**:
   - Browse and filter recipes based on categories.
   - Add recipes to favorites.
   - Access detailed recipe instructions, ingredients, and nutritional information.
   - Logout functionality.
   - Access the "About Us" section.
+  - **About Us**: Information about AlaKefak, including our mission, vision, core values, and team.
+    
 - **Favorites Page**:
   - View your saved recipes.
   - Remove recipes from your favorites.
   - Access detailed information for each recipe.
+    
 - **Search**:
   - Find recipes by category, area, complete name, or by letters and access details of the recipe.
-- **Profile**:
-  - View your name and email.
-  - Access statistics on the number of favorite meals, favorite cuisine, and favorite category.
-  - Logout functionality.
-- **About Us**: Information about AlaKefak, including our mission, vision, core values, and team.
-- **Recipe Details**: View comprehensive information about a selected recipe, including:
+  - **Recipe Details**: View comprehensive information about a selected recipe, including:
   - **Recipe Name**: The name of the recipe.
   - **Category**: The category under which the recipe is classified (e.g., breakfast, side, vegan, dessert).
   - **Area**: The geographical region or cuisine type associated with the recipe.
   - **Ingredients**: A detailed list of ingredients required for the recipe.
   - **Instructions**: Step-by-step cooking instructions.
   - **YouTube Video**: An embedded YouTube video for additional visual guidance.
+    
+- **Profile**:
+  - View your name and email.
+  - Access statistics on the number of favorite meals, favorite cuisine, and favorite category.
+  - Logout functionality.
+
 
 ## Technologies Used
 - **Kotlin**: Primary programming language.
