@@ -73,23 +73,23 @@ AlaKefak is an Android application designed to help users find, organize, and ma
 
 
 
-__Home screen where users can browse, filter, and add recipes to favorites._
+_Home screen where users can browse, filter, and add recipes to favorites._
 
 ### Search Screen
 <img src="https://github.com/user-attachments/assets/9ddac73e-2fe0-4648-b34f-bd7002dbdbab" alt="Search Screen" width="300"/>
 
 
-__Search screen where users can find recipes by category, area, name, or letters._
+_Search screen where users can find recipes by category, area, name, or letters._
 
 ### Favourites Screen
 <img src="https://github.com/user-attachments/assets/03ef135c-8690-44f4-9125-8a8237e8b366" alt="Favorites Screen" width="300"/>
 
-__Favorites screen displaying the list of saved recipes._
+_Favorites screen displaying the list of saved recipes._
 
 ### Profile Screen
 <img src="https://github.com/user-attachments/assets/b4b23df3-0fdf-462d-a23b-fed4f28e03f3" alt="Profile Screen" width="300"/>
 
-__Profile screen displaying user information and statistics._
+_Profile screen displaying user information and statistics._
 
 ### Contact Us
 
