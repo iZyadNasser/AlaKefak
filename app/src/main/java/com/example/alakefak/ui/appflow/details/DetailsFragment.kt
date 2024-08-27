@@ -172,6 +172,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         Utils.showSignOutDialog(
             context = requireContext(),
             title = getString(R.string.remove_item_from_favorites),
+            iconId = R.drawable.trash_bin_trash,
             message = getString(R.string.remove_favorites_confirmation),
             positiveButtonText = getString(R.string.remove),
             negativeButtonText = getString(R.string.cancel)

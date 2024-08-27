@@ -59,6 +59,7 @@ object Utils {
     fun showSignOutDialog(
         context: Context,
         title: String,
+        iconId : Int,
         message: String,
         negativeButtonText: String,
         positiveButtonText: String,
@@ -67,6 +68,7 @@ object Utils {
         MaterialAlertDialogBuilder(context)
             .setTitle(title)
             .setMessage(message)
+            .setIcon(iconId)
             .setNegativeButton(negativeButtonText) { dialog, _ ->
                 dialog.dismiss()
             }

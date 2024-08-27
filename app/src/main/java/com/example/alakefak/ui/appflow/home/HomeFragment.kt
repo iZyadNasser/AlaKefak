@@ -208,6 +208,7 @@ class HomeFragment : Fragment() {
         Utils.showSignOutDialog(
             context = requireContext(),
             title = getString(R.string.sign_out),
+            iconId = R.drawable.arrows_alogout_2,
             message = getString(R.string.sign_out_confirmation),
             positiveButtonText = getString(R.string.sign_out),
             negativeButtonText = getString(R.string.cancel),

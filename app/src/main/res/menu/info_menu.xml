@@ -4,13 +4,13 @@
     <item
         android:id="@+id/signOut"
         android:title="@string/sign_out"
-        android:icon="@drawable/logout"
+        android:icon="@drawable/arrows_alogout_1"
 
         />
     <item
         android:id="@+id/aboutUs"
         android:title="@string/about_us"
-        android:icon="@drawable/information_outline"
+        android:icon="@drawable/info_circle"
         />
 
 </menu>

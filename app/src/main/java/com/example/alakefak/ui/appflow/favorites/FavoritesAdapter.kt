@@ -92,6 +92,7 @@ class FavoritesAdapter(
         Utils.showSignOutDialog(
             context = context,
             title = context.getString(R.string.remove_item_from_favorites),
+            iconId = R.drawable.trash_bin_trash,
             message = context.getString(R.string.remove_favorites_confirmation),
             positiveButtonText = context.getString(R.string.remove),
             negativeButtonText = context.getString(R.string.cancel)
