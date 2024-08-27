@@ -28,7 +28,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewInfo"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="164dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             app:cardCornerRadius="20dp"
@@ -77,21 +77,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Email"
-                    app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textName" />
 
-                <TextView
-                    android:id="@+id/textViewPassword"
-                    app:drawableStartCompat="@drawable/ic_ppassword"
-                    android:drawablePadding="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="Password"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
                 <TextView
                     android:id="@+id/userName"
@@ -109,23 +98,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:textColor="@color/main_color"
-                    app:layout_constraintBottom_toTopOf="@+id/password"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userName" />
-
-
-                <TextView
-                    android:id="@+id/password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:textColor="@color/main_color"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:text="........"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/email" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/userName" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
