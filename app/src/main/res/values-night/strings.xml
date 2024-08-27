@@ -77,4 +77,5 @@
     <string name="check_out_amazing_recipes">Check Out Amazing Recipes!</string>
     <string name="remove_item_from_favorites">Remove item from favorites</string>
     <string name="watch_video2">"Watch Video    "</string>
+    <string name="name">Name</string>
 </resources>
