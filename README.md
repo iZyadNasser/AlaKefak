@@ -1,6 +1,6 @@
 # Ala Kefak
 
-AlaKefak is an Android application designed to help users find, organize, and manage their favorite recipes. Whether you're looking for new meal ideas, planning your next dish, or simply want to keep track of your favorite recipes, AlaKefak makes it easy and convenient.
+Ala Kefak is an Android application designed to help users find, organize, and manage their favorite recipes. Whether you're looking for new meal ideas, planning your next dish, or simply want to keep track of your favorite recipes, AlaKefak makes it easy and convenient.
 
 ## Features
 - **Login and Register**:
