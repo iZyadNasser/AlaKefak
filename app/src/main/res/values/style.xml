@@ -17,6 +17,11 @@
     </style>
 
 
+        <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+            <item name="queryBackground">@android:color/transparent</item>
+
+        </style>
+
     <style name="style_password_text_field" parent="@style/Theme.AppCompat.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
