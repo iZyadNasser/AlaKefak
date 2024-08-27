@@ -3,7 +3,7 @@
 Ala Kefak is an Android application designed to help users find, organize, and manage their favorite recipes. Whether you're looking for new meal ideas, planning your next dish, or simply want to keep track of your favorite recipes, AlaKefak makes it easy and convenient.
 
 ## Features
-- **Login and Register**:
+- **Register and Login**:
   - Secure user authentication with validation on name, email, and password in both the UI and database.
   - Database validation during login.
     
@@ -13,7 +13,8 @@ Ala Kefak is an Android application designed to help users find, organize, and m
   - Access detailed recipe instructions, ingredients, and nutritional information.
   - Logout functionality.
   - Access the "About Us" section.
-  - **About Us**: Information about AlaKefak, including our mission, vision, core values, and team.
+
+- **About Us**: Information about Ala Kefak, including our mission, vision, core values, and team.
     
 - **Favorites Page**:
   - View your saved recipes.
@@ -96,21 +97,21 @@ _Splash Screen and Get Started Screen._
 
 ### Register and Login Screen
 <div>
-<img src="https://github.com/user-attachments/assets/c4760060-4286-4845-af79-1e0f6fda7fce" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/465355e5-d3b3-462f-ba01-6b0ab8d1b852" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/2673460e-708f-4dc8-9fc4-1867e3ea23f9" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/c4760060-4286-4845-af79-1e0f6fda7fce" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/465355e5-d3b3-462f-ba01-6b0ab8d1b852" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/2673460e-708f-4dc8-9fc4-1867e3ea23f9" alt="Register and Login Screen" width="300"/>
 
-<img src="https://github.com/user-attachments/assets/152f9b0b-f128-490b-b1b5-4709abb68770" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/33e6d0b1-b7f2-4fa0-a1f2-cf27b7e30d56" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/314eb497-ef86-4798-852e-d403587584a5" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/7f92b0ad-9ca1-4442-ba0a-fe9fa0ed1e2f" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/ee89e7d8-c5a6-4963-b6b9-b5c9d934bba2" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/6f825c22-07d5-4c00-8724-ad35b690abeb" alt="Get Started Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/99275f52-454b-4a05-bcf6-8c9e2c42e0ee" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/152f9b0b-f128-490b-b1b5-4709abb68770" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/33e6d0b1-b7f2-4fa0-a1f2-cf27b7e30d56" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/314eb497-ef86-4798-852e-d403587584a5" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/7f92b0ad-9ca1-4442-ba0a-fe9fa0ed1e2f" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/ee89e7d8-c5a6-4963-b6b9-b5c9d934bba2" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/6f825c22-07d5-4c00-8724-ad35b690abeb" alt="Register and Login Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/99275f52-454b-4a05-bcf6-8c9e2c42e0ee" alt="Register and Login Screen" width="300"/>
 
-<img src="https://github.com/user-attachments/assets/df059bf8-fb99-43cd-8b01-4839f62100f1" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/df059bf8-fb99-43cd-8b01-4839f62100f1" alt="Register and Login Screen" width="300"/>
 
-<img src="https://github.com/user-attachments/assets/10d428ee-22d0-4a82-8157-b5193a0e9584" alt="Get Started Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/10d428ee-22d0-4a82-8157-b5193a0e9584" alt="Register and Login Screen" width="300"/>
 
 _Secure user authentication with validation on name, email, and password in both the UI and database. Database validation during login.
 </div>
