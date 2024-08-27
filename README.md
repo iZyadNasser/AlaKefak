@@ -104,12 +104,10 @@ _Splash Screen and Get Started Screen._
 
 <img src="https://github.com/user-attachments/assets/10d428ee-22d0-4a82-8157-b5193a0e9584" alt="Get Started Screen" width="300"/>
 
-
-
-
-  
 _Secure user authentication with validation on name, email, and password in both the UI and database. Database validation during login.
 </div>
+
+
 ### Home Screen
 <div>
 <img src="https://github.com/user-attachments/assets/8f8269f9-6d71-4967-9b53-74a816d469a6" alt="Home Screen" width="300"/>
@@ -120,14 +118,15 @@ _Secure user authentication with validation on name, email, and password in both
 
 _Home screen where users can browse, filter, and add recipes to favorites._
 </div>
-## About Us
+
+### About Us
 <div>
 <img src="https://github.com/user-attachments/assets/d6a908dc-fad0-4cd3-aebd-d68919c25895" alt="Home Screen" width="300"/>
-
 <img src="https://github.com/user-attachments/assets/45415d3e-daaf-48cf-a2e3-049c55549ea3" alt="Home Screen" width="300"/>
+  
 _Information about AlaKefak, including our mission, vision, core values, and team._
-
 </div>
+
 ### Search Screen
 <div>
 <img src="https://github.com/user-attachments/assets/82d9206f-6cc9-4a75-82af-51718460b780" alt="Search Screen" width="300"/>
@@ -139,6 +138,7 @@ _Information about AlaKefak, including our mission, vision, core values, and tea
 
 _Search screen where users can find recipes by category, area, name, or letters._
 </div>
+
 ### Favourites Screen
 <div>
 <img src="https://github.com/user-attachments/assets/f44492d9-9c8e-414d-9ece-dc7d4a932234" alt="Favorites Screen" width="300"/>
@@ -147,13 +147,27 @@ _Search screen where users can find recipes by category, area, name, or letters.
 _Favorites screen displaying the list of saved recipes._
 </div>
 
+### Details Screen
+
+<div>
+<img src="https://github.com/user-attachments/assets/c56768c2-652b-454c-90e5-813eeec41042" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/a364785a-c32b-40ce-92d9-3063c250ff44" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/9994e57e-eb75-46eb-87f3-9a605598752a" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/dfe7ae4b-e48b-42c2-9429-dcb95f6bafcb" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/fe3e7576-3a62-4d4a-b7f8-e6aca96a06e6" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/68a463ff-af3b-43f3-bae0-a12fdd6363f6" alt="Favorites Screen" width="300"/>
+
+_Recipe Details Screen showing the recipe name, category, area, ingredients, instructions, and YouTube video.*
+
+</div>
+
 ### Profile Screen
+
 <div>
 <img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" width="300"/>
 <img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" width="300"/>
-
+  
 _Profile screen displaying user information and statistics._
-
 </div>
 
 
@@ -162,7 +176,8 @@ _Profile screen displaying user information and statistics._
 If you have any questions, feedback, or suggestions, feel free to reach out to us at:
 - [Zyad Nasser](zyadhammad531@gmail.com)
 - [Malak Raef](malak.raef20@gmail.com)
-- [Renad Alalafy](renadalalfy@gmail.com)
 - [Mariam Farouk](mariamfareed804@gmail.com)
+- [Renad Alalafy](renadalalfy@gmail.com)
+
 
   
