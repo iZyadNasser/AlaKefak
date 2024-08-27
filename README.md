@@ -22,7 +22,10 @@ Ala Kefak is an Android application designed to help users find, organize, and m
     
 - **Search**:
   - Find recipes by category, area, complete name, or by letters and access details of the recipe.
-  - **Recipe Details**: View comprehensive information about a selected recipe, including:
+ 
+ 
+- **Recipe Details**:
+  - View comprehensive information about a selected recipe, including:
   - **Recipe Name**: The name of the recipe.
   - **Category**: The category under which the recipe is classified (e.g., breakfast, side, vegan, dessert).
   - **Area**: The geographical region or cuisine type associated with the recipe.
