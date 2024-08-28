@@ -89,7 +89,6 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 
 <div>
 <img src="https://github.com/user-attachments/assets/f2ea3c3d-0e47-42ae-b264-64597370a0a0" alt="Splash Screen" width="300"/>
-
 <img src="https://github.com/user-attachments/assets/f1006010-1b02-413e-82dc-12849c574d8e" alt="Get Started Screen" width="300"/>
 
 _Splash Screen and Get Started Screen._
@@ -170,16 +169,12 @@ _Recipe Details Screen showing the recipe name, category, area, ingredients, ins
 
 ### Profile Screen
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" style="flex: 1 1 45%; max-width: 100%; height: auto;" />
-    <img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" style="flex: 1 1 45%; max-width: 100%; height: auto;" />
+<div>
+<img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" width="300"/>
+  
+_Profile screen displaying user information and statistics._
 </div>
-
-<p style="text-align: center;">
-    _Profile screen displaying user information and statistics._
-</p>
-
-
 
 
 ### Contact Us
