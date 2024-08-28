@@ -88,7 +88,7 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 ### Get Started
 
 <div>
-<img src="https://github.com/user-attachments/assets/f2ea3c3d-0e47-42ae-b264-64597370a0a0" alt="Splash Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/f2ea3c3d-0e47-42ae-b264-64597370a0a0" alt="Splash Screen"/>
 
 <img src="https://github.com/user-attachments/assets/f1006010-1b02-413e-82dc-12849c574d8e" alt="Get Started Screen" width="300"/>
 
