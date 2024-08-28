@@ -6,6 +6,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -97,7 +99,15 @@ class FavoritesAdapter(
             positiveButtonText = context.getString(R.string.remove),
             negativeButtonText = context.getString(R.string.cancel)
         ) {
-            handleFavoriteBtn(holder, item)
+            val animation = AnimationUtils.loadAnimation(context, R.anim.fade_out)
+            holder.itemView.startAnimation(animation)
+            animation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation) {}
+                override fun onAnimationEnd(animation: Animation) {
+                    handleFavoriteBtn(holder, item)
+                }
+                override fun onAnimationRepeat(animation: Animation) {}
+            })
         }
     }
 
