@@ -47,7 +47,8 @@ Ala Kefak is an Android application designed to help users find, organize, and m
 - **Room Database**: Local storage for favorite recipes.
 - **Glide**: Image loading library.
 - **Data Binding**: Simplifies UI updates.
-
+- **Lootie library**: Adding high-quality animations to the app.
+  
 ## Installation
 1. Clone the repository:
    ```bash
