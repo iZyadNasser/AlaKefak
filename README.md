@@ -117,17 +117,17 @@ _Secure user authentication with validation on name, email, and password in both
 ### Home Screen
 <div>
 <img src="https://github.com/user-attachments/assets/8f8269f9-6d71-4967-9b53-74a816d469a6" alt="Home Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/81822bc0-e559-4e97-8d1c-ffee720e7426" alt="Dialogue" width="300"/>
-<img src="https://github.com/user-attachments/assets/f0b113c1-f289-488c-bcba-352301f49bc3" alt="Options Menu" width="300"/>
-<img src="https://github.com/user-attachments/assets/33fdd55f-8b32-411f-8190-fb2be9f528f9" alt="Dialogue" width="300"/>
+<img src="https://github.com/user-attachments/assets/81822bc0-e559-4e97-8d1c-ffee720e7426" alt="Home Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/f0b113c1-f289-488c-bcba-352301f49bc3" alt="Home Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/33fdd55f-8b32-411f-8190-fb2be9f528f9" alt="Home Screen" width="300"/>
 
 _Home screen where users can browse, filter, and add recipes to favorites._
 </div>
 
 ### About Us
 <div>
-<img src="https://github.com/user-attachments/assets/d6a908dc-fad0-4cd3-aebd-d68919c25895" alt="Home Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/45415d3e-daaf-48cf-a2e3-049c55549ea3" alt="Home Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/d6a908dc-fad0-4cd3-aebd-d68919c25895" alt="About Us" width="300"/>
+<img src="https://github.com/user-attachments/assets/45415d3e-daaf-48cf-a2e3-049c55549ea3" alt="About Us" width="300"/>
   
 _Information about Ala Kefak, including our mission, vision, core values, and team._
 </div>
@@ -157,12 +157,12 @@ _Favorites screen displaying the list of saved recipes._
 ### Details Screen
 
 <div>
-<img src="https://github.com/user-attachments/assets/c56768c2-652b-454c-90e5-813eeec41042" alt="Favorites Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/a364785a-c32b-40ce-92d9-3063c250ff44" alt="Favorites Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/9994e57e-eb75-46eb-87f3-9a605598752a" alt="Favorites Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/dfe7ae4b-e48b-42c2-9429-dcb95f6bafcb" alt="Favorites Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/fe3e7576-3a62-4d4a-b7f8-e6aca96a06e6" alt="Favorites Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/68a463ff-af3b-43f3-bae0-a12fdd6363f6" alt="Favorites Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/c56768c2-652b-454c-90e5-813eeec41042" alt="Details Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/a364785a-c32b-40ce-92d9-3063c250ff44" alt="Details Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/9994e57e-eb75-46eb-87f3-9a605598752a" alt="Details Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/dfe7ae4b-e48b-42c2-9429-dcb95f6bafcb" alt="Details Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/fe3e7576-3a62-4d4a-b7f8-e6aca96a06e6" alt="Details Screen" width="300"/>
+<img src="https://github.com/user-attachments/assets/68a463ff-af3b-43f3-bae0-a12fdd6363f6" alt="Details Screen" width="300"/>
 
 _Recipe Details Screen showing the recipe name, category, area, ingredients, instructions, and YouTube video._
 
@@ -170,12 +170,13 @@ _Recipe Details Screen showing the recipe name, category, area, ingredients, ins
 
 ### Profile Screen
 
-<div>
-<img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" width="300"/>
-<img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" width="300"/>
-  
-_Profile screen displaying user information and statistics._
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" style="max-width: 100%; height: auto; margin-right: 10px; flex-basis: calc(50% - 10px);" />
+    <img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" style="max-width: 100%; height: auto; flex-basis: calc(50% - 10px);" />
 </div>
+
+_Profile screen displaying user information and statistics._
+
 
 
 ### Contact Us
