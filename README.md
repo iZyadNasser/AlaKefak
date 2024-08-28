@@ -170,12 +170,15 @@ _Recipe Details Screen showing the recipe name, category, area, ingredients, ins
 
 ### Profile Screen
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-    <img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" style="max-width: 100%; height: auto; margin-right: 10px; flex-basis: calc(50% - 10px);" />
-    <img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" style="max-width: 100%; height: auto; flex-basis: calc(50% - 10px);" />
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="https://github.com/user-attachments/assets/844d06cc-f571-47f4-8f3e-f7c5dbc1c243" alt="Profile Screen" style="flex: 1 1 45%; max-width: 100%; height: auto;" />
+    <img src="https://github.com/user-attachments/assets/6fb6a60d-07bf-4d56-95ad-3bf7eb939a37" alt="Profile Screen" style="flex: 1 1 45%; max-width: 100%; height: auto;" />
 </div>
 
-_Profile screen displaying user information and statistics._
+<p style="text-align: center;">
+    _Profile screen displaying user information and statistics._
+</p>
+
 
 
 
